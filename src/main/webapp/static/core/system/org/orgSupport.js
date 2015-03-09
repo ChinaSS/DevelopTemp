@@ -473,9 +473,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //组织导入
     var importOrg = function(){
         var mapping = {
-            "ServiceBeanName":"OrgDeptService",
-            "ServiceMethodName":"importDept",
-            "EntityClassName":"com.css.org.entity.OrgDept",
+            "ServiceName":"importDept",
+            "EntityClassName":"com.css.sword.org.entity.OrgDept",
             "部门ID":"deptId","部门编号":"deptCode","部门名称":"deptName","部门领导":"leader","部门领导编号":"leaderCode",
             "管理人员":"manager","管理人员编号":"managerCode","成本中心代码":"costCenterCode","部门级别":"level",
             "显示序号":"sort","所属部门名称":"pDeptName","所属部门ID":"pDeptId","部门OU":"ou",

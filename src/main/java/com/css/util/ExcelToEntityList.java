@@ -64,11 +64,13 @@ public class ExcelToEntityList {
 				}
 				result.add(instance);
 			} catch (Exception e) {
+				excel.close();
 				e.printStackTrace();
 				this.error.append("第"+ (i+1) +"行，"+ headTitle.get(col)+"字段，数据错误，跳过！").append("<br>");
 				log.error("第"+ (i+1) +"行，"+ headTitle.get(col)+"字段，数据错误，跳过！");
 			}
 	    }
+	    excel.close();
 	    return result;
 	}
 	

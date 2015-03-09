@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.css.sword.kernel.base.annotation.Service;
 import com.css.sword.kernel.base.annotation.ServiceContainer;
+import com.css.sword.kernel.base.dataElement.IPersistObject;
 import com.css.sword.kernel.base.dataElement.IValueObject;
 import com.css.sword.kernel.base.exception.SwordBaseCheckedException;
 import com.css.sword.kernel.base.persistence.IPersistenceService;
@@ -51,10 +52,9 @@ public class DeptService {
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
 		
 		try {
-			ExcelToEntityList ete = new ExcelToEntityList();
-			
-			
-			
+			if(dao.insert(list)){
+				dRes.setModel("{status:200}");
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
