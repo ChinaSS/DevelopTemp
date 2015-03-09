@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="30f00998-e45e-4a54-9b94-a98f9966d0bb" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\app.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\appPath.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\directive.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\collaboration\treeAndGridDialog\treeAndGridDialogCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\collaboration\treeAndGridDialog\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\collaboration\treeAndGridDialog\views\treeAndGridDialog.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\collaboration\treeDialog\treeDialogCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\collaboration\treeDialog\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\collaboration\treeDialog\views\treeDialog.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\common.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\common.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\templete\demo.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\ECharts\eChartsCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\ECharts\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\ECharts\views\source.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\dateTimePicker\dateTimePickerCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\dateTimePicker\views\dateTimePicker.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\dateTimePicker\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\demo.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\divFold\divFoldCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\divFold\views\divfold.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\divFold\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\divFold\views\source.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\fontawesome\fontCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\fontawesome\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\fontawesome\views\source.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\mcScrollbarCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\case.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\imgs\1.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\imgs\10.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\imgs\2.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\imgs\3.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\imgs\4.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\imgs\5.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\imgs\6.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\imgs\7.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\imgs\8.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\imgs\9.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\imgs\Thumbs.db" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\source.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\txt\case1.txt" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\txt\case2.txt" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\txt\case3.txt" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\txt\case4.txt" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\mCustomScrollbar\views\txt\case5.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\zTree\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\zTree\views\zTree.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\thirdParty\zTree\zTreeCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\crop\cropCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\crop\views\crop.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\crop\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\dialog\dialogCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\dialog\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\dialog\views\source.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\fileUpload\fileUploadCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\fileUpload\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\fileUpload\views\source.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\grid\gridCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\grid\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\grid\views\source.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\inputSelect\inputSelectCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\inputSelect\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\inputSelect\views\inputSelect.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\singleFileUpload\singleFileUploadCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\singleFileUpload\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\singleFileUpload\views\source.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\typeahead\typeaheadCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\typeahead\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\typeahead\views\typeahead.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\util\utilCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\util\views\doc.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\examples\util\util\views\source.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\app\routerMap.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\.svn\all-wcprops" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\.svn\entries" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\.svn\text-base\directive.js.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\directive.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\hbTest\a.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\hbTest\all.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\hbTest\b.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\hbTest\c.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\hbTest\config.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\hbTest\d.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\hbTest\test.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\.svn\all-wcprops" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\.svn\entries" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\.svn\text-base\home.css.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\home.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\.svn\all-wcprops" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\.svn\entries" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\.svn\prop-base\user.jpg.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\.svn\text-base\user.jpg.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\.svn\all-wcprops" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\.svn\entries" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\.svn\prop-base\bg.jpg.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\.svn\prop-base\login.jpg.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\.svn\prop-base\login_bg.png.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\.svn\prop-base\password.png.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\.svn\prop-base\username.png.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\.svn\text-base\bg.jpg.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\.svn\text-base\login.jpg.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\.svn\text-base\login_bg.png.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\.svn\text-base\password.png.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\.svn\text-base\username.png.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\bg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\login.jpg" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\login_bg.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\password.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\login\username.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\images\user.jpg" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\menu\.svn\all-wcprops" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\menu\.svn\entries" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\menu\data\.svn\all-wcprops" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\menu\data\.svn\entries" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\menu\data\.svn\text-base\Menu.json.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\menu\data\.svn\text-base\leftBar.json.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\menu\data\Menu.json" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\views\.svn\all-wcprops" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\views\.svn\entries" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\views\.svn\text-base\breadcrumbs.html.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\views\.svn\text-base\sidebarLI.html.svn-base" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\views\breadcrumbs.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\home\views\sidebarLI.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\routerMap.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\data\AllDept.json" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\data\Dept.json" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\data\GW.json" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\data\GWs.json" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\data\OrgTree.json" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\data\Person.json" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\data\Persons.json" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\data\Role.json" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\data\RoleDir.json" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\data\RoleTree.json" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\data\Roles.json" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\data\ZW.json" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\data\ZWList.json" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\data\ZWs.json" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\importTemplete\人员导入.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\importTemplete\岗位导入.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\importTemplete\职务导入.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\importTemplete\角色导入.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\importTemplete\角色目录导入.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\importTemplete\部门导入.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\orgCtrl.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\orgSupport.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\orgUtil.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\views\importDept.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\views\importGW.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\views\importPerson.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\views\importRole.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\views\importRoleDir.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\views\importZW.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\views\org.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\views\orgConfig.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\views\orgDept.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\views\orgGW.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\views\orgPerson.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\views\orgRole.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\views\orgRoleDir.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\core\system\org\views\orgZW.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\homeApp.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\index.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\main.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\Font-Awesome\css\font-awesome.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\Font-Awesome\css\font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\Font-Awesome\fonts\FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\Font-Awesome\fonts\fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\Font-Awesome\fonts\fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\Font-Awesome\fonts\fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\Font-Awesome\fonts\fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\css\ace-fonts.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\css\ace-ie.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\css\ace-part2.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\css\ace-rtl.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\css\ace-skins.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\css\ace.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\css\ace.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\css\font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\font\DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\font\cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\fonts\FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\fonts\fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\fonts\fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\fonts\fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\fonts\fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\images\avatar.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\js\ace-elements.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\js\ace-extra.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\js\ace.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\js\ace.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\js\html5shiv.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\js\jquery.mobile.custom.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\ace\js\respond.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\angular\angular-route.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\angular\angular.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\angular\angular.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\bootstrap\css\bootstrap-theme.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\bootstrap\css\bootstrap-theme.css.map" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\bootstrap\css\bootstrap-theme.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\bootstrap\css\bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\bootstrap\css\bootstrap.css.map" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\bootstrap\css\bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\bootstrap\fonts\glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\bootstrap\fonts\glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\bootstrap\fonts\glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\bootstrap\fonts\glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\bootstrap\js\bootstrap.debug.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\bootstrap\js\bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\bootstrap\plugins\datetimepicker\css\datetimepicker.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\bootstrap\plugins\datetimepicker\js\datetimepicker.cn.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\bootstrap\plugins\datetimepicker\js\datetimepicker.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\edit\closebrackets.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\edit\closetag.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\edit\continuelist.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\edit\matchbrackets.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\edit\matchtags.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\edit\trailingspace.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\fold\brace-fold.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\fold\comment-fold.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\fold\foldcode.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\fold\foldgutter.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\fold\foldgutter.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\fold\indent-fold.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\fold\markdown-fold.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\fold\xml-fold.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\hint\anyword-hint.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\hint\css-hint.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\hint\html-hint.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\hint\javascript-hint.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\hint\show-hint.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\hint\show-hint.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\hint\sql-hint.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\hint\xml-hint.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\lint\coffeescript-lint.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\lint\css-lint.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\lint\javascript-lint.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\lint\json-lint.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\lint\lint.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\lint\lint.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\lint\yaml-lint.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\mode\loadmode.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\mode\multiplex.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\mode\multiplex_test.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\mode\overlay.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\mode\simple.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\scroll\annotatescrollbar.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\scroll\scrollpastend.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\scroll\simplescrollbars.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\scroll\simplescrollbars.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\selection\active-line.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\addon\selection\mark-selection.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\lib\codemirror.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\lib\codemirror.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\css\css.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\css\index.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\css\less.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\css\less_test.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\css\scss.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\css\scss_test.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\css\test.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\htmlmixed\htmlmixed.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\htmlmixed\index.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\javascript\index.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\javascript\javascript.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\javascript\json-ld.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\javascript\test.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\javascript\typescript.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\xml\index.html" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\xml\test.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\mode\xml\xml.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\theme\cobalt.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\theme\eclipse.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\theme\mdn-like.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\theme\neat.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\theme\neo.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\theme\rubyblue.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\codemirror\theme\solarized.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\cropper\css\cropper.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\cropper\css\cropper.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\cropper\js\cropper.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\cropper\js\cropper.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\jquery\jquery.ajax.override.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\jquery\jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\jquery\jquery1x.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\jquery\plugins\jquery.slimscroll.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\jquery\plugins\mCustomScrollbar\LICENSE.txt" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\jquery\plugins\mCustomScrollbar\jquery.mCustomScrollbar.concat.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\jquery\plugins\mCustomScrollbar\jquery.mCustomScrollbar.min.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\jquery\plugins\mCustomScrollbar\jquery.mCustomScrollbar.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\jquery\plugins\mCustomScrollbar\jquery.mousewheel.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\jquery\plugins\mCustomScrollbar\mCSB_buttons.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\jquery\plugins\validate\additional-methods.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\jquery\plugins\validate\jquery.validate.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\jquery\plugins\validate\localization\messages_zh.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\jquery\plugins\validate\localization\messages_zh_TW.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\requirejs\plugin\css.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\requirejs\plugin\text.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\requirejs\require.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\crop.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\css\crop.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\css\grid.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\css\inputSelect.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\css\typeahead.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\css\util.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\dialog.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\fileUpload.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\grid.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\gridDialog.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\grid_old_version.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\images\cropper1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\images\cropper2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\images\icons.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\images\selectIcon.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\inputSelect.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\singleFileUpload.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\treeAndGridDialog.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\treeDialog.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\treeSearch.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\typeahead.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\util\util.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\webuploader\Uploader.swf" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\webuploader\css\webuploader.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\webuploader\webuploader.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\webuploader\webuploader.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\webuploader\webuploader.nolog.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\css\zTreeStyle\img\line_conn.gif" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\css\zTreeStyle\img\loading.gif" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\css\zTreeStyle\img\zTreeStandard.gif" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\css\zTreeStyle\img\zTreeStandard.png" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\css\zTreeStyle\zTreeStyle.css" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\js\jquery.ztree.all-3.5.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\js\jquery.ztree.all-3.5.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\js\jquery.ztree.core-3.5.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\js\jquery.ztree.core-3.5.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\js\jquery.ztree.excheck-3.5.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\js\jquery.ztree.excheck-3.5.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\js\jquery.ztree.exedit-3.5.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\js\jquery.ztree.exedit-3.5.min.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\js\jquery.ztree.exedit.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\js\jquery.ztree.exhide-3.5.js" afterPath="" />
+      <change type="DELETED" beforePath="F:\eclipse\workspace\DevelopTemp\src\main\webapp\static\modules\zTree\js\jquery.ztree.exhide-3.5.min.js" afterPath="" />
+    </list>
+    <ignored path="DevelopTemp.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="DevelopTemp" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="app.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/app/app.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="820">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="orgSupport.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/core/system/org/orgSupport.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.61538464" vertical-offset="16664" max-vertical-offset="18360">
+              <caret line="854" column="77" selection-start-line="854" selection-start-column="77" selection-end-line="854" selection-end-column="77" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="system" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="system" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\eclipse\workspace\DevelopTemp\src\main\webapp" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
+      <setting name="configLocationType" value="CONFIG_FILE" />
+      <setting name="settingsFile" value="" />
+      <setting name="serverType" value="INTERNAL" />
+      <setting name="preferredDebugBrowser" value="Chrome" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <list size="0" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="30f00998-e45e-4a54-9b94-a98f9966d0bb" name="Default" comment="" />
+      <created>1425870273261</created>
+      <option name="number" value="Default" />
+      <updated>1425870273261</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24968314" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="689">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/css/sword/org/controller/ExcelImportController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39156628" vertical-offset="0" max-vertical-offset="720">
+          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/app/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="820">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/core/system/org/orgSupport.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61538464" vertical-offset="16664" max-vertical-offset="18360">
+          <caret line="854" column="77" selection-start-line="854" selection-start-column="77" selection-end-line="854" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
