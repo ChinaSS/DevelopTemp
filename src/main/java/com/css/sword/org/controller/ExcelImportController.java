@@ -1,5 +1,7 @@
 package com.css.sword.org.controller;
 
+import java.io.InputStream;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,7 +22,9 @@ public class ExcelImportController extends AbsSwordController {
 		
 		//得到excel，
 		System.out.println(request.getParameter("formData"));
+		InputStream is = request.getPart("file").getInputStream();
 		
+		is.close();
 		
 		/*SwordDefaultRequest iReq = new SwordDefaultRequest(request);
 		SwordDefaultResponse swordRes = SwordServiceUtil.callService(iReq.getServiceName());

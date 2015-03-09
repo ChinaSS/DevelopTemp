@@ -87,12 +87,12 @@ require(["Ace","UtilDir/util","Bootstrap","JQuery.validate","JQuery.validate.mes
                     window.location = getServer();
                 })
             });
-        }else  if(data.status=="500"){
+        }/*else  if(data.status=="500"){
             alert(data.entity.msg+"\n"+data.entity.cause);
             console.log(data.entity.stackTrace);
         }else if(data.status=="403"){
             alert("权限不足 禁止访问");
-        }
+        }*/
     }).ajaxSend(function () {
         require(["UtilDir/util"],function(util){
             //util.progress.start();

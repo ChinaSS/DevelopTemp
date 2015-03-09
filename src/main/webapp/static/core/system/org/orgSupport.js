@@ -13,6 +13,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             //静态数据
             "url":sysPath+"/org/data/OrgTree.json",
             //"url": getServer()+"/v1/org/dept",
+            dataType:"json",
             "success":function(data) {
                 //数据转换
                 //console.log(data)
@@ -74,6 +75,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
         $.ajax({
             "url":sysPath+"/org/data/RoleTree.json",
             //"url": util.getServerPath()+"/org/roleDir/v1/",
+            dataType:"json",
             "success":function(data) {
                 if(typeof(data)=="string") return;
                 /*var arr = [];
@@ -852,7 +854,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                 //附件上传数据发送之前触发
                 uploader.on( 'uploadBeforeSend', function(object,data,headers) {
                     data["formData"] = JSON.stringify(param.mapping);
-                    data["CONTROLLER_KEY)"] = "ExcelImportController";
+                    data["SwordControllerName"] = "ExcelImportController";
                     $("#importExcelStatus").html("开始导入，请耐心等待...");
                 });
                 //附件上传成功后触发
