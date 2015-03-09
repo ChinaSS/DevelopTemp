@@ -1,0 +1,61 @@
+<!-- 组织结构相关CSS -->
+<style>
+#org_toolbar button{
+    display:none
+}
+</style>
+<!-- 操作栏 避免全局对象，所有的事件通过ID绑定-->
+<div id="org_toolbar">
+    <button type="button" class="btn btn-default" id="btn_orgConfig"><i class="fa fa-cog"></i>&nbsp;组织配置</button>
+    <button type="button" class="btn btn-default" id="btn_importOrg"><i class="fa fa-upload"></i>&nbsp;部门导入</button>
+    <button type="button" class="btn btn-default" id="btn_importPerson"><i class="fa fa-upload"></i>&nbsp;员工导入</button>
+    <button type="button" class="btn btn-default" id="btn_importRoleDir"><i class="fa fa-upload"></i>&nbsp;角色目录导入</button>
+    <button type="button" class="btn btn-default" id="btn_importRole"><i class="fa fa-upload"></i>&nbsp;角色导入</button>
+    <button type="button" class="btn btn-default" id="btn_importGW"><i class="fa fa-upload"></i>&nbsp;岗位导入</button>
+    <button type="button" class="btn btn-default" id="btn_importZW"><i class="fa fa-upload"></i>&nbsp;职务导入</button>
+    <button type="button" class="btn btn-default" id="btn_editDept"><i class="fa fa-edit"></i>&nbsp;编辑部门</button>
+    <button type="button" class="btn btn-default" id="btn_addDept"><i class="fa fa-plus-circle"></i>&nbsp;新增部门</button>
+    <button type="button" class="btn btn-default" id="btn_addPerson"><i class="fa fa-plus-circle"></i>&nbsp;新增人员</button>
+    <button type="button" class="btn btn-default" id="btn_editRoleDir"><i class="fa fa-edit"></i>&nbsp;编辑目录</button>
+    <button type="button" class="btn btn-default" id="btn_addRoleDir"><i class="fa fa-plus-circle"></i>&nbsp;新增目录</button>
+    <button type="button" class="btn btn-default" id="btn_addRole"><i class="fa fa-plus-circle"></i>&nbsp;新增角色</button>
+    <button type="button" class="btn btn-default" id="btn_addGW"><i class="fa fa-plus-circle"></i>&nbsp;新增岗位</button>
+    <button type="button" class="btn btn-default" id="btn_addZW"><i class="fa fa-plus-circle"></i>&nbsp;新增职务</button>
+</div>
+
+
+<hr style="margin-top:5px;margin-bottom:10px">
+
+
+<div class="col-xs-3">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li id="li_orgTab" class="active" style="width:33%"><a href="#orgTreePanel" role="tab" data-toggle="tab">组织</a></li>
+        <li id="li_roleTab" style="width:34%"><a href="#orgRolePanel" role="tab" data-toggle="tab">角色</a></li>
+        <li id="li_configTab" style="width:33%"><a href="#orgConfig" role="tab" data-toggle="tab">高级</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content" >
+        <div class="tab-pane active" id="orgTreePanel">
+            <ul class="ztree" id="orgtree"></ul>
+        </div>
+        <div class="tab-pane" id="orgRolePanel">
+            <ul class="ztree" id="roletree"></ul>
+        </div>
+        <div class="tab-pane" id="orgConfig">
+            <ul  class="ztree" id="orgConfigTree"></ul>
+        </div>
+    </div>
+</div>
+<div class="col-xs-9">
+    <div id="orgMainId">
+        主页面
+    </div>
+    <div style="display:none" id="orgShowListPanel">
+        <div>
+            <h5 id="orgShowListTitle">组织-财务一组</h5>
+        </div>
+        <div id="orgShowListContent"></div>
+    </div>
+</div>
