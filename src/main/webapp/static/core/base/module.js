@@ -1,6 +1,6 @@
 define(["jquery"],function($){
 	function Comp(){}
-	Comp.prototype = {
+	module.prototype = {
 		init : function(config){
 			console.log("abstract function, Init function should be overwritten");
 		},
@@ -11,5 +11,5 @@ define(["jquery"],function($){
 			callback(data);
 		}
 	};
-	return Comp;
+	return module;
 });

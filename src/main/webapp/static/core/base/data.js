@@ -51,9 +51,12 @@ define(["jquery"],function($){
 				return false;
 			}
 		},
-		dataFormat : function(data){
-			console.log("abstract function, dataFormat function should be overwritten");
+		format : function(data){
+			console.log("abstract function, format function should be overwritten");
 		},
+		sort : function(data){
+			console.log("abstract function, sort function should be overwritten");
+		}
 	};
 	return Data;
 });
