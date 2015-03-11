@@ -1,6 +1,8 @@
 package com.css.sword.org.entity;
 
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 import com.css.sword.kernel.base.dataElement.AbsPersistObject;
@@ -12,7 +14,7 @@ import com.css.sword.kernel.base.dataElement.AbsPersistObject;
  */
 @Entity
 @Table(name="org_zw")
-public class OrgZw extends AbsPersistObject {
+public class OrgZw extends AbsPersistObject implements Serializable{
 
 	private static final long serialVersionUID = 2345556875707569555L;
 

@@ -493,9 +493,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //人员导入
     var importPerson = function(){
             var mapping = {
-                "ServiceBeanName":"OrgUserService",
-                "ServiceMethodName":"importUser",
-                "EntityClassName":"com.css.org.entity.OrgUser",
+                "ServiceName":"importUser",
+                "EntityClassName":"com.css.sword.org.entity.OrgUser",
                 "员工编号":"userCode","用户名称":"userName","性别":"sex","生日":"birthday","办公电话":"officePhone",
                 "移动电话":"phone","传真":"fax","邮箱":"email","职务名称":"zw",
                 "职务编号":"zwCode","显示序号":"sort","是否冻结":"locked",
@@ -660,9 +659,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //角色目录导入
     var importRoleDir = function(){
         var mapping = {
-            "ServiceBeanName":"OrgRoleDirService",
-            "ServiceMethodName":"importRoleDir",
-            "EntityClassName":"com.css.org.entity.OrgRoleDir",
+            "ServiceName":"importRoleDir",
+            "EntityClassName":"com.css.sword.org.entity.OrgRoleDir",
             "目录名称":"dirName","目录编号":"dirCode","父目录编号":"pDirCode"
         };
         importExcel({
@@ -674,9 +672,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //角色导入
     var importRole = function(){
         var mapping = {
-            "ServiceBeanName":"OrgRoleService",
-            "ServiceMethodName":"importRole",
-            "EntityClassName":"com.css.org.entity.OrgRole",
+            "ServiceName":"importRole",
+            "EntityClassName":"com.css.sword.org.entity.OrgRole",
             "角色编号":"roleCode","角色名称":"roleName","管理人员编号":"managerCode",
             "所属目录编号":"dirCode","序号":"sort"
         };
@@ -730,9 +727,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //岗位导入
     var importGW = function(){
         var mapping = {
-            "ServiceBeanName":"OrgGwService",
-            "ServiceMethodName":"importGw",
-            "EntityClassName":"com.css.org.entity.OrgGw",
+            "ServiceName":"importGw",
+            "EntityClassName":"com.css.sword.org.entity.OrgGw",
             "岗位名称":"gwName","岗位编号":"gwCode","显示序号":"sort"
         };
         importExcel({
@@ -765,9 +761,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //职务导入
     var importZW = function(){
         var mapping = {
-            "ServiceBeanName":"OrgZwService",
-            "ServiceMethodName":"importZw",
-            "EntityClassName":"com.css.org.entity.OrgZw",
+            "ServiceName":"importZw",
+            "EntityClassName":"com.css.sword.org.entity.OrgZw",
             "职务名称":"zwName","职务编号":"zwCode","显示序号":"sort"
         };
         importExcel({
@@ -857,7 +852,9 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                     $("#importExcelStatus").html("开始导入，请耐心等待...");
                 });
                 //附件上传成功后触发
-                uploader.on( 'uploadSuccess', function( file,response ) {
+                uploader.on( 'uploadSuccess', function( file,res ) {
+                    //console.log(res);
+                    var response = JSON.parse(res);
                     $("#importExcelStatus").html(response.status=="success"?"导入成功,共"+response.count+"条":"导入失败");
                     //错误信息
                     var errorInfo = response.excelTransformInfo?"<strong>Excel转换错误信息：</strong><br/>"+decodeURI(response.excelTransformInfo):"";

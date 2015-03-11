@@ -2,14 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30f00998-e45e-4a54-9b94-a98f9966d0bb" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/DeptService.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/DeptService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/controller/ExcelImportController.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/controller/ExcelImportController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/util/ExcelToEntityList$BeanStorage.class" afterPath="$PROJECT_DIR$/target/classes/com/css/util/ExcelToEntityList$BeanStorage.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/util/ExcelToEntityList.class" afterPath="$PROJECT_DIR$/target/classes/com/css/util/ExcelToEntityList.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDept.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDept.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/GWService.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/GWService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDeptGw.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDeptGw.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDeptGwUser.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDeptGwUser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDeptUser.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDeptUser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgGw.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgGw.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgRole.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgRole.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgRoleDir.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgRoleDir.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgRoleUser.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgRoleUser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgUser.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgUser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgZw.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgZw.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/RoleDirService.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/RoleDirService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/RoleService.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/RoleService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/UserService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/ZWService.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/ZWService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/DeptService.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/DeptService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/controller/ExcelImportController.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/controller/ExcelImportController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/util/ExcelToEntityList.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/util/ExcelToEntityList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDept.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDept.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/GWService.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/GWService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDeptGw.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDeptGw.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDeptGwUser.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDeptGwUser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDeptUser.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDeptUser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgGw.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgGw.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgRole.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgRole.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgRoleDir.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgRoleDir.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgRoleUser.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgRoleUser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgUser.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgUser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgZw.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgZw.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/Persistence.xml" afterPath="$PROJECT_DIR$/src/main/resources/Persistence.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Persistence.xml" afterPath="$PROJECT_DIR$/target/classes/Persistence.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/RoleDirService.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/RoleDirService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/RoleService.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/RoleService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/ZWService.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/ZWService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/modules/util/dialog.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/modules/util/dialog.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/core/system/org/orgSupport.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/core/system/org/orgSupport.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DevelopTemp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,11 +62,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="orgSupport.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="orgSupport.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/core/system/org/orgSupport.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45118344" vertical-offset="9235" max-vertical-offset="18400">
-              <caret line="477" column="55" selection-start-line="477" selection-start-column="55" selection-end-line="477" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="13142" max-vertical-offset="18320">
+              <caret line="671" column="10" selection-start-line="671" selection-start-column="10" selection-end-line="671" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.08941878" vertical-offset="0" max-vertical-offset="671">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dialog.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/modules/util/dialog.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2220" max-vertical-offset="3280">
+              <caret line="92" column="17" selection-start-line="92" selection-start-column="17" selection-end-line="92" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -52,10 +101,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1598" />
+    <option name="height" value="858" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -157,6 +206,70 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevelopTemp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -296,10 +409,14 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <method />
     </configuration>
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -307,10 +424,6 @@
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="Chrome" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -326,6 +439,11 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
       <method />
     </configuration>
     <list size="0" />
@@ -341,27 +459,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="1" />
+    <frame x="1" y="1" width="1598" height="858" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24968314" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24968314" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24935897" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2525641" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -385,11 +503,18 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/core/system/org/orgSupport.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="18380">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/css/sword/org/controller/ExcelImportController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39156628" vertical-offset="0" max-vertical-offset="720">
           <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -397,22 +522,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="820">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/modules/util/dialog.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08708273" vertical-offset="0" max-vertical-offset="689">
-          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2220" max-vertical-offset="3280">
+          <caret line="92" column="17" selection-start-line="92" selection-start-column="17" selection-end-line="92" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/core/system/org/orgSupport.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45118344" vertical-offset="9235" max-vertical-offset="18400">
-          <caret line="477" column="55" selection-start-line="477" selection-start-column="55" selection-end-line="477" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="13142" max-vertical-offset="18320">
+          <caret line="671" column="10" selection-start-line="671" selection-start-column="10" selection-end-line="671" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08941878" vertical-offset="0" max-vertical-offset="671">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -50,10 +50,10 @@ public class DeptService {
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
-		
+
 		try {
 			if(dao.insert(list)){
-				dRes.setModel("{status:200}");
+				dRes.setModel("");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -1,7 +1,10 @@
 package com.css.sword.org.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import com.css.sword.kernel.base.dataElement.AbsPersistObject;
 
 
 /**
@@ -10,7 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="org_dept_gw_user")
-public class OrgDeptGwUser implements Serializable {
+public class OrgDeptGwUser extends AbsPersistObject implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

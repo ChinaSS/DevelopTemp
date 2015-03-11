@@ -1,12 +1,9 @@
 package com.css.sword.org.controller;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,7 +16,6 @@ import com.css.sword.web.response.SwordDefaultResponse;
 import com.css.util.ExcelToEntityList;
 
 
-// /sword/serviceName && 
 @SwordController("ExcelImportController")
 public class ExcelImportController extends AbsSwordController {
 	@Override
@@ -28,7 +24,7 @@ public class ExcelImportController extends AbsSwordController {
 		String status = "success";
 		ExcelToEntityList excel = null;
 		List<?> list = null;
-		Object importInfo = "";
+		Object importInfo = null;
 		try {
 			@SuppressWarnings("unchecked")
 			HashMap<String, String> param = JSON.parseObject(request.getParameter("formData"), HashMap.class);
@@ -36,28 +32,26 @@ public class ExcelImportController extends AbsSwordController {
 			list = excel.transform(param, request.getPart("file").getInputStream());
 			SwordDefaultRequest iReq = new SwordDefaultRequest(request);
 			SwordDefaultResponse swordRes = SwordServiceUtil.callService(param.get("ServiceName"),iReq,list);
-			importInfo = swordRes.getModel();
+			importInfo = swordRes.getModel()==null?"":swordRes.getModel();
 		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			status = "exception";
 			e.printStackTrace();
 		}finally{
-			
-			
 			try {
 				String excelTransformInfo = "";
 				if (excel.hasError()){
 					excelTransformInfo = URLEncoder.encode(excel.getError().toString(),"utf-8");
 				}
-				String result = "{\"status\":\""+status+"\",\"excelTransformInfo\":\""+excelTransformInfo+"\",\"count\":\""+(list!=null?list.size():"0")+"\",\"importInfo\":\""+URLEncoder.encode(importInfo.toString(), "UTF-8")+"\"}";
+				//String result = "{\"status\":\""+status+"\",\"excelTransformInfo\":\""+excelTransformInfo+"\",\"count\":\""+(list!=null?list.size():"0")+"\",\"importInfo\":\""+URLEncoder.encode(importInfo.toString(), "UTF-8")+"\"}";
+				
+				String result = "{\"status\":\""+status+"\",\"excelTransformInfo\":\""+excelTransformInfo+"\",\"count\":\""+(list!=null?list.size():"0")+"\",\"importInfo\":\""+importInfo.toString()+"\"}";
+				response.setContentType("application/json");
 				this.writeToPage(response, result);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
-		
 	}
-
 }
