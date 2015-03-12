@@ -11,13 +11,13 @@
 			<!-- 下面为datasource的其他属性配置信息 -->
 			<!-- 连接数据库的url，不同数据库不一样。例如：mysql : jdbc:mysql://10.12.9.126:3306/druid2 
 				oracle : jdbc:oracle:thin:@10.20.149.85:1521:ocnauto -->
-			<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/cssflow" />
+			<property name="jdbcUrl" value="jdbc:mysql://10.12.9.146:3306/developTemp" />
 			
 			<!-- 连接数据库的用户名 -->
-			<property name="username" value="root" />
+			<property name="username" value="css" />
 			
 			<!-- 连接数据库的密码 -->
-			<property name="password" value="root" />
+			<property name="password" value="css" />
 			
 			
 			

@@ -36,7 +36,7 @@ public class TestService {
 			String sql = "select * from org_zw";
 			List<Object> param = new ArrayList<Object>();
 			param.add("ZW001");
-			List<OrgZw> result = dao.findAll(sql, null ,OrgZw.class);
+			List<OrgZw> result = dao.findAllBySql(sql, null ,OrgZw.class);
 			dRes.setModel(result);
 			//dRes.addAttribute("", "");
 		} catch (Exception e) {

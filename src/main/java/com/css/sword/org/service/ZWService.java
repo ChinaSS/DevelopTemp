@@ -22,7 +22,7 @@ public class ZWService {
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
 
 		try {
-			dao.insert(list);
+			dao.insertBatch(list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

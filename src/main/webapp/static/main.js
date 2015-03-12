@@ -132,6 +132,35 @@ require(["Ace","UtilDir/util","Bootstrap","JQuery.validate","JQuery.validate.mes
         return getServer()+staticDir;
     };
 
+    /**
+     * 从后端获取数据
+     * @param param
+     */
+    w.CS_Ajax = function(param){
+        $.ajax($.extend({
+            type:"POST",
+            dataType:"json",
+            success:function(response){
+                var code = response.code;
+                //状态码控制
+                switch(code){
+                    case 403:
+                        //拒绝访问
+
+                        break;
+                    case 200:
+
+                        break;
+                    default :
+                        param.callback(response.model);
+                }
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                console.log("ajax eror:"+textStatus);
+            }
+        },param))
+    };
+
     //类继承函数组
     /*
      * Function原型添加mix函数,从元类扩展API,

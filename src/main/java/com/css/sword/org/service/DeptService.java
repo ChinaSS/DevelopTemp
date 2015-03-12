@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.css.sword.kernel.base.annotation.Service;
 import com.css.sword.kernel.base.annotation.ServiceContainer;
-import com.css.sword.kernel.base.dataElement.IPersistObject;
 import com.css.sword.kernel.base.dataElement.IValueObject;
 import com.css.sword.kernel.base.exception.SwordBaseCheckedException;
 import com.css.sword.kernel.base.persistence.IPersistenceService;
@@ -14,7 +13,6 @@ import com.css.sword.org.entity.OrgDept;
 import com.css.sword.web.request.ISwordRequest;
 import com.css.sword.web.response.ISwordResponse;
 import com.css.sword.web.response.SwordResponseFactory;
-import com.css.util.ExcelToEntityList;
 
 @ServiceContainer
 public class DeptService {
@@ -34,7 +32,7 @@ public class DeptService {
 			String sql = "select * from org_dept where dept_id=?";
 			List<Object> param = new ArrayList<Object>();
 			param.add("D001");
-			OrgDept dept = dao.findOne(sql, param, (Class<? extends IValueObject>) OrgDept.class);
+			OrgDept dept = dao.findOneBySql(sql, param, (Class<? extends IValueObject>) OrgDept.class);
 			dRes.setModel(dept);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -52,9 +50,28 @@ public class DeptService {
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
 
 		try {
-			if(dao.insert(list)){
+			if(dao.insertBatch(list)){
 				dRes.setModel("");
 			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dRes;
+	}
+	
+	//获取部门列表
+	@Service(serviceName="getAllDept")
+	public ISwordResponse getAllDept(ISwordRequest iReq) throws SwordBaseCheckedException{
+		
+		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
+		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
+
+		try {
+			String sql = "select * from org_dept";
+			List<OrgDept> result = dao.findAllBySql(sql, null ,OrgDept.class);
+			dRes.setModel(result);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
