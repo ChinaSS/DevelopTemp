@@ -7,7 +7,7 @@ define(["jquery"],function($){
 			if (!cofnig.url||!config.callback) {
 				console.log("required params undefined!");
 				return false;
-			};
+			}
 			type = config.type?config.type.toUpperCase():(function(){
 					if (!config.data) {
 						console.log("ajax requset without data");
