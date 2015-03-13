@@ -30,4 +30,22 @@ public class RoleDirService {
 		
 		return dRes;
 	}
+	//获取角色目录列表
+	@Service(serviceName="getAllRoleDir")
+	public ISwordResponse getAllDept(ISwordRequest iReq) throws SwordBaseCheckedException{
+		
+		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
+		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
+
+		try {
+			String sql = "select * from org_role_dir";
+			List<OrgRoleDir> result = dao.findAllBySql(sql, null ,OrgRoleDir.class);
+			dRes.setModel(result);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dRes;
+	}
 }

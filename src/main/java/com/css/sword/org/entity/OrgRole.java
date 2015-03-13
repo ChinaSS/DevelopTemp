@@ -13,6 +13,7 @@ import com.css.sword.kernel.base.dataElement.AbsPersistObject;
  */
 @Entity
 @Table(name="org_role")
+//@NamedQuery(name="OrgRole.findAll", query="SELECT o FROM OrgRole o")
 public class OrgRole extends AbsPersistObject implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -23,8 +24,10 @@ public class OrgRole extends AbsPersistObject implements Serializable {
 	@Column(name="dir_code")
 	private String dirCode;
 
-	@Column(name="manager_code")
-	private String managerCode;
+	@Column(name="dir_name")
+	private String dirName;
+
+	private String manager;
 
 	@Column(name="role_name")
 	private String roleName;
@@ -50,12 +53,20 @@ public class OrgRole extends AbsPersistObject implements Serializable {
 		this.dirCode = dirCode;
 	}
 
-	public String getManagerCode() {
-		return this.managerCode;
+	public String getDirName() {
+		return this.dirName;
 	}
 
-	public void setManagerCode(String managerCode) {
-		this.managerCode = managerCode;
+	public void setDirName(String dirName) {
+		this.dirName = dirName;
+	}
+
+	public String getManager() {
+		return this.manager;
+	}
+
+	public void setManager(String manager) {
+		this.manager = manager;
 	}
 
 	public String getRoleName() {

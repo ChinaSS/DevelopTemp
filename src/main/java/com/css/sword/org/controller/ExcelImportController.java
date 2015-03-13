@@ -31,7 +31,7 @@ public class ExcelImportController extends AbsSwordController {
 			excel = new ExcelToEntityList();
 			list = excel.transform(param, request.getPart("file").getInputStream());
 			SwordDefaultRequest iReq = new SwordDefaultRequest(request);
-			SwordDefaultResponse swordRes = SwordServiceUtil.callService(param.get("ServiceName"),iReq,list);
+			SwordDefaultResponse swordRes = SwordServiceUtil.callService(iReq.getServiceName(),iReq,list);
 			importInfo = swordRes.getModel()==null?"":swordRes.getModel();
 		}catch (Exception e) {
 			// TODO Auto-generated catch block

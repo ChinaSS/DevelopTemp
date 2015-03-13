@@ -156,7 +156,7 @@ require(["Ace","UtilDir/util","Bootstrap","JQuery.validate","JQuery.validate.mes
                 }
             },
             error:function(XMLHttpRequest, textStatus, errorThrown){
-                console.log("ajax eror:"+textStatus);
+                console.log("ajax error:"+textStatus);
             }
         },param))
     };

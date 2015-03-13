@@ -9,23 +9,22 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
      * 创建部门树
      */
     var createDeptTree = function(element){
-        $.ajax({
+        CS_Ajax({
             //静态数据
-            "url":sysPath+"/org/data/OrgTree.json",
+            //"url":sysPath+"/org/data/OrgTree.json",
             //"url": getServer()+"/v1/org/dept",
-            dataType:"json",
-            "success":function(data) {
-                //数据转换
+            "url": getServer()+"/sword/getAllDept",
+            "callback":function(data) {
                 //console.log(data)
-                if(typeof(data)=="string") return;
-                /*var arr = [];
-                for(var i= 0,dept; dept=data[i++];){
-                    if(dept.deptId=="root"){
-                        arr.push({ "id": "root", "name": dept.deptName, "open": true });
-                    }else{
-                        arr.push({ "id":dept.deptId, "pId":dept.pdeptId, "name":dept.deptName});
+                //数据转换zTree支持的格式
+                var arr = [];
+                for (var i = 0, dept; dept = data[i++];) {
+                    if (dept.deptId == "root") {
+                        arr.push({"id": "root", "name": dept.deptName, "open": true});
+                    } else {
+                        arr.push({"id": dept.deptId, "pId": dept.pDeptId, "name": dept.deptName});
                     }
-                }*/
+                }
                 var setting = {
                     data: {
                         simpleData: {
@@ -37,24 +36,6 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                             $("#orgShowListTitle").html("组织-"+treeNode.name);
                             showListPanel();
                             showPersonList(treeNode.id);
-                            /*require(["viewFrame"],function(VF){
-                                var VFParam = VF.config;
-                                VFParam.title = "组织-"+treeNode.name;
-                                //查询出该组织节点下的所有人员信息
-                                $.ajax({
-                                    "url":sysPath+"/org/data/Persons.json",
-                                    "dataType":"json",
-                                    "success":function(data){
-                                        $scope.$apply(function () {
-                                            $scope.ViewFrame = $.extend(VFParam,data);
-                                        });
-                                    }
-                                });
-                            });
-                            //显示组织相关操作
-                            $scope.$apply(function () {
-                                $scope.opt.curSelectOrg = treeNode.id;
-                            });*/
 
                             //单击节点展开
                             $.fn.zTree.getZTreeObj("orgtree").expandNode(treeNode);
@@ -63,7 +44,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                         }
                     }
                 };
-                $.fn.zTree.init(element, setting, data);
+                $.fn.zTree.init(element, setting, arr);
             }
         });
     };
@@ -72,20 +53,20 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
      * 创建角色树
      */
     var createRoleTree = function(element){
-        $.ajax({
-            "url":sysPath+"/org/data/RoleTree.json",
+        CS_Ajax({
+            //"url":sysPath+"/org/data/RoleTree.json",
             //"url": util.getServerPath()+"/org/roleDir/v1/",
+            "url": getServer()+"/sword/getAllRoleDir",
             dataType:"json",
-            "success":function(data) {
-                if(typeof(data)=="string") return;
-                /*var arr = [];
-                for(var i= 0,dir; dir=data[i++];){
-                    if(dir.dirCode=="root"){
-                        arr.push({ "id": "root", "name": dir.dirName, "open": true });
-                    }else{
-                        arr.push({ "id":dir.dirCode, "pId":dir.pdirCode, "name":dir.dirName});
+            "callback":function(data) {
+                var arr = [];
+                for (var i = 0, dir; dir = data[i++];) {
+                    if (dir.dirCode == "root") {
+                        arr.push({"id": "root", "name": dir.dirName, "open": true});
+                    } else {
+                        arr.push({"id": dir.dirCode, "pId": dir.pDirCode, "name": dir.dirName});
                     }
-                }*/
+                }
                 var setting = {
                     data: {
                         simpleData: {
@@ -105,7 +86,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                         }
                     }
                 };
-                $.fn.zTree.init(element, setting, data);
+                $.fn.zTree.init(element, setting, arr);
             }
         });
     };
@@ -812,7 +793,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                 //附件上传控件初始化
                 var uploader = WebUploader.create({
                     swf:getStaticPath()+'/modules/webuploader/Uploader.swf',
-                    server: getServer()+"/sword/importDept",
+                    server: getServer()+"/sword/"+param.mapping.ServiceName,
                     accept:{
                         title:"excel",
                         //extensions: 'xsl,xslx',
