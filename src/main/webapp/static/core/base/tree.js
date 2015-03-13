@@ -64,7 +64,7 @@ define(["jquery","BaseDir/data"],function($,Data){
 			$frag.append($li);
 			if(!!cur[key.data]&&cur[key.data].length>0){
 				$li.addClass(tag?tag:"node");
-				this.renderNode($li,cur[key.data])
+				this.renderNode($li,cur[key.data]);
 			}else{
 				$li.addClass(tag?tag:"item");
 			}

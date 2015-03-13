@@ -47,37 +47,59 @@ define(["jquery","BaseDir/tree","UtilDir/dialog"],function($,Tree,Dialog){
 	};
 
 	function PsnSelect(config){
+		var this._param = $.extend({},config);
 		//init Dialog
-		var buttons = [];
-        buttons.push(
-            {name:"确定",callback:function(){
-                //此处写扩展代码
-                dialog.hide();
-            }}
-        );
-        this.$dialog = Dialog({
+        this.dialog = Dialog({
             id:"CS_SelectPsnDialog",
             cache:false,
             title:"人员选择",
             height:"350px",
             dialogSize:"modal-lg",               //modal-lg或modal-sm
             body:"窗口中间内容",
-            buttons:buttons
+            buttons:this._param.buttons
         });
         var html = '<div id="psnTree" class="tree"></div>'+
-                   '<div class="result">right</div>';
-        this.$dialog.setBody(html);
-        this.$dialog.show();
+                   '<div class="result"><ul></ul></div>';
+        this.dialog.setBody(html);
+        this.dialog.show();
 
+        //init psnTree
 		this.$tree = new PsnTree({
 			id : "psnTree",
-			data : data
+			data : this._param.data
 		});
+		this.bindEvent();
 	}
 
+	PsnSelect.prototype.bindEvent = function(){
+		var $dialog = this.dialog.$getDialog();
+		var $resultUL = $dialog.find(".result ul"),
+		this.$tree.on("dblclick",".data",function(event){
+			$resultUL.append($(this).clone());
+		});
+		$resultUL.on("dblclick",".data",function(event){
+			$(this).remove();
+		});
+		$dialog.find(".save").on("click",function(){
+			this._param.callback(this.getResultData());
+		});
+	};
 
+	PsnSelect.prototype.getResultData = function(){
+		var $results = $dialog.find(".result li");
+			data = [];
+		$results.each(function(){
+			data.push({
+				code : $(this).data("code"),
+				text : $(this).text();
+			});
+		});
+		return data;
+	};
 
-	
+	PsnSelect.prototype.reload = function(data){
 
-	return treeInit;
+	};
+
+	return PsnInit;
 });
