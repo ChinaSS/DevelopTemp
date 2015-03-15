@@ -47,67 +47,7 @@ require.config({
     }
 });
 
-/*
- * 首页onload加载项
- */
-require(["Ace","UtilDir/util","Bootstrap","JQuery.validate","JQuery.validate.message","JQuery.validate.extra","app/appPath"],function(ace,util){
-    require(["HomeApp"], function () {
-        angular.element(document).ready(function () {
-            angular.bootstrap(document, ['HomeApp']);
-            ace.init();
-        });
-    });
 
-
-    /*
-     * 表单验证公共设置
-     */
-    $.validator.setDefaults({
-        errorElement : 'span',
-        errorClass : 'cs-help-block',
-        highlight : function(target) {
-            var fg =  $(target).closest('.form-group');
-            //直接是输入框时，修改输入框的边框样式，比如table中的输入框验证
-            fg.length ? fg.addClass('has-error') : $(target).addClass('cs-error-border');
-        },
-        success : function(message) {
-            var fg =  message.closest('.form-group');
-            fg.length ? fg.removeClass('has-error') : message.prev().removeClass('cs-error-border');
-            message.remove();
-        }
-    });
-
-    /*
-     * 未登录或session过期时ajax处理
-     */
-    $(document).ajaxSuccess(function (event,request,settings) {
-        var data = request.responseJSON;
-        if(request.getResponseHeader('LOGIN-AUTH') === 'login'){
-            require(["UtilDir/util"],function(util){
-                util.confirm("您没有登录或会话已过期请重新登录，是否立即跳转到登录页？",function(){
-                    window.location = getServer();
-                })
-            });
-        }/*else  if(data.status=="500"){
-            alert(data.entity.msg+"\n"+data.entity.cause);
-            console.log(data.entity.stackTrace);
-        }else if(data.status=="403"){
-            alert("权限不足 禁止访问");
-        }*/
-    }).ajaxSend(function () {
-        require(["UtilDir/util"],function(util){
-            //util.progress.start();
-        });
-    }).ajaxError(function (event, jqxhr, settings, thrownError) {
-        require(["UtilDir/util"],function(util){
-            //处理没有被服务器捕获的异常, 可能服务器崩溃
-        });
-    }).ajaxStart(function(){
-        util.Loading.show();
-    }).ajaxStop(function(){
-        util.Loading.hide();
-    })
-});
 
 (function(w){
 
@@ -132,34 +72,42 @@ require(["Ace","UtilDir/util","Bootstrap","JQuery.validate","JQuery.validate.mes
         return getServer()+staticDir;
     };
 
-    /**
-     * 从后端获取数据
-     * @param param
-     */
-    w.CS_Ajax = function(param){
-        $.ajax($.extend({
-            type:"POST",
-            dataType:"json",
-            success:function(response){
-                var code = response.code;
-                //状态码控制
-                switch(code){
-                    case 403:
-                        //拒绝访问
 
-                        break;
-                    case 200:
+    require(['jquery'],function($){
+        /**
+         * 对原生$.ajax进行包装
+         * @param param
+         */
+        var cloneAjax = $.ajax;
+        $.ajax = function(param){
+            param.callback = param.success;
+            delete param.success;
+            cloneAjax($.extend({
+                type:"POST",
+                dataType:"json",
+                success:function(response){
+                    var code = response.code;
+                    //状态码控制
+                    switch(code){
+                        case 403:
+                            //拒绝访问
 
-                        break;
-                    default :
-                        param.callback(response.model);
+                            break;
+                        case 200:
+
+                            break;
+                        default :
+                            param.callback(response.model);
+                    }
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                    console.log("ajax error:"+textStatus);
                 }
-            },
-            error:function(XMLHttpRequest, textStatus, errorThrown){
-                console.log("ajax error:"+textStatus);
-            }
-        },param))
-    };
+            },param))
+        };
+    });
+
+
 
     //类继承函数组
     /*
@@ -202,3 +150,65 @@ require(["Ace","UtilDir/util","Bootstrap","JQuery.validate","JQuery.validate.mes
      
 
 })(window);
+
+/*
+ * 首页onload加载项
+ */
+require(["Ace","UtilDir/util","Bootstrap","JQuery.validate","JQuery.validate.message","JQuery.validate.extra","app/appPath"],function(ace,util){
+    require(["HomeApp"], function () {
+        angular.element(document).ready(function () {
+            angular.bootstrap(document, ['HomeApp']);
+            ace.init();
+        });
+    });
+
+
+    /*
+     * 表单验证公共设置
+     */
+    $.validator.setDefaults({
+        errorElement : 'span',
+        errorClass : 'cs-help-block',
+        highlight : function(target) {
+            var fg =  $(target).closest('.form-group');
+            //直接是输入框时，修改输入框的边框样式，比如table中的输入框验证
+            fg.length ? fg.addClass('has-error') : $(target).addClass('cs-error-border');
+        },
+        success : function(message) {
+            var fg =  message.closest('.form-group');
+            fg.length ? fg.removeClass('has-error') : message.prev().removeClass('cs-error-border');
+            message.remove();
+        }
+    });
+
+    /*
+     * 未登录或session过期时ajax处理
+     */
+    $(document).ajaxSuccess(function (event,request,settings) {
+        var data = request.responseJSON;
+        if(request.getResponseHeader('LOGIN-AUTH') === 'login'){
+            require(["UtilDir/util"],function(util){
+                util.confirm("您没有登录或会话已过期请重新登录，是否立即跳转到登录页？",function(){
+                    window.location = getServer();
+                })
+            });
+        }/*else  if(data.status=="500"){
+         alert(data.entity.msg+"\n"+data.entity.cause);
+         console.log(data.entity.stackTrace);
+         }else if(data.status=="403"){
+         alert("权限不足 禁止访问");
+         }*/
+    }).ajaxSend(function () {
+        require(["UtilDir/util"],function(util){
+            //util.progress.start();
+        });
+    }).ajaxError(function (event, jqxhr, settings, thrownError) {
+        require(["UtilDir/util"],function(util){
+            //处理没有被服务器捕获的异常, 可能服务器崩溃
+        });
+    }).ajaxStart(function(){
+        util.Loading.show();
+    }).ajaxStop(function(){
+        util.Loading.hide();
+    })
+});

@@ -9,12 +9,12 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
      * 创建部门树
      */
     var createDeptTree = function(element){
-        CS_Ajax({
+        $.ajax({
             //静态数据
             //"url":sysPath+"/org/data/OrgTree.json",
             //"url": getServer()+"/v1/org/dept",
             "url": getServer()+"/sword/getAllDept",
-            "callback":function(data) {
+            "success":function(data) {
                 //console.log(data)
                 //数据转换zTree支持的格式
                 var arr = [];
@@ -53,12 +53,11 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
      * 创建角色树
      */
     var createRoleTree = function(element){
-        CS_Ajax({
+        $.ajax({
             //"url":sysPath+"/org/data/RoleTree.json",
             //"url": util.getServerPath()+"/org/roleDir/v1/",
             "url": getServer()+"/sword/getAllRoleDir",
-            dataType:"json",
-            "callback":function(data) {
+            "success":function(data) {
                 var arr = [];
                 for (var i = 0, dir; dir = data[i++];) {
                     if (dir.dirCode == "root") {
