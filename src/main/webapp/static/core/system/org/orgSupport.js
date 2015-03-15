@@ -214,7 +214,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             ],
             data:{
                 "type":"URL",
-                "value":sysPath+"/org/data/Persons.json"
+                "value":getServer()+"/org/data/Persons.json"
             }
         };
         grid.init($.extend(config,comConfig));
@@ -241,7 +241,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             ],
             data: {
                 "type": "URL",
-                "value": sysPath + "/org/data/Roles.json"
+                //"value": sysPath + "/org/data/Roles.json"
+                "value": getServer() + "/sword/getRoleByPid?dir_code="+id
             }
         };
         grid.init($.extend(config,comConfig));
