@@ -16,7 +16,7 @@ import com.css.sword.web.response.SwordResponseFactory;
 public class GWService {
 	//岗位导入
 	@Service(serviceName="importGw")
-	public ISwordResponse importDept(ISwordRequest iReq,List<OrgGw> list) throws SwordBaseCheckedException{
+	public ISwordResponse importGw(ISwordRequest iReq,List<OrgGw> list) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);

@@ -2,20 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30f00998-e45e-4a54-9b94-a98f9966d0bb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/core/system/org/resource.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/controller/ExcelImportController.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/controller/ExcelImportController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/GWService.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/GWService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDept.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDept.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDeptGw.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDeptGw.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDeptGwUser.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDeptGwUser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDeptUser.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgDeptUser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgGw.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgGw.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgRole.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgRole.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgRoleDir.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgRoleDir.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgRoleUser.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgRoleUser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgUser.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgUser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgZw.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/entity/OrgZw.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/RoleDirService.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/RoleDirService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/test/TestService.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/test/TestService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/controller/ExcelImportController.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/controller/ExcelImportController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/RoleService.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/RoleService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/UserService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/ZWService.class" afterPath="$PROJECT_DIR$/target/classes/com/css/sword/org/service/ZWService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/GWService.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/GWService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDept.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDept.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDeptGw.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDeptGw.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDeptGwUser.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDeptGwUser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDeptUser.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgDeptUser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgGw.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgGw.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgRole.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgRole.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgRoleDir.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgRoleDir.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgRoleUser.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgRoleUser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgUser.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgUser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgZw.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/entity/OrgZw.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/Persistence.xml" afterPath="$PROJECT_DIR$/src/main/resources/Persistence.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Persistence.xml" afterPath="$PROJECT_DIR$/target/classes/Persistence.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/RoleDirService.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/RoleDirService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/test/TestService.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/test/TestService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.settings/org.eclipse.wst.common.project.facet.core.xml" afterPath="$PROJECT_DIR$/.settings/org.eclipse.wst.common.project.facet.core.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/RoleService.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/RoleService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/ZWService.java" afterPath="$PROJECT_DIR$/src/main/java/com/css/sword/org/service/ZWService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/core/system/org/orgSupport.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/core/system/org/orgSupport.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/src/main/java/META-INF/persistence.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DevelopTemp.iws" />
@@ -43,8 +63,8 @@
       <file leaf-file-name="orgSupport.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/core/system/org/orgSupport.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5479452" vertical-offset="12780" max-vertical-offset="17940">
-              <caret line="657" column="58" selection-start-line="657" selection-start-column="58" selection-end-line="657" selection-end-column="69" />
+            <state vertical-scroll-proportion="0.6697108" vertical-offset="12720" max-vertical-offset="17940">
+              <caret line="658" column="48" selection-start-line="658" selection-start-column="48" selection-end-line="658" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -164,6 +184,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -438,7 +459,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -454,14 +474,10 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
-      <method />
-    </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -469,6 +485,10 @@
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="Chrome" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -516,18 +536,18 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24935897" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21923077" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -626,6 +646,77 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/core/system/org/orgSupport.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="17940">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/core/system/org/data/OrgTree.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="400">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/core/system/org/orgCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="260">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3780" max-vertical-offset="4180">
+          <caret line="189" column="54" selection-start-line="189" selection-start-column="54" selection-end-line="189" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/core/system/org/resource.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="600" max-vertical-offset="860">
+          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/core/system/org/orgUtil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="640" max-vertical-offset="1060">
+          <caret line="32" column="49" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
+          <folding>
+            <marker date="1423818974124" expanded="false" signature="709:759" placeholder="..." />
+            <marker date="1423818974124" expanded="false" signature="806:856" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/app/appPath.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="200" max-vertical-offset="380">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/homeApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2020">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/core/system/org/orgSupport.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="13142" max-vertical-offset="18320">
           <caret line="671" column="10" selection-start-line="671" selection-start-column="10" selection-end-line="671" selection-end-column="10" />
           <folding />
@@ -636,13 +727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="100" max-vertical-offset="220">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/core/org/orgTree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -750,13 +834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/core/org/orgTree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.52011925" vertical-offset="349" max-vertical-offset="1020">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/homeApp.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2020">
@@ -822,8 +899,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/core/system/org/orgSupport.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5479452" vertical-offset="12780" max-vertical-offset="17940">
-          <caret line="657" column="58" selection-start-line="657" selection-start-column="58" selection-end-line="657" selection-end-column="69" />
+        <state vertical-scroll-proportion="0.6697108" vertical-offset="12720" max-vertical-offset="17940">
+          <caret line="658" column="48" selection-start-line="658" selection-start-column="48" selection-end-line="658" selection-end-column="48" />
           <folding />
         </state>
       </provider>

@@ -1,10 +1,7 @@
 package com.css.sword.org.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
-import com.css.sword.kernel.base.dataElement.AbsPersistObject;
 
 
 /**
@@ -13,7 +10,8 @@ import com.css.sword.kernel.base.dataElement.AbsPersistObject;
  */
 @Entity
 @Table(name="org_user")
-public class OrgUser extends AbsPersistObject implements Serializable {
+@NamedQuery(name="OrgUser.findAll", query="SELECT o FROM OrgUser o")
+public class OrgUser extends com.css.sword.kernel.base.dataElement.AbsPersistObject implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -22,11 +20,11 @@ public class OrgUser extends AbsPersistObject implements Serializable {
 
 	private String birthday;
 
+	@Column(name="dept_code")
+	private String deptCode;
+
 	@Column(name="dept_id")
 	private String deptId;
-
-	@Column(name="dept_name")
-	private String deptName;
 
 	private String email;
 
@@ -78,7 +76,7 @@ public class OrgUser extends AbsPersistObject implements Serializable {
 	@Column(name="jz_dept_name")
 	private String jzDeptName;
 
-	private String locked;
+	private int locked;
 
 	@Column(name="office_phone")
 	private String officePhone;
@@ -94,10 +92,11 @@ public class OrgUser extends AbsPersistObject implements Serializable {
 	@Column(name="user_name")
 	private String userName;
 
-	private String zw;
-
 	@Column(name="zw_code")
 	private String zwCode;
+
+	@Column(name="zw_name")
+	private String zwName;
 
 	public OrgUser() {
 	}
@@ -118,20 +117,20 @@ public class OrgUser extends AbsPersistObject implements Serializable {
 		this.birthday = birthday;
 	}
 
+	public String getDeptCode() {
+		return this.deptCode;
+	}
+
+	public void setDeptCode(String deptCode) {
+		this.deptCode = deptCode;
+	}
+
 	public String getDeptId() {
 		return this.deptId;
 	}
 
 	public void setDeptId(String deptId) {
 		this.deptId = deptId;
-	}
-
-	public String getDeptName() {
-		return this.deptName;
-	}
-
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
 	}
 
 	public String getEmail() {
@@ -326,11 +325,11 @@ public class OrgUser extends AbsPersistObject implements Serializable {
 		this.jzDeptName = jzDeptName;
 	}
 
-	public String getLocked() {
+	public int getLocked() {
 		return this.locked;
 	}
 
-	public void setLocked(String locked) {
+	public void setLocked(int locked) {
 		this.locked = locked;
 	}
 
@@ -382,20 +381,20 @@ public class OrgUser extends AbsPersistObject implements Serializable {
 		this.userName = userName;
 	}
 
-	public String getZw() {
-		return this.zw;
-	}
-
-	public void setZw(String zw) {
-		this.zw = zw;
-	}
-
 	public String getZwCode() {
 		return this.zwCode;
 	}
 
 	public void setZwCode(String zwCode) {
 		this.zwCode = zwCode;
+	}
+
+	public String getZwName() {
+		return this.zwName;
+	}
+
+	public void setZwName(String zwName) {
+		this.zwName = zwName;
 	}
 
 }

@@ -16,7 +16,7 @@ import com.css.sword.web.response.SwordResponseFactory;
 public class RoleDirService {
 	//角色目录导入
 	@Service(serviceName="importRoleDir")
-	public ISwordResponse importDept(ISwordRequest iReq,List<OrgRoleDir> list) throws SwordBaseCheckedException{
+	public ISwordResponse importRoleDir(ISwordRequest iReq,List<OrgRoleDir> list) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
@@ -32,7 +32,7 @@ public class RoleDirService {
 	}
 	//获取角色目录列表
 	@Service(serviceName="getAllRoleDir")
-	public ISwordResponse getAllDept(ISwordRequest iReq) throws SwordBaseCheckedException{
+	public ISwordResponse getAllRoleDir(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);

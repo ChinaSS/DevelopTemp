@@ -16,7 +16,7 @@ import com.css.sword.web.response.SwordResponseFactory;
 public class RoleService {
 	//角色导入
 	@Service(serviceName="importRole")
-	public ISwordResponse importDept(ISwordRequest iReq,List<OrgRole> list) throws SwordBaseCheckedException{
+	public ISwordResponse importRole(ISwordRequest iReq,List<OrgRole> list) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);

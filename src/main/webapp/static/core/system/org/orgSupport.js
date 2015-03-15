@@ -457,7 +457,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             "ServiceName":"importDept",
             "EntityClassName":"com.css.sword.org.entity.OrgDept",
             "部门ID":"deptId","部门编号":"deptCode","部门名称":"deptName","部门领导":"leader","部门领导编号":"leaderCode",
-            "管理人员":"manager","管理人员编号":"managerCode","成本中心代码":"costCenterCode","部门级别":"level",
+            "管理人员":"manager","管理人员编号":"managerCode","成本中心名称":"costCenterName","成本中心代码":"costCenterCode","部门级别":"level",
             "显示序号":"sort","所属部门名称":"pDeptName","所属部门ID":"pDeptId","部门OU":"ou",
             "部门信息1":"extend1","部门信息2":"extend2","部门信息3":"extend3","部门信息4":"extend4",
             "部门信息5":"extend5","部门信息6":"extend6","部门信息7":"extend7","部门信息8":"extend8",
@@ -642,7 +642,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
         var mapping = {
             "ServiceName":"importRoleDir",
             "EntityClassName":"com.css.sword.org.entity.OrgRoleDir",
-            "目录名称":"dirName","目录编号":"dirCode","父目录编号":"pDirCode"
+            "目录名称":"dirName","目录编号":"dirCode","父目录编号":"pDirCode","父目录名称":"pDirName"
         };
         importExcel({
             "title":"角色目录导入",
@@ -655,8 +655,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
         var mapping = {
             "ServiceName":"importRole",
             "EntityClassName":"com.css.sword.org.entity.OrgRole",
-            "角色编号":"roleCode","角色名称":"roleName","管理人员编号":"managerCode",
-            "所属目录编号":"dirCode","序号":"sort"
+            "角色编号":"roleCode","角色名称":"roleName","管理人员编号":"managerCode","管理人员名称":"managerName",
+            "所属目录编号":"dirCode","所属目录名称":"dirName","序号":"sort"
         };
         importExcel({
             "title":"角色导入",

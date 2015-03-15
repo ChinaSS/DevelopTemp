@@ -17,7 +17,7 @@ public class UserService {
 	
 	//人员导入
 	@Service(serviceName="importUser")
-	public ISwordResponse importDept(ISwordRequest iReq,List<OrgUser> list) throws SwordBaseCheckedException{
+	public ISwordResponse importUser(ISwordRequest iReq,List<OrgUser> list) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);

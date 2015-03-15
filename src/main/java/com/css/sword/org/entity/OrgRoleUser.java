@@ -1,10 +1,7 @@
 package com.css.sword.org.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
-import com.css.sword.kernel.base.dataElement.AbsPersistObject;
 
 
 /**
@@ -13,7 +10,8 @@ import com.css.sword.kernel.base.dataElement.AbsPersistObject;
  */
 @Entity
 @Table(name="org_role_user")
-public class OrgRoleUser extends AbsPersistObject implements Serializable {
+@NamedQuery(name="OrgRoleUser.findAll", query="SELECT o FROM OrgRoleUser o")
+public class OrgRoleUser extends com.css.sword.kernel.base.dataElement.AbsPersistObject implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

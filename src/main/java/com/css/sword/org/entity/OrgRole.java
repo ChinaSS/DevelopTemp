@@ -1,10 +1,7 @@
 package com.css.sword.org.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
-import com.css.sword.kernel.base.dataElement.AbsPersistObject;
 
 
 /**
@@ -13,8 +10,8 @@ import com.css.sword.kernel.base.dataElement.AbsPersistObject;
  */
 @Entity
 @Table(name="org_role")
-//@NamedQuery(name="OrgRole.findAll", query="SELECT o FROM OrgRole o")
-public class OrgRole extends AbsPersistObject implements Serializable {
+@NamedQuery(name="OrgRole.findAll", query="SELECT o FROM OrgRole o")
+public class OrgRole extends com.css.sword.kernel.base.dataElement.AbsPersistObject implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -27,7 +24,11 @@ public class OrgRole extends AbsPersistObject implements Serializable {
 	@Column(name="dir_name")
 	private String dirName;
 
-	private String manager;
+	@Column(name="manager_code")
+	private String managerCode;
+
+	@Column(name="manager_name")
+	private String managerName;
 
 	@Column(name="role_name")
 	private String roleName;
@@ -61,12 +62,20 @@ public class OrgRole extends AbsPersistObject implements Serializable {
 		this.dirName = dirName;
 	}
 
-	public String getManager() {
-		return this.manager;
+	public String getManagerCode() {
+		return this.managerCode;
 	}
 
-	public void setManager(String manager) {
-		this.manager = manager;
+	public void setManagerCode(String managerCode) {
+		this.managerCode = managerCode;
+	}
+
+	public String getManagerName() {
+		return this.managerName;
+	}
+
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
 	}
 
 	public String getRoleName() {
