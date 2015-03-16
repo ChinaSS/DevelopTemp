@@ -40,13 +40,10 @@ public class TestService {
 			String sql = "select * from org_zw";
 			List<Object> param = new ArrayList<Object>();
 			param.add("ZW001");
-<<<<<<< HEAD
-//			List<OrgZw> result = dao.findAll(sql, null ,OrgZw.class);
-//			dRes.setModel(result);
-=======
+
 			List<OrgZw> result = dao.findAllBySql(sql, null ,OrgZw.class);
 			dRes.setModel(result);
->>>>>>> 9cb56429bba73ed9d6ebb2d9aea80c58ef255131
+
 			//dRes.addAttribute("", "");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

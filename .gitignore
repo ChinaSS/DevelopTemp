@@ -2,3 +2,5 @@
 .idea/
 target/classes/
 /target/
+target/classes/Persistence.xml
+*.class
