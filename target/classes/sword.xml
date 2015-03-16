@@ -33,7 +33,7 @@
 		<class-scanner extensionsLibs="" applicationLibs=""
 			inclusionJars="(sword.+\.jar)" inclusionClasses=".+" memo="类扫描框架配置">
 			<scanner annotation="BeanScanner"
-				scanner="com.css.sword.components.ioc.guice.BeanScanner" memo="Google Guice IoC扫描器" />
+				scanner="com.css.sword.core.components.ioc.guice.BeanScanner" memo="Google Guice IoC扫描器" />
 			<scanner annotation="CtrlClassScanner"
 				scanner="com.css.sword.web.component.SwordCtrlScanner" memo="Web框架Ctrl类扫描器" />
 
@@ -57,7 +57,7 @@
 				系统管理组件(最后加载)">
 
 		<component name="SwordPersistenceManager"
-			component="com.css.sword.components.persistence.component.SwordPersistenceComponentManager"
+			component="com.css.sword.core.components.persistence.component.SwordPersistenceComponentManager"
 			memo="Sword持久化组件" />
 
 		<!-- <component name="SwordIoCManager" component="com.css.sword.ioc.spring.SwordIoCManager" 

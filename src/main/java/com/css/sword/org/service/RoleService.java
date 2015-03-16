@@ -3,13 +3,12 @@ package com.css.sword.org.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.css.sword.kernel.base.annotation.Service;
-import com.css.sword.kernel.base.annotation.ServiceContainer;
-import com.css.sword.kernel.base.exception.SwordBaseCheckedException;
-import com.css.sword.kernel.base.persistence.IPersistenceService;
-import com.css.sword.kernel.utils.SwordPersistenceUtils;
+import com.css.sword.core.kernel.base.annotation.Service;
+import com.css.sword.core.kernel.base.annotation.ServiceContainer;
+import com.css.sword.core.kernel.base.exception.SwordBaseCheckedException;
+import com.css.sword.core.kernel.base.persistence.IPersistenceService;
+import com.css.sword.core.kernel.utils.SwordPersistenceUtils;
 import com.css.sword.org.entity.OrgRole;
-import com.css.sword.org.entity.OrgZw;
 import com.css.sword.web.request.ISwordRequest;
 import com.css.sword.web.response.ISwordResponse;
 import com.css.sword.web.response.SwordResponseFactory;
@@ -44,7 +43,7 @@ public class RoleService {
 			String sql = "select * from org_role where dir_code=?";
 			List<Object> param = new ArrayList<Object>();
 			param.add(iReq.getDataMap().get("dir_code"));
-			List<OrgRole> result = dao.findAllBySql(sql, null ,OrgRole.class);
+			List<OrgRole> result = dao.findAllBySql(sql, param ,OrgRole.class);
 			dRes.setModel(result);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
