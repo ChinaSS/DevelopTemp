@@ -14,22 +14,12 @@ define(["jquery","BaseDir/data"],function($,Data){
 		//绑定事件
 		this.bindEvent();
 		//渲染节点
-		try{
-			if(!!config.url){
-				this.getAjaxData({
-					url : config.url,
-					data : config.code,
-					callback : this.renderTree
-				});
-			}else if (!!config.data) {
-				this.renderTree(config.data);
-			}else{
-				throw("data sorce undefined!");
-			}
-		}catch{
-			return false;
-		}
+		this.getData(this.renderTree);
 	}
+
+	Tree.prototype.$getWrap = function(){
+		return this.$wrap;
+	};
 
 	Tree.mix(Data);//扩展数据处理API
 
@@ -72,15 +62,28 @@ define(["jquery","BaseDir/data"],function($,Data){
 		$list.append($frag);
 	};
 
-	Tree.prototype.getAjaxData(param){
-		var _this = this;
-		this.query({
-			url : param.url,
-			data : param.data,
-			callback : function(data){
-				param.callback.call(_this,data);
+	Tree.prototype.getData = function(callback){
+		var _this = this,
+			param = this._param;
+		try{
+			if(!!param.url){
+				this.query({
+					url : param.url,
+					data : param.code,
+					callback : function(data){
+						callback.call(_this,data);
+						param.callback?param.callback(data):false;
+					}
+				});
+			}else if (!!param.data) {
+				callback.call(_this,param.data);
+				param.callback?param.callback(param.data):false;
+			}else{
+				throw("data sorce undefined!");
 			}
-		});
+		}catch{
+			return false;
+		}
 	};
 
 	return Tree;
