@@ -7,7 +7,7 @@ define(["jquery"],function($){
 			if (!cofnig.url||!config.callback) {
 				console.log("required params undefined!");
 				return false;
-			};
+			}
 			type = config.type?config.type.toUpperCase():(function(){
 					if (!config.data) {
 						console.log("ajax requset without data");
@@ -51,9 +51,12 @@ define(["jquery"],function($){
 				return false;
 			}
 		},
-		dataFormat : function(data){
-			console.log("abstract function, dataFormat function should be overwritten");
+		format : function(data){
+			console.log("abstract function, format function should be overwritten");
 		},
+		sort : function(data){
+			console.log("abstract function, sort function should be overwritten");
+		}
 	};
 	return Data;
 });

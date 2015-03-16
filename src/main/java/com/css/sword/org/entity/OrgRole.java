@@ -10,7 +10,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="org_role")
-public class OrgRole implements Serializable {
+@NamedQuery(name="OrgRole.findAll", query="SELECT o FROM OrgRole o")
+public class OrgRole extends com.css.sword.kernel.base.dataElement.AbsPersistObject implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -20,8 +21,14 @@ public class OrgRole implements Serializable {
 	@Column(name="dir_code")
 	private String dirCode;
 
+	@Column(name="dir_name")
+	private String dirName;
+
 	@Column(name="manager_code")
 	private String managerCode;
+
+	@Column(name="manager_name")
+	private String managerName;
 
 	@Column(name="role_name")
 	private String roleName;
@@ -47,12 +54,28 @@ public class OrgRole implements Serializable {
 		this.dirCode = dirCode;
 	}
 
+	public String getDirName() {
+		return this.dirName;
+	}
+
+	public void setDirName(String dirName) {
+		this.dirName = dirName;
+	}
+
 	public String getManagerCode() {
 		return this.managerCode;
 	}
 
 	public void setManagerCode(String managerCode) {
 		this.managerCode = managerCode;
+	}
+
+	public String getManagerName() {
+		return this.managerName;
+	}
+
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
 	}
 
 	public String getRoleName() {

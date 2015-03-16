@@ -1,9 +1,7 @@
 package com.css.sword.org.entity;
 
-
+import java.io.Serializable;
 import javax.persistence.*;
-
-import com.css.sword.kernel.base.dataElement.AbsPersistObject;
 
 
 /**
@@ -12,9 +10,9 @@ import com.css.sword.kernel.base.dataElement.AbsPersistObject;
  */
 @Entity
 @Table(name="org_zw")
-public class OrgZw extends AbsPersistObject {
-
-	private static final long serialVersionUID = 2345556875707569555L;
+@NamedQuery(name="OrgZw.findAll", query="SELECT o FROM OrgZw o")
+public class OrgZw extends com.css.sword.kernel.base.dataElement.AbsPersistObject implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="zw_code")
@@ -51,4 +49,5 @@ public class OrgZw extends AbsPersistObject {
 	public void setZwName(String zwName) {
 		this.zwName = zwName;
 	}
+
 }

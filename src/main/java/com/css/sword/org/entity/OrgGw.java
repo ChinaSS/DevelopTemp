@@ -10,7 +10,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="org_gw")
-public class OrgGw implements Serializable {
+@NamedQuery(name="OrgGw.findAll", query="SELECT o FROM OrgGw o")
+public class OrgGw extends com.css.sword.kernel.base.dataElement.AbsPersistObject implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

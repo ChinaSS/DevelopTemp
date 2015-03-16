@@ -11,21 +11,20 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     var createDeptTree = function(element){
         $.ajax({
             //静态数据
-            "url":sysPath+"/org/data/OrgTree.json",
+            //"url":sysPath+"/org/data/OrgTree.json",
             //"url": getServer()+"/v1/org/dept",
-            dataType:"json",
+            "url": getServer()+"/sword/getAllDept",
             "success":function(data) {
-                //数据转换
                 //console.log(data)
-                if(typeof(data)=="string") return;
-                /*var arr = [];
-                for(var i= 0,dept; dept=data[i++];){
-                    if(dept.deptId=="root"){
-                        arr.push({ "id": "root", "name": dept.deptName, "open": true });
-                    }else{
-                        arr.push({ "id":dept.deptId, "pId":dept.pdeptId, "name":dept.deptName});
+                //数据转换zTree支持的格式
+                var arr = [];
+                for (var i = 0, dept; dept = data[i++];) {
+                    if (dept.deptId == "root") {
+                        arr.push({"id": "root", "name": dept.deptName, "open": true});
+                    } else {
+                        arr.push({"id": dept.deptId, "pId": dept.pDeptId, "name": dept.deptName});
                     }
-                }*/
+                }
                 var setting = {
                     data: {
                         simpleData: {
@@ -37,24 +36,6 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                             $("#orgShowListTitle").html("组织-"+treeNode.name);
                             showListPanel();
                             showPersonList(treeNode.id);
-                            /*require(["viewFrame"],function(VF){
-                                var VFParam = VF.config;
-                                VFParam.title = "组织-"+treeNode.name;
-                                //查询出该组织节点下的所有人员信息
-                                $.ajax({
-                                    "url":sysPath+"/org/data/Persons.json",
-                                    "dataType":"json",
-                                    "success":function(data){
-                                        $scope.$apply(function () {
-                                            $scope.ViewFrame = $.extend(VFParam,data);
-                                        });
-                                    }
-                                });
-                            });
-                            //显示组织相关操作
-                            $scope.$apply(function () {
-                                $scope.opt.curSelectOrg = treeNode.id;
-                            });*/
 
                             //单击节点展开
                             $.fn.zTree.getZTreeObj("orgtree").expandNode(treeNode);
@@ -63,7 +44,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                         }
                     }
                 };
-                $.fn.zTree.init(element, setting, data);
+                $.fn.zTree.init(element, setting, arr);
             }
         });
     };
@@ -73,19 +54,18 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
      */
     var createRoleTree = function(element){
         $.ajax({
-            "url":sysPath+"/org/data/RoleTree.json",
+            //"url":sysPath+"/org/data/RoleTree.json",
             //"url": util.getServerPath()+"/org/roleDir/v1/",
-            dataType:"json",
+            "url": getServer()+"/sword/getAllRoleDir",
             "success":function(data) {
-                if(typeof(data)=="string") return;
-                /*var arr = [];
-                for(var i= 0,dir; dir=data[i++];){
-                    if(dir.dirCode=="root"){
-                        arr.push({ "id": "root", "name": dir.dirName, "open": true });
-                    }else{
-                        arr.push({ "id":dir.dirCode, "pId":dir.pdirCode, "name":dir.dirName});
+                var arr = [];
+                for (var i = 0, dir; dir = data[i++];) {
+                    if (dir.dirCode == "root") {
+                        arr.push({"id": "root", "name": dir.dirName, "open": true});
+                    } else {
+                        arr.push({"id": dir.dirCode, "pId": dir.pDirCode, "name": dir.dirName});
                     }
-                }*/
+                }
                 var setting = {
                     data: {
                         simpleData: {
@@ -105,7 +85,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                         }
                     }
                 };
-                $.fn.zTree.init(element, setting, data);
+                $.fn.zTree.init(element, setting, arr);
             }
         });
     };
@@ -234,7 +214,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             ],
             data:{
                 "type":"URL",
-                "value":sysPath+"/org/data/Persons.json"
+                "value":getServer()+"/org/data/Persons.json"
             }
         };
         grid.init($.extend(config,comConfig));
@@ -261,7 +241,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             ],
             data: {
                 "type": "URL",
-                "value": sysPath + "/org/data/Roles.json"
+                //"value": sysPath + "/org/data/Roles.json"
+                "value": getServer() + "/sword/getRoleByPid?dir_code="+id
             }
         };
         grid.init($.extend(config,comConfig));
@@ -476,7 +457,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             "ServiceName":"importDept",
             "EntityClassName":"com.css.sword.org.entity.OrgDept",
             "部门ID":"deptId","部门编号":"deptCode","部门名称":"deptName","部门领导":"leader","部门领导编号":"leaderCode",
-            "管理人员":"manager","管理人员编号":"managerCode","成本中心代码":"costCenterCode","部门级别":"level",
+            "管理人员":"manager","管理人员编号":"managerCode","成本中心名称":"costCenterName","成本中心代码":"costCenterCode","部门级别":"level",
             "显示序号":"sort","所属部门名称":"pDeptName","所属部门ID":"pDeptId","部门OU":"ou",
             "部门信息1":"extend1","部门信息2":"extend2","部门信息3":"extend3","部门信息4":"extend4",
             "部门信息5":"extend5","部门信息6":"extend6","部门信息7":"extend7","部门信息8":"extend8",
@@ -493,9 +474,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //人员导入
     var importPerson = function(){
             var mapping = {
-                "ServiceBeanName":"OrgUserService",
-                "ServiceMethodName":"importUser",
-                "EntityClassName":"com.css.org.entity.OrgUser",
+                "ServiceName":"importUser",
+                "EntityClassName":"com.css.sword.org.entity.OrgUser",
                 "员工编号":"userCode","用户名称":"userName","性别":"sex","生日":"birthday","办公电话":"officePhone",
                 "移动电话":"phone","传真":"fax","邮箱":"email","职务名称":"zw",
                 "职务编号":"zwCode","显示序号":"sort","是否冻结":"locked",
@@ -660,10 +640,9 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //角色目录导入
     var importRoleDir = function(){
         var mapping = {
-            "ServiceBeanName":"OrgRoleDirService",
-            "ServiceMethodName":"importRoleDir",
-            "EntityClassName":"com.css.org.entity.OrgRoleDir",
-            "目录名称":"dirName","目录编号":"dirCode","父目录编号":"pDirCode"
+            "ServiceName":"importRoleDir",
+            "EntityClassName":"com.css.sword.org.entity.OrgRoleDir",
+            "目录名称":"dirName","目录编号":"dirCode","父目录编号":"pDirCode","父目录名称":"pDirName"
         };
         importExcel({
             "title":"角色目录导入",
@@ -674,11 +653,10 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //角色导入
     var importRole = function(){
         var mapping = {
-            "ServiceBeanName":"OrgRoleService",
-            "ServiceMethodName":"importRole",
-            "EntityClassName":"com.css.org.entity.OrgRole",
-            "角色编号":"roleCode","角色名称":"roleName","管理人员编号":"managerCode",
-            "所属目录编号":"dirCode","序号":"sort"
+            "ServiceName":"importRole",
+            "EntityClassName":"com.css.sword.org.entity.OrgRole",
+            "角色编号":"roleCode","角色名称":"roleName","管理人员编号":"managerCode","管理人员名称":"managerName",
+            "所属目录编号":"dirCode","所属目录名称":"dirName","序号":"sort"
         };
         importExcel({
             "title":"角色导入",
@@ -730,9 +708,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //岗位导入
     var importGW = function(){
         var mapping = {
-            "ServiceBeanName":"OrgGwService",
-            "ServiceMethodName":"importGw",
-            "EntityClassName":"com.css.org.entity.OrgGw",
+            "ServiceName":"importGw",
+            "EntityClassName":"com.css.sword.org.entity.OrgGw",
             "岗位名称":"gwName","岗位编号":"gwCode","显示序号":"sort"
         };
         importExcel({
@@ -765,9 +742,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //职务导入
     var importZW = function(){
         var mapping = {
-            "ServiceBeanName":"OrgZwService",
-            "ServiceMethodName":"importZw",
-            "EntityClassName":"com.css.org.entity.OrgZw",
+            "ServiceName":"importZw",
+            "EntityClassName":"com.css.sword.org.entity.OrgZw",
             "职务名称":"zwName","职务编号":"zwCode","显示序号":"sort"
         };
         importExcel({
@@ -817,7 +793,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                 //附件上传控件初始化
                 var uploader = WebUploader.create({
                     swf:getStaticPath()+'/modules/webuploader/Uploader.swf',
-                    server: getServer()+"/sword/importDept",
+                    server: getServer()+"/sword/"+param.mapping.ServiceName,
                     accept:{
                         title:"excel",
                         //extensions: 'xsl,xslx',
@@ -857,7 +833,9 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                     $("#importExcelStatus").html("开始导入，请耐心等待...");
                 });
                 //附件上传成功后触发
-                uploader.on( 'uploadSuccess', function( file,response ) {
+                uploader.on( 'uploadSuccess', function( file,res ) {
+                    //console.log(res);
+                    var response = JSON.parse(res);
                     $("#importExcelStatus").html(response.status=="success"?"导入成功,共"+response.count+"条":"导入失败");
                     //错误信息
                     var errorInfo = response.excelTransformInfo?"<strong>Excel转换错误信息：</strong><br/>"+decodeURI(response.excelTransformInfo):"";

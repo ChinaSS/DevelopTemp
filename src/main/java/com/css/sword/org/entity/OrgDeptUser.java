@@ -10,7 +10,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="org_dept_user")
-public class OrgDeptUser implements Serializable {
+@NamedQuery(name="OrgDeptUser.findAll", query="SELECT o FROM OrgDeptUser o")
+public class OrgDeptUser extends com.css.sword.kernel.base.dataElement.AbsPersistObject implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -19,11 +20,10 @@ public class OrgDeptUser implements Serializable {
 	@Column(name="dept_id")
 	private String deptId;
 
+	private int jz;
+
 	@Column(name="user_code")
 	private String userCode;
-
-	@Column(name="user_name")
-	private String userName;
 
 	public OrgDeptUser() {
 	}
@@ -44,20 +44,20 @@ public class OrgDeptUser implements Serializable {
 		this.deptId = deptId;
 	}
 
+	public int getJz() {
+		return this.jz;
+	}
+
+	public void setJz(int jz) {
+		this.jz = jz;
+	}
+
 	public String getUserCode() {
 		return this.userCode;
 	}
 
 	public void setUserCode(String userCode) {
 		this.userCode = userCode;
-	}
-
-	public String getUserName() {
-		return this.userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
 	}
 
 }

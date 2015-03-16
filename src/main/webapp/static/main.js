@@ -22,6 +22,7 @@ require.config({
         "UtilDir":"modules/util",
         "OrgDir":"core/system/org",
         "AclDir":"core/system/acl",
+        "BaseDir":"core/base",
         /*CSS文件路径映射*/
         "ZTreeCss":"modules/zTree/css/zTreeStyle/zTreeStyle",
         "WebUploaderCss":"modules/webuploader/css/webuploader",
@@ -45,6 +46,110 @@ require.config({
         }
     }
 });
+
+
+
+(function(w){
+
+    //静态文件目录名称
+    var staticDir = "/static";
+    var projectName = document.location.pathname.substring(0,document.location.pathname.indexOf(staticDir+"/"));
+    /**
+     * 得到项目名称
+     * 默认为:8080（即origin）与static目录之间的部分
+     * https://chinass.github.io/example/static/index.html即项目名称为example
+     * @returns {*}
+     */
+    w.getServer = function(){
+        return projectName;
+    };
+
+    /*
+     * 全局静态资源路径
+     * @returns {string}
+     */
+    w.getStaticPath = function(){
+        return getServer()+staticDir;
+    };
+
+
+    require(['jquery'],function($){
+        /**
+         * 对原生$.ajax进行包装
+         * @param param
+         */
+        var cloneAjax = $.ajax;
+        $.ajax = function(param){
+            param.callback = param.success;
+            delete param.success;
+            cloneAjax($.extend({
+                type:"POST",
+                dataType:"json",
+                success:function(response){
+                    var code = response.code;
+                    //状态码控制
+                    switch(code){
+                        case 403:
+                            //拒绝访问
+
+                            break;
+                        case 200:
+
+                            break;
+                        default :
+                            param.callback(response.model);
+                    }
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                    console.log("ajax error:"+textStatus);
+                }
+            },param))
+        };
+    });
+
+
+
+    //类继承函数组
+    /*
+     * Function原型添加mix函数,从元类扩展API,
+     */
+     Function.prototype.mix = function(obj){
+        //是否仅扩展指定api
+        if (arguments.length>1) {
+            var apis = arguments.slice(1),
+                reqApi = {};
+            for (var i = 0; i < apis.length; i++) {
+                reqApi[apis[i]]=apis[i];
+            }
+        }
+        //遍历元类
+        for(var fn in obj.prototype){
+            if (obj.prototype.hasOwnProperty(fn)) {
+                //如果非指定api或者元类api与本类函数名冲突,则跳过该api
+                if ((!!reqApi&&!reqApi[fn])||!!this.prototype[fn]){continue;}
+                this.prototype[fn]=obj.prototype[fn];
+            }
+        }
+     };
+
+     /*
+     * Function原型添加extend函数,用于继承,
+     */
+     Function.prototype.extend = function(superClass){
+        var subClass = this;
+        var Fn = function(){};
+        Fn.prototype = superClass.prototype;
+        subClass.prototype = new Fn();
+        subClass.prototype.constructor = subClass;
+
+        subClass.superClass = superClass.prototype;
+        if (superClass.prototype.constructor==Object.prototype.constructor) {
+            superClass.prototype.constructor=superClass;
+        }
+     };
+     
+
+})(window);
 
 /*
  * 首页onload加载项
@@ -88,11 +193,11 @@ require(["Ace","UtilDir/util","Bootstrap","JQuery.validate","JQuery.validate.mes
                 })
             });
         }/*else  if(data.status=="500"){
-            alert(data.entity.msg+"\n"+data.entity.cause);
-            console.log(data.entity.stackTrace);
-        }else if(data.status=="403"){
-            alert("权限不足 禁止访问");
-        }*/
+         alert(data.entity.msg+"\n"+data.entity.cause);
+         console.log(data.entity.stackTrace);
+         }else if(data.status=="403"){
+         alert("权限不足 禁止访问");
+         }*/
     }).ajaxSend(function () {
         require(["UtilDir/util"],function(util){
             //util.progress.start();
@@ -107,27 +212,3 @@ require(["Ace","UtilDir/util","Bootstrap","JQuery.validate","JQuery.validate.mes
         util.Loading.hide();
     })
 });
-
-(function(w){
-
-    //静态文件目录名称
-    var staticDir = "/static";
-    var projectName = document.location.pathname.substring(0,document.location.pathname.indexOf(staticDir+"/"));
-    /**
-     * 得到项目名称
-     * 默认为:8080（即origin）与static目录之间的部分
-     * https://chinass.github.io/example/static/index.html即项目名称为example
-     * @returns {*}
-     */
-    w.getServer = function(){
-        return projectName;
-    };
-
-    /*
-     * 全局静态资源路径
-     * @returns {string}
-     */
-    w.getStaticPath = function(){
-        return getServer()+staticDir;
-    }
-})(window);

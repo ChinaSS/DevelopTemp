@@ -459,7 +459,12 @@ define(["jquery","css!UtilDir/css/grid.css"],function($){
             });
             return selectedArr;
         },
-        refresh : function(){
+        refresh : function(data){
+            if (!!data) {
+                if (data.constructor==Array||(typeof data=="object"&&data.type=="URL"&&!!data.value)) {
+                    this._config.data = data;
+                }
+            }
             this.renderTableData(true);
         }
     });

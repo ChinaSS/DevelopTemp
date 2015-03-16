@@ -1,10 +1,7 @@
 package com.css.sword.org.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
-import com.css.sword.kernel.base.dataElement.AbsPersistObject;
 
 
 /**
@@ -13,18 +10,19 @@ import com.css.sword.kernel.base.dataElement.AbsPersistObject;
  */
 @Entity
 @Table(name="org_dept")
-public class OrgDept extends AbsPersistObject implements Serializable  {
+@NamedQuery(name="OrgDept.findAll", query="SELECT o FROM OrgDept o")
+public class OrgDept extends com.css.sword.kernel.base.dataElement.AbsPersistObject implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="dept_id")
 	private String deptId;
 
-	@Column(name="cost_center")
-	private String costCenter;
-
 	@Column(name="cost_center_code")
 	private String costCenterCode;
+
+	@Column(name="cost_center_name")
+	private String costCenterName;
 
 	@Column(name="dept_code")
 	private String deptCode;
@@ -107,20 +105,20 @@ public class OrgDept extends AbsPersistObject implements Serializable  {
 		this.deptId = deptId;
 	}
 
-	public String getCostCenter() {
-		return this.costCenter;
-	}
-
-	public void setCostCenter(String costCenter) {
-		this.costCenter = costCenter;
-	}
-
 	public String getCostCenterCode() {
 		return this.costCenterCode;
 	}
 
 	public void setCostCenterCode(String costCenterCode) {
 		this.costCenterCode = costCenterCode;
+	}
+
+	public String getCostCenterName() {
+		return this.costCenterName;
+	}
+
+	public void setCostCenterName(String costCenterName) {
+		this.costCenterName = costCenterName;
 	}
 
 	public String getDeptCode() {

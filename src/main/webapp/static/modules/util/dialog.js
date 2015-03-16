@@ -90,7 +90,7 @@ define(["jquery"],function($){
             cache[config.id] = this;
         }else{
             this.$dialog.on('hidden.bs.modal', function (e) {
-                this.remove();
+                $(this).remove();
             });
         }
         this.$dialog.modal(config.modal);

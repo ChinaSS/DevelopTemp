@@ -10,7 +10,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="org_role_dir")
-public class OrgRoleDir implements Serializable {
+@NamedQuery(name="OrgRoleDir.findAll", query="SELECT o FROM OrgRoleDir o")
+public class OrgRoleDir extends com.css.sword.kernel.base.dataElement.AbsPersistObject implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -22,6 +23,9 @@ public class OrgRoleDir implements Serializable {
 
 	@Column(name="p_dir_code")
 	private String pDirCode;
+
+	@Column(name="p_dir_name")
+	private String pDirName;
 
 	public OrgRoleDir() {
 	}
@@ -48,6 +52,14 @@ public class OrgRoleDir implements Serializable {
 
 	public void setPDirCode(String pDirCode) {
 		this.pDirCode = pDirCode;
+	}
+
+	public String getPDirName() {
+		return this.pDirName;
+	}
+
+	public void setPDirName(String pDirName) {
+		this.pDirName = pDirName;
 	}
 
 }

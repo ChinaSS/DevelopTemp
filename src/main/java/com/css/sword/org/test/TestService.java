@@ -8,6 +8,7 @@ import com.css.sword.kernel.base.annotation.ServiceContainer;
 import com.css.sword.kernel.base.exception.SwordBaseCheckedException;
 import com.css.sword.kernel.base.persistence.IPersistenceService;
 import com.css.sword.kernel.utils.SwordPersistenceUtils;
+import com.css.sword.org.entity.OrgDept;
 import com.css.sword.org.entity.OrgZw;
 import com.css.sword.web.request.ISwordRequest;
 import com.css.sword.web.response.ISwordResponse;
@@ -16,7 +17,7 @@ import com.css.sword.web.response.SwordResponseFactory;
 @ServiceContainer
 public class TestService {
 	@Service(serviceName="demoSaveService")
-	public ISwordResponse demoSaveService(ISwordRequest iReq) throws SwordBaseCheckedException{
+	public ISwordResponse demoSaveService(ISwordRequest iReq,OrgDept dept) throws SwordBaseCheckedException{
 
 
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
@@ -32,12 +33,20 @@ public class TestService {
          * 根据请求从工厂构造出返回值，由用户向返回值中添加返回信息
          */
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
+		iReq.getDataMap().get("");
+		
+		
 		try {
 			String sql = "select * from org_zw";
 			List<Object> param = new ArrayList<Object>();
 			param.add("ZW001");
+<<<<<<< HEAD
 //			List<OrgZw> result = dao.findAll(sql, null ,OrgZw.class);
 //			dRes.setModel(result);
+=======
+			List<OrgZw> result = dao.findAllBySql(sql, null ,OrgZw.class);
+			dRes.setModel(result);
+>>>>>>> 9cb56429bba73ed9d6ebb2d9aea80c58ef255131
 			//dRes.addAttribute("", "");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
