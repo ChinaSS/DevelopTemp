@@ -13,6 +13,8 @@ import com.css.sword.kernel.base.dataElement.AbsPersistObject;
 @Table(name="acl_role_res_url")
 public class AuthRoleRes extends AbsPersistObject {
 	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	private String uuid;
 	private String roleCode;

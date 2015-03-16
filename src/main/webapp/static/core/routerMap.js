@@ -16,7 +16,7 @@ define(function() {
                 ctrlName : "core_AclCtrl",                      //ctrl名称
                 ctrlUrl : "AclDir/aclCtrl",                     //ctrl路径
                 routerPath : '/acl',                            //访问路径
-                templateUrl : sysPath+'/acl/views/acl.html'     //html文件
+                templateUrl : sysPath+'/acl/views/index.html'     //html文件
             }
         ]
     };
