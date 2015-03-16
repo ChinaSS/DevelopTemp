@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.css.sword.kernel.base.dataElement.AbsPersistObject;
+import com.css.sword.core.kernel.base.dataElement.AbsPersistObject;
 
 /**
  * 资源URL
