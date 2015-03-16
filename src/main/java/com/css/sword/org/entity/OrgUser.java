@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="org_user")
 @NamedQuery(name="OrgUser.findAll", query="SELECT o FROM OrgUser o")
-public class OrgUser extends com.css.sword.kernel.base.dataElement.AbsPersistObject implements Serializable {
+public class OrgUser extends com.css.sword.core.kernel.base.dataElement.AbsPersistObject implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

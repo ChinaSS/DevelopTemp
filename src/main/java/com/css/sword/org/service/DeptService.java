@@ -3,12 +3,12 @@ package com.css.sword.org.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.css.sword.kernel.base.annotation.Service;
-import com.css.sword.kernel.base.annotation.ServiceContainer;
-import com.css.sword.kernel.base.dataElement.IValueObject;
-import com.css.sword.kernel.base.exception.SwordBaseCheckedException;
-import com.css.sword.kernel.base.persistence.IPersistenceService;
-import com.css.sword.kernel.utils.SwordPersistenceUtils;
+import com.css.sword.core.kernel.base.annotation.Service;
+import com.css.sword.core.kernel.base.annotation.ServiceContainer;
+import com.css.sword.core.kernel.base.dataElement.IValueObject;
+import com.css.sword.core.kernel.base.exception.SwordBaseCheckedException;
+import com.css.sword.core.kernel.base.persistence.IPersistenceService;
+import com.css.sword.core.kernel.utils.SwordPersistenceUtils;
 import com.css.sword.org.entity.OrgDept;
 import com.css.sword.web.request.ISwordRequest;
 import com.css.sword.web.response.ISwordResponse;

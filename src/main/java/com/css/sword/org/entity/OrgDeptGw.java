@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="org_dept_gw")
 @NamedQuery(name="OrgDeptGw.findAll", query="SELECT o FROM OrgDeptGw o")
-public class OrgDeptGw extends com.css.sword.kernel.base.dataElement.AbsPersistObject implements Serializable {
+public class OrgDeptGw extends com.css.sword.core.kernel.base.dataElement.AbsPersistObject implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
