@@ -1,7 +1,6 @@
-define(["jquery","BaseDir/tree","UtilDir/dialog"],function($,Tree,Dialog){
+define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],function($,Tree,Dialog){
 
-	var cache = {},
-		psnUrl="";
+	var cache = {};
 
 	function PsnTree(config){
 		PsnTree.superClass.constructor.call(this,config);
@@ -12,20 +11,44 @@ define(["jquery","BaseDir/tree","UtilDir/dialog"],function($,Tree,Dialog){
 	PsnTree.prototype.bindEvent = function(){
 		var _this = this;
 		PsnTree.superClass.bindEvent.call(this);
-		this.$wrap.on("click",".item>a",function(){
-			var $elem = $(this).parent();
+		this.$wrap.addClass("psnTree").on("click",".leaf>a",function(){
+			var $leaf = $(this).parent(".leaf");
+			$leaf.toggleClass("open");
+			if ($leaf.find(".data").length>0) {return false};
+			/*
 			_this.getPsnData({
-				orgCode : [$elem.data("code")]
+				orgCode : [$leaf.data("code")]
 			},function(data){
-				this.renderNode($elem,data,"data");
+				this.renderNode($leaf,data,"data");
 			});
+			*/
+			_this.renderNode($leaf,
+				[
+					{
+						code : "10001",
+						text : "测试人员10001"
+					},
+					{
+						code : "10002",
+						text : "测试人员10003"
+					},
+					{
+						code : "10003",
+						text : "测试人员10003"
+					},
+					{
+						code : "10004",
+						text : "测试人员10004"
+					}
+				]
+			,"data");
 		});
 	};
 
 	PsnTree.prototype.getPsnData = function(q,callback){
 		var _this = this;
 		this.query({
-			url : psnUrl,
+			url : this._param.psnUrl,
 			data : {
 				orgCode : q["orgCode"]?q["orgCode"]:null,
 				psnCode : q["psnCode"]?q["psnCode"]:null,
@@ -55,6 +78,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog"],function($,Tree,Dialog){
 			psn = new PsnSelect(config);
 			cache[config.id]=psn;
 		};
+		psn.show();
 		return psn;
 	}
 
@@ -73,14 +97,13 @@ define(["jquery","BaseDir/tree","UtilDir/dialog"],function($,Tree,Dialog){
 	function PsnSelect(config){
 		var _this = this;
 		this._param = $.extend({},config);
-		psnUrl = this._param.psnUrl;
 		//init Dialog
         this.dialog = Dialog({
             id:this._param.id+"_SelectPsnDialog",
             cache:false,
             title:"人员选择",
-            height:"350px",
-            dialogSize:"modal-lg",               //modal-lg或modal-sm
+            height:"300px",
+            width:"500px",              //modal-lg或modal-sm
             body:"窗口中间内容",
             buttons:this._param.type=="multi"?[{
             	name : "确定",
@@ -92,17 +115,17 @@ define(["jquery","BaseDir/tree","UtilDir/dialog"],function($,Tree,Dialog){
         });
         var html = '<div id="'+this._param.id+'_psnTree" class="tree"></div>';
         if (this._param.type == "multi") {
-        	html += '<div class="result"><ul></ul></div>';
+        	html += '<div class="result tree"><ul></ul></div>';
         }         
         this.dialog.setBody(html);
-        this.dialog.show();
 
         //init psnTree
 		this.tree = new PsnTree({
 			id : this._param.id+"_psnTree",
 			data : this._param.data,
 			url : this._param.orgUrl,
-			code : this._param.code
+			code : this._param.code,
+			psnUrl : this._param.psnUrl
 		});
 		this.loadSelectData(this._param.selectData);
 		this.bindEvent();
@@ -177,6 +200,12 @@ define(["jquery","BaseDir/tree","UtilDir/dialog"],function($,Tree,Dialog){
 			console.log("no argument or arguments are illegal!");
 		}
 		this.show();
+	};
+
+	PsnSelect.prototype.refresh = function(){
+		var $wrap = this.tree.$getWrap();
+		$wrap.find("li.open").removeClass("open");
+		$wrap.find(".leaf>ul").remove();
 	};
 
 	PsnSelect.prototype.show = function(){

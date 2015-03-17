@@ -1,4 +1,4 @@
-define(["jquery","BaseDir/data"],function($,Data){
+define(["jquery","BaseDir/data","css!BaseDir/css/tree.css"],function($,Data){
 
 	function Tree(config){
 		//获取锚点
@@ -48,15 +48,16 @@ define(["jquery","BaseDir/data"],function($,Data){
 			$elem.append($list);
 		}
 		$list.empty();
-		for (var i = 0,cur = data[i]; i < data.length; i++) {
-			$li = $('<li><a><span></span>'+cur[key.text]+'</a></li>');
+		for (var i = 0,cur; i < data.length; i++) {
+			cur = data[i];
+			$li = $('<li><span class="pic"></span><a>'+cur[key.text]+'</a></li>');
 			$li.data("code",cur[key.code]);
 			$frag.append($li);
 			if(!!cur[key.data]&&cur[key.data].length>0){
 				$li.addClass(tag?tag:"node");
 				this.renderNode($li,cur[key.data]);
 			}else{
-				$li.addClass(tag?tag:"item");
+				$li.addClass(tag?tag:"leaf");
 			}
 		}
 		$list.append($frag);

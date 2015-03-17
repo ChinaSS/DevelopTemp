@@ -1,0 +1,18 @@
+.psnTree.tree,.result{
+	width: 50%;
+	float: left;
+	padding: 10px;
+	box-sizing:border-box;
+}
+.psnTree.tree .leaf > .pic{
+    background: url("../base/image/icons.png") no-repeat 0 0;
+}
+.psnTree.tree .leaf.open > .pic{
+    background: url("../base/image/icons.png") no-repeat -19px 0;
+}
+.psnTree.tree .data > .pic{
+	background: url("../base/image/icons.png") no-repeat -39px 0;
+}
+.result .data > .pic{
+	background: url("../base/image/icons.png") no-repeat -39px 0;
+}

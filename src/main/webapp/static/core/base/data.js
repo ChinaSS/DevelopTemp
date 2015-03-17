@@ -24,7 +24,7 @@ define(["jquery"],function($){
 			if(type=="GET"){
 				$.ajax({
 					type:"GET",
-					url:url+"?q="+cofnig.data,
+					url:config.url+"?q="+cofnig.data,
 					dataType:config.dataType?config.dataType:"",
 					success:function(data){
 						config.callback(data);
@@ -36,7 +36,7 @@ define(["jquery"],function($){
 			}else if (type=="POST") {
 				$.ajax({
 					type:"POST",
-					url:url,
+					url:config.url,
 					data:config.data,
 					dataType:config.dataType?config.dataType:"",
 					success:function(data){
