@@ -19,7 +19,7 @@ import com.css.util.Page;
 public class UserService {
 	
 	//人员导入
-	@Service(serviceName="importUser")
+	@Service(serviceName="orgImportUser")
 	public ISwordResponse importUser(ISwordRequest iReq,List<OrgUser> list) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
@@ -35,7 +35,7 @@ public class UserService {
 		return dRes;
 	}
 	//根据所属部门id查询出人员列表
-	@Service(serviceName="getUserByDeptId")
+	@Service(serviceName="orgGetUserByDeptId")
 	public ISwordResponse getUserByDeptId(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
@@ -56,7 +56,7 @@ public class UserService {
 	}
 	
 	//分页查询，根据部门id，查询出人员列表
-	@Service(serviceName="getUserByDeptIdPage")
+	@Service(serviceName="orgGetUserByDeptIdPage")
 	public ISwordResponse getUserByDeptIdPage(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
@@ -64,7 +64,7 @@ public class UserService {
 			String sql = "select * from org_user where dept_id=?";
 			List<Object> param = new ArrayList<Object>();
 			param.add(iReq.getData("dept_id"));
-			dRes.setModel(new Page(iReq).getData(sql, param, OrgRole.class));
+			dRes.setModel(new Page(iReq).getData(sql, param, OrgUser.class));
 			
 		} catch (Exception e) {
 			e.printStackTrace();

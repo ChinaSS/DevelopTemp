@@ -5,6 +5,10 @@ a{
     cursor: pointer;
 }
 
+.requird{
+    color: #ff0000;
+}
+
 
 /*左侧三级菜单*/
 .nav-list>li .submenu>li .submenu>li a>.menu-icon {

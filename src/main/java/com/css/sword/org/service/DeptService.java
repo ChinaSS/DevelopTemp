@@ -22,7 +22,7 @@ public class DeptService {
 	 * @return
 	 * @throws SwordBaseCheckedException
 	 */
-	@Service(serviceName="getDept")
+	@Service(serviceName="orgGetDept")
 	public ISwordResponse getDept(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
@@ -43,7 +43,7 @@ public class DeptService {
 	}
 	
 	//部门导入
-	@Service(serviceName="importDept")
+	@Service(serviceName="orgImportDept")
 	public ISwordResponse importDept(ISwordRequest iReq,List<OrgDept> list) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
@@ -62,7 +62,7 @@ public class DeptService {
 	}
 	
 	//获取部门列表
-	@Service(serviceName="getAllDept")
+	@Service(serviceName="orgGetAllDept")
 	public ISwordResponse getAllDept(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
