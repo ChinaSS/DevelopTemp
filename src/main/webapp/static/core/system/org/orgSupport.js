@@ -214,7 +214,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             ],
             data:{
                 "type":"URL",
-                "value":getServer()+"/org/data/Persons.json"
+                //"value":getServer()+"/org/data/Persons.json"
+                "value": getServer() + "/sword/getUserByDeptIdPage?dept_id="+id
             }
         };
         grid.init($.extend(config,comConfig));
@@ -242,7 +243,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             data: {
                 "type": "URL",
                 //"value": sysPath + "/org/data/Roles.json"
-                "value": getServer() + "/sword/getRoleByPid?dir_code="+id
+                "value": getServer() + "/sword/getRoleByPidPage?dir_code="+id
             }
         };
         grid.init($.extend(config,comConfig));
@@ -477,7 +478,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                 "ServiceName":"importUser",
                 "EntityClassName":"com.css.sword.org.entity.OrgUser",
                 "员工编号":"userCode","用户名称":"userName","性别":"sex","生日":"birthday","办公电话":"officePhone",
-                "移动电话":"phone","传真":"fax","邮箱":"email","职务名称":"zw",
+                "移动电话":"phone","传真":"fax","邮箱":"email","职务名称":"zwName",
                 "职务编号":"zwCode","显示序号":"sort","是否冻结":"locked",
                 "所属部门":"deptName","部门ID":"deptId","兼职部门":"jzDeptName","兼职部门ID":"jzDeptId",
                 "人员信息1":"extend1","人员信息2":"extend2","人员信息3":"extend3","人员信息4":"extend4",

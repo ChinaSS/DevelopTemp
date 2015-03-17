@@ -13,6 +13,7 @@ import com.css.sword.org.entity.OrgUser;
 import com.css.sword.web.request.ISwordRequest;
 import com.css.sword.web.response.ISwordResponse;
 import com.css.sword.web.response.SwordResponseFactory;
+import com.css.util.Page;
 
 @ServiceContainer
 public class UserService {
@@ -48,6 +49,24 @@ public class UserService {
 			dRes.setModel(result);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dRes;
+	}
+	
+	//分页查询，根据部门id，查询出人员列表
+	@Service(serviceName="getUserByDeptIdPage")
+	public ISwordResponse getUserByDeptIdPage(ISwordRequest iReq) throws SwordBaseCheckedException{
+		
+		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
+		try {
+			String sql = "select * from org_user where dept_id=?";
+			List<Object> param = new ArrayList<Object>();
+			param.add(iReq.getData("dept_id"));
+			dRes.setModel(new Page(iReq).getData(sql, param, OrgRole.class));
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
