@@ -4,14 +4,14 @@ define(["jquery","BaseDir/tree","UtilDir/dialog"],function($,Tree,Dialog){
 		psnUrl="";
 
 	function PsnTree(config){
-		OrgTree.superClass.constructor.call(this,config);
+		PsnTree.superClass.constructor.call(this,config);
 	}
 	//继承Tree基类
 	PsnTree.extend(Tree);
 	//绑定额外事件
 	PsnTree.prototype.bindEvent = function(){
 		var _this = this;
-		this.superClass.bindEvent($wrap);
+		PsnTree.superClass.bindEvent.call(this);
 		this.$wrap.on("click",".item>a",function(){
 			var $elem = $(this).parent();
 			_this.getPsnData({
@@ -71,12 +71,12 @@ define(["jquery","BaseDir/tree","UtilDir/dialog"],function($,Tree,Dialog){
 	};
 
 	function PsnSelect(config){
-		var _this = this
+		var _this = this;
 		this._param = $.extend({},config);
 		psnUrl = this._param.psnUrl;
 		//init Dialog
         this.dialog = Dialog({
-            id:"CS_SelectPsnDialog",
+            id:this._param.id+"_SelectPsnDialog",
             cache:false,
             title:"人员选择",
             height:"350px",
@@ -87,10 +87,10 @@ define(["jquery","BaseDir/tree","UtilDir/dialog"],function($,Tree,Dialog){
             	close : true,
             	callback : function(){
             		_this._param.callback(_this.getResultData());
-            	}]
-            }:null
+            	}
+            }]:null
         });
-        var html = '<div id="psnTree" class="tree"></div>';
+        var html = '<div id="'+this._param.id+'_psnTree" class="tree"></div>';
         if (this._param.type == "multi") {
         	html += '<div class="result"><ul></ul></div>';
         }         
@@ -99,7 +99,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog"],function($,Tree,Dialog){
 
         //init psnTree
 		this.tree = new PsnTree({
-			id : "psnTree",
+			id : this._param.id+"_psnTree",
 			data : this._param.data,
 			url : this._param.orgUrl,
 			code : this._param.code
@@ -112,7 +112,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog"],function($,Tree,Dialog){
 		var _this = this;
 		var $dialog = this.dialog.$getDialog();
 		if (this._param.type == "multi") {
-			var $resultUL = $dialog.find(".result ul"),
+			var $resultUL = $dialog.find(".result ul");
 			this.tree.$getWrap().on("dblclick",".data",function(event){
 				$resultUL.append($(this).clone());
 			});
@@ -129,7 +129,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog"],function($,Tree,Dialog){
 				_this._param.callback([
 					{
 						code : $(this).data("code"),
-						text : $(this).text();
+						text : $(this).text()
 					}
 				]);
 			});
@@ -145,12 +145,12 @@ define(["jquery","BaseDir/tree","UtilDir/dialog"],function($,Tree,Dialog){
 	};
 
 	PsnSelect.prototype.getResultData = function(){
-		var $results = $dialog.find(".result li");
+		var $results = this.dialog.$getDialog().find(".result li"),
 			data = [];
 		$results.each(function(){
 			data.push({
 				code : $(this).data("code"),
-				text : $(this).text();
+				text : $(this).text()
 			});
 		});
 		return data;
@@ -158,6 +158,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog"],function($,Tree,Dialog){
 
 	PsnSelect.prototype.loadSelectData = function(selectData){
 		var _this = this;
+		if (!selectData||selectData.length==0||selectData.constructor!=Array) {return false;}
 		this.tree.getPsnData({
 			psnCode : selectData
 		},function(data){

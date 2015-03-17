@@ -36,7 +36,7 @@ define(["jquery","BaseDir/data"],function($,Data){
 	};
 
 	Tree.prototype.renderNode = function($elem,data,tag){
-		if (argument.length<2||!data.length) {
+		if (arguments.length<2||!data.length) {
 			console.log("arguments are illegal or data does not exist");
 		}
 		var $list = $elem.children("ul"),
@@ -81,7 +81,7 @@ define(["jquery","BaseDir/data"],function($,Data){
 			}else{
 				throw("data sorce undefined!");
 			}
-		}catch{
+		}catch(e){
 			return false;
 		}
 	};
