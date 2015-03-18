@@ -112,23 +112,20 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
             	}
             }]:null
         });
-        var html = '<div class="psnSearch"><input type="text" class="search"></div>'+
+        var html = '<div class="psnSearch input-group">'+
+        		   '<input type="text" class="search form-control">'+
+        		   '<span class="input-group-btn"><button class="submit btn btn-default" type="button">Go</button></span>'+
+        		   '</div>'+
         		   '<div class="psnTree">'+
-        		   '<div class="orgTag"><ul></ul></div>'+
-        		   '<div id="'+this._param.id+'_psnTree" class="tree"></div></div>';
+        		   '<div id="'+this._param.id+'_psnTree" class="tree"></div>'+
+        		   '</div>';
         if (this._param.type == "multi") {
         	html += '<div class="psnResult"><div class="tree"></div></div>';
         }         
         this.dialog.setBody(html);
 
         //init psnTree
-		this.tree = new PsnTree({
-			id : this._param.id+"_psnTree",
-			data : this._param.org.data,
-			url : this._param.org.url,
-			code : this._param.org.code,
-			psnUrl : this._param.psn.url
-		});
+		this.initOrg(this._param.org.data);
 		this.loadSelectData(this._param.psn.code);
 		this.bindEvent();
 	}
@@ -173,6 +170,37 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 				_this.tree.search(psnText);
 			},500);		
 		});
+	};
+
+	PsnSelect.prototype.initPsnTree = function(code){
+		this.tree = new PsnTree({
+			id : this._param.id+"_psnTree",
+			data : this._param.orgData,
+			url : this._param.org.url,
+			code : code,
+			psnUrl : this._param.psn.url
+		});
+	};
+
+	PsnSelect.prototype.initOrg = function(tagData){
+		if (!tagData||tagData.length==0) {
+			this.initPsnTree();
+			return false;
+		}
+		var $psnTree = this.dialog.$getDialog().find(".psnTree"),
+			$orgTag = $('<div class="orgTag"><ul class="nav"></ul></div>'),
+			$frag = $(document.createDocumentFragment()),
+			$li,code;
+		$psnTree.append($orgTag);
+		for (var i = 0,curTag; i < tagData.length; i++) {
+			curTag = tagData[i];
+			$li = $('<li><a>'+curTag.text+'</a></li>');
+			$li.data("code",curTag.code);
+			$frag.append($li);
+		}
+		$orgTag.children("ul").append($frag);
+		code = $orgTag.find("li:first").addClass("active").data("code");
+		this.initPsnTree(code);
 	};
 
 	PsnSelect.prototype.getResultData = function(){
