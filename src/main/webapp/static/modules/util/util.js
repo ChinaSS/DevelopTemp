@@ -108,20 +108,10 @@ define(["jquery","css!UtilDir/css/util.css"],function($){
 
             var init = function(){
                 //设置弹出面板样式
-                $Panel.css({
-                    "width":param.width,
-                    "border":"1px solid rgba(0,0,0,.2)",
-                    "position":"fixed",
-                    "z-index":"1040",
-                    "top":0,
-                    "bottom":0,
-                    "right":"-"+param.width,
-                    "padding":"10px 10px 0 20px",
-                    "background-color":"white",
-                    "overflow-y":"scroll",
-                    "overflow-x":"hidden",
-                    "display":""
-                });
+            	$Panel.css({
+            		"width":param.width,
+            		"right":"-"+param.width
+            	});
                 //弹出侧边编辑栏
                 $Panel.animate({right : 0}, 350,function(){
                     //回调函数执行
@@ -155,6 +145,7 @@ define(["jquery","css!UtilDir/css/util.css"],function($){
             //增加左侧关闭
             var addClose = function(){
                 var $left = $("<div class='cs-slidebar-left'><i class='glyphicon glyphicon-chevron-right cs-slidebar-close'></i></div>");
+                //设置按钮出现的位置
                 //添加关闭侧边栏的事件
                 $left.bind("click",function(){
                     closeSlidebar($Panel);
@@ -180,7 +171,11 @@ define(["jquery","css!UtilDir/css/util.css"],function($){
                 //删除之前的元素(不需要缓存时，从关闭面板时的回调函数处挪到这里)
                 cache[param.url] && cache[param.url].remove();
                 require(['text!'+param.url],function(panel){
-                    $Panel = $("<div></div>").append(addClose()).append(panel);
+                    //$Panel = $("<div></div>").append(addClose()).append(panel);
+                	$Panel = $("<div class='cs-slidebar'></div>").append(addClose());
+                	$content = $("<div class='cs-slidebar-content'></div>");
+                	$Panel.append($content);
+                	$content.append(panel);
                     //如果是URL方式获取模板，则把模板追加到body上
                     $Panel.appendTo($(document.body));
                     init();
