@@ -13,7 +13,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             //静态数据
             //"url":sysPath+"/org/data/OrgTree.json",
             //"url": getServer()+"/v1/org/dept",
-            "url": getServer()+"/sword/getAllDept",
+            "url": getServer()+"/sword/orgGetAllDept",
             "success":function(data) {
                 //console.log(data)
                 //数据转换zTree支持的格式
@@ -56,7 +56,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
         $.ajax({
             //"url":sysPath+"/org/data/RoleTree.json",
             //"url": util.getServerPath()+"/org/roleDir/v1/",
-            "url": getServer()+"/sword/getAllRoleDir",
+            "url": getServer()+"/sword/orgGetAllRoleDir",
             "success":function(data) {
                 var arr = [];
                 for (var i = 0, dir; dir = data[i++];) {
@@ -188,7 +188,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
         var config = {
             id:"OrgPersonList",
             layout:[
-                {name:"用户名",field:"UserName",click:function(e){
+                {name:"用户名",field:"userCode",click:function(e){
                     //console.log(e.data);
                     /*var id = e.data.row.resourcesId;
                     $.ajax({
@@ -204,17 +204,18 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                             showSlidebar();
                         }
                     });*/
-                    editPerson(e.data.row.UserCode);
+                    editPerson(e.data.row.userCode);
                 }},
-                {name:"姓名",field:"Name"},
-                {name:"员工编号",field:"UserCode"},
-                {name:"办公电话",field:"OfficePhone"},
-                {name:"移动电话",field:"Phone"},
-                {name:"邮件",field:"EMail"}
+                {name:"姓名",field:"userName"},
+                {name:"员工编号",field:"userCode"},
+                {name:"办公电话",field:"officePhone"},
+                {name:"移动电话",field:"phone"},
+                {name:"邮件",field:"email"}
             ],
             data:{
                 "type":"URL",
-                "value":getServer()+"/org/data/Persons.json"
+                //"value":getServer()+"/org/data/Persons.json"
+                "value": getServer() + "/sword/orgGetUserByDeptIdPage?dept_id="+id
             }
         };
         grid.init($.extend(config,comConfig));
@@ -242,7 +243,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             data: {
                 "type": "URL",
                 //"value": sysPath + "/org/data/Roles.json"
-                "value": getServer() + "/sword/getRoleByPid?dir_code="+id
+                "value": getServer() + "/sword/orgGetRoleByPidPage?dir_code="+id
             }
         };
         grid.init($.extend(config,comConfig));
@@ -454,7 +455,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //组织导入
     var importOrg = function(){
         var mapping = {
-            "ServiceName":"importDept",
+            "ServiceName":"orgImportDept",
             "EntityClassName":"com.css.sword.org.entity.OrgDept",
             "部门ID":"deptId","部门编号":"deptCode","部门名称":"deptName","部门领导":"leader","部门领导编号":"leaderCode",
             "管理人员":"manager","管理人员编号":"managerCode","成本中心名称":"costCenterName","成本中心代码":"costCenterCode","部门级别":"level",
@@ -474,10 +475,10 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //人员导入
     var importPerson = function(){
             var mapping = {
-                "ServiceName":"importUser",
+                "ServiceName":"orgImportUser",
                 "EntityClassName":"com.css.sword.org.entity.OrgUser",
                 "员工编号":"userCode","用户名称":"userName","性别":"sex","生日":"birthday","办公电话":"officePhone",
-                "移动电话":"phone","传真":"fax","邮箱":"email","职务名称":"zw",
+                "移动电话":"phone","传真":"fax","邮箱":"email","职务名称":"zwName",
                 "职务编号":"zwCode","显示序号":"sort","是否冻结":"locked",
                 "所属部门":"deptName","部门ID":"deptId","兼职部门":"jzDeptName","兼职部门ID":"jzDeptId",
                 "人员信息1":"extend1","人员信息2":"extend2","人员信息3":"extend3","人员信息4":"extend4",
@@ -640,7 +641,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //角色目录导入
     var importRoleDir = function(){
         var mapping = {
-            "ServiceName":"importRoleDir",
+            "ServiceName":"orgImportRoleDir",
             "EntityClassName":"com.css.sword.org.entity.OrgRoleDir",
             "目录名称":"dirName","目录编号":"dirCode","父目录编号":"pDirCode","父目录名称":"pDirName"
         };
@@ -653,7 +654,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //角色导入
     var importRole = function(){
         var mapping = {
-            "ServiceName":"importRole",
+            "ServiceName":"orgImportRole",
             "EntityClassName":"com.css.sword.org.entity.OrgRole",
             "角色编号":"roleCode","角色名称":"roleName","管理人员编号":"managerCode","管理人员名称":"managerName",
             "所属目录编号":"dirCode","所属目录名称":"dirName","序号":"sort"
@@ -666,11 +667,13 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     };
     //编辑角色目录
     var editRoleDir = function(){
-        var deptId = getSelectTreeNodeId("roletree");
+        var dir_code = getSelectTreeNodeId("roletree");
         $.ajax({
-            url:sysPath+"/org/data/RoleDir.json",
-            dataType:"json",
+            //url:sysPath+"/org/data/RoleDir.json",
+            url:getServer()+"/sword/orgGetRoleDir",
+            data:{"dir_code":dir_code},
             success:function(data){
+                data = {Org:{RoleDir:data}};
                 showRoleDirSidebar({
                     afterLoad:function(){
                         $("#org_RoleDirName").html(data.Org.RoleDir.dirName);
@@ -686,29 +689,103 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     };
     //新增角色
     var addRole = function(){
-        showRoleSidebar();
+        showRoleSidebar({
+            afterLoad:function(){
+                saveOrgRoleBtnBind("insert");
+                var dir_code = getSelectTreeNodeId("roletree");
+                var dir_name = getSelectTreeNodeName("roletree");
+                $("#dirName").val(dir_name);
+                $("#dirCode").val(dir_code);
+                //表单验证
+                validateRole();
+            }
+        });
     };
     //编辑角色
     var editRole = function(roleCode){
         $.ajax({
-            url:sysPath+"/org/data/Role.json",
-            dataType:"json",
+            //url:sysPath+"/org/data/Role.json",
+            url:getServer()+"/sword/orgGetRole",
+            data:{"role_code":roleCode},
             success:function(data){
+                data = {Org:{Role:data}};
                 showRoleSidebar({
                     afterLoad:function(){
                         $("#org_RoleName").html(data.Org.Role.roleName);
                         setNgModel("tab_Role",data);
+                        //保存按钮绑定事件
+                        saveOrgRoleBtnBind("update");
+                        //编辑时，角色编号字段不可编辑
+                        $("#roleCode").attr("readonly",true);
                     }
                 });
             }
         });
     };
 
+    var validateRole = function(){
+        //数据验证
+        $("#RoleForm").validate({
+            rules:{
+                roleName:{required:true},
+                roleCode:{
+                    required:true,
+                    remote:{
+                        type:"POST",  //请求方式
+                        url: getServer()+"/sword/orgValidateRoleCode", //请求的服务
+                        data:{  //要传递的参数
+                            role_code:function(){return $("#roleCode").val();}
+                        }
+                    }
+                }
+            },
+            messages: {
+                roleCode:{
+                    remote:"角色编号已存在,请重新输入"
+                }
+            }
+        });
+    };
+
+    /**
+     * 角色保存
+     */
+    var saveOrgRoleBtnBind = function(type){
+        $("#saveOrgRoleBtn").bind("click",function(){
+            if(!$("#RoleForm").valid()){
+                return;
+            }
+            var entity = getNgModel("tab_Role");
+            //console.log(entity);
+            $.ajax({
+                url:getServer()+"/sword/orgSaveRole?saveType="+type,
+                dataType:"json",
+                data:entity,
+                success:function(data){
+                    //console.log(data);
+                    if(data.status){
+                        //刷新表格
+                        grid.getGrid("OrgRoleList").refresh();
+                    }
+                    util.alert(data.message);
+                }
+            })
+        })
+    };
+    /**
+     * 角色目录保存
+     */
+    var saveOrgRoleDirBtnBind = function(){
+        $("#saveOrgRoleDirBtn").bind("click",function(){
+
+        })
+    };
+
     /*****************岗位相关**************/
     //岗位导入
     var importGW = function(){
         var mapping = {
-            "ServiceName":"importGw",
+            "ServiceName":"orgImportGw",
             "EntityClassName":"com.css.sword.org.entity.OrgGw",
             "岗位名称":"gwName","岗位编号":"gwCode","显示序号":"sort"
         };
@@ -742,7 +819,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //职务导入
     var importZW = function(){
         var mapping = {
-            "ServiceName":"importZw",
+            "ServiceName":"orgImportZw",
             "EntityClassName":"com.css.sword.org.entity.OrgZw",
             "职务名称":"zwName","职务编号":"zwCode","显示序号":"sort"
         };

@@ -140,17 +140,17 @@ public class ExcelToEntityList {
 		if (type == String.class){
 			method.invoke(instance, value);
 		}else if (type == int.class || type == Integer.class){
-			method.invoke(instance, Integer.parseInt(value));
+			method.invoke(instance, Integer.parseInt("".equals(value) ? "0" : value));
 		}else if (type == long.class || type == Long.class){
-			method.invoke(instance, Long.parseLong(value));
+			method.invoke(instance, Long.parseLong("".equals(value) ? "0" : value));
 		}else if (type == float.class || type == Float.class){
-			method.invoke(instance, Float.parseFloat(value));
+			method.invoke(instance, Float.parseFloat("".equals(value) ? "0" : value));
 		}else if (type == double.class || type == Double.class){
-			method.invoke(instance, Double.parseDouble(value));
+			method.invoke(instance, Double.parseDouble("".equals(value) ? "0" : value));
 		}else if (type == Date.class){
 			method.invoke(instance, dateFormat.parse(value));
 		}else if (type == boolean.class|| type == Boolean.class){
-			method.invoke(instance, Boolean.parseBoolean(value));
+			method.invoke(instance, Boolean.parseBoolean("".equals(value) ? "false" : value));
 		}else if (type == byte.class|| type == Byte.class){
 			method.invoke(instance, Byte.parseByte(value));
 		}else{

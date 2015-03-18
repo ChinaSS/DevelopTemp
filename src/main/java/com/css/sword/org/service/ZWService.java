@@ -15,7 +15,7 @@ import com.css.sword.web.response.SwordResponseFactory;
 @ServiceContainer
 public class ZWService {
 	//职务导入
-	@Service(serviceName="importZw")
+	@Service(serviceName="orgImportZw")
 	public ISwordResponse importZw(ISwordRequest iReq,List<OrgZw> list) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();

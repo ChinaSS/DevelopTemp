@@ -4,7 +4,7 @@ define(["jquery"],function($){
 		query : function(config){
 			var config = $.extend({},config),
 				type;
-			if (!cofnig.url||!config.callback) {
+			if (!config.url||!config.callback) {
 				console.log("required params undefined!");
 				return false;
 			}
@@ -36,7 +36,7 @@ define(["jquery"],function($){
 			}else if (type=="POST") {
 				$.ajax({
 					type:"POST",
-					url:url
+					url:url,
 					data:config.data,
 					dataType:config.dataType?config.dataType:"",
 					success:function(data){

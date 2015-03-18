@@ -28,8 +28,8 @@ define(["jquery","css!UtilDir/css/util.css"],function($){
      */
     util.alert =function(message,title){
         require(["UtilDir/dialog"],function(Dialog){
-            var dialog = Dialog({id:"system_dialog_alert",title:(title?title:"系统信息"),modal:{backdrop:"static",show:true},dialogSize:"modal-sm",height:"66px"});
-            dialog.setBody(message);
+            var dialog = Dialog({id:"system_dialog_alert",title:(title?title:"系统信息"),modal:{backdrop:"static",show:true},dialogSize:"modal-sm"});
+            dialog.setBody("<div style='min-height:30px;word-wrap:break-word;'>"+message+"</div>");
             $dialog = dialog.$getDialog();
             $dialog.css({"margin-top":"13%"});
             dialog.show();
