@@ -1,18 +1,25 @@
-.psnTree.tree,.result{
+.psnTree,.psnResult{
 	width: 50%;
 	float: left;
+	position: relative;
 	padding: 10px;
 	box-sizing:border-box;
 }
-.psnTree.tree .leaf > .pic{
+.psnTree .tree .leaf > .pic{
     background: url("../base/image/icons.png") no-repeat 0 0;
 }
-.psnTree.tree .leaf.open > .pic{
+.psnTree .tree .leaf.open > .pic{
     background: url("../base/image/icons.png") no-repeat -19px 0;
 }
-.psnTree.tree .data > .pic{
+.psnTree .tree .data > .pic,.psnResult .tree .data > .pic{
 	background: url("../base/image/icons.png") no-repeat -39px 0;
 }
-.result .data > .pic{
-	background: url("../base/image/icons.png") no-repeat -39px 0;
+
+.psnTree .orgTag{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 20px;
+	height: 100px;
+	background-color: #eee;
 }
