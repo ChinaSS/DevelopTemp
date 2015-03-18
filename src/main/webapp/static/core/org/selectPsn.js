@@ -102,7 +102,6 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
             id:this._param.id+"_SelectPsnDialog",
             cache:true,
             title:"人员选择",
-            height:"300px",
             width:"500px",              //modal-lg或modal-sm
             body:"窗口中间内容",
             buttons:this._param.type=="multi"?[{
@@ -168,11 +167,11 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 		}
 		var lazySearch = null; //延迟搜索,减少数据请求压力
 		$dialog.find(".psnSearch .search").on("keyup",function(){
-			clearInterval(lazySearch);
-			var psnText = $.trim(this.value());
-			lazySearch = setInterval(function(){
+			clearTimeout(lazySearch);
+			var psnText = $.trim($(this).val());
+			lazySearch = setTimeout(function(){
 				_this.tree.search(psnText);
-			},400);		
+			},500);		
 		});
 	};
 

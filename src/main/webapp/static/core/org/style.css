@@ -1,9 +1,28 @@
+.psnSearch{
+	padding-left: 20px;
+}
 .psnTree,.psnResult{
 	width: 50%;
 	float: left;
 	position: relative;
-	padding: 10px;
+	padding: 0 10px;
 	box-sizing:border-box;
+}
+.psnTree{
+	padding-left: 20px;
+}
+.psnTree .orgTag{
+	position: absolute;
+	left: -5px;
+	top: 0px;
+	width: 25px;
+	height: 100%;
+	background-color: #eee;
+}
+.psnTree .tree,.psnResult .tree{
+	border: 1px solid #eee;
+	height: 280px;
+	overflow: auto;
 }
 .psnTree .tree .leaf > .pic{
     background: url("../base/image/icons.png") no-repeat 0 0;
@@ -13,13 +32,4 @@
 }
 .psnTree .tree .data > .pic,.psnResult .tree .data > .pic{
 	background: url("../base/image/icons.png") no-repeat -39px 0;
-}
-
-.psnTree .orgTag{
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 20px;
-	height: 100px;
-	background-color: #eee;
 }
