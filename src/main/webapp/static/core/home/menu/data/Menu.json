@@ -19,6 +19,7 @@
              "sidebars":[
                  {"name":"树","href":"#zTree"},
                  {"name":"日期","href":"#dateTimePicker"},
+                 {"name":"表单验证","href":"#validate"}, 
                  {"name":"图表","href":"#ECharts"},
                  {"name":"图标","href":"#fontawesome"},
                  {"name":"Div折叠","href":"#divfold"},
@@ -28,8 +29,8 @@
             {"name":"组件组合",
              "sidebars":[
                  {"name":"treeDialog","href":"#treeDialog"},
-                 {"name":"treeAndGridDialog","href":"#treeAndGridDialog"}
-             ]
+                 {"name":"treeAndGridDialog","href":"#treeAndGridDialog"} 
+             ] 
             },
             {"name":"模板",
              "sidebars":[

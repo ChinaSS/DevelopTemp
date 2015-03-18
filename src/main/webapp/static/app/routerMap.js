@@ -105,12 +105,21 @@ define(function() {
                 templateUrl : 'app/examples/common.html'
             },
             /*
-             * zTree
+             * date
              */
             {
                 ctrlName : "ep_dateTimePicker",
                 ctrlUrl : "ExamplesDir/thirdParty/dateTimePicker/dateTimePickerCtrl",
                 routerPath : '/dateTimePicker',
+                templateUrl : 'app/examples/common.html'
+            },
+            /*
+             * validate
+             */
+            {
+                ctrlName : "ep_validate",
+                ctrlUrl : "ExamplesDir/thirdParty/validate/validateCtrl",
+                routerPath : '/validate',
                 templateUrl : 'app/examples/common.html'
             },
             /*

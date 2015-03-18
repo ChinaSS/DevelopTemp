@@ -1,4 +1,4 @@
-define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util){
+define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","JQuery.validate.extra","JQuery.validate.message"],function(grid,util){
     var sysPath = "core/system";
     
     /**
@@ -8,8 +8,10 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
         createResTree();
     };
 
+    //当前选中树节点
     var curretNode;
     
+    //创建资源树
     var createResTree = function() {
         $.ajax({
             url : getServer() + "/sword/authGetResAll",
@@ -35,11 +37,12 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                     }
                 }
                 //初始化
-                $.fn.zTree.init($("#tree_res"), setting, data.model);
+                $.fn.zTree.init($("#tree_res"), setting, data);
             }
         });
     }
 
+    //创建资源表格
     var createResGrid = function() {
     	if (!currentNode) util.alert("请选择树节点");
     	$.ajax({
@@ -72,11 +75,10 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     	                {name:"删除",class:"fa fa-trash-o",callback:function(event){ deleteRes(); }},
     	                {name:"刷新",class:"fa fa-refresh",callback:function(event){ }}
     	            ],
-    	            data:data.model
+    	            data:data
     	        })
     		}
     	});
-        
     }
 
     //编辑资源
@@ -106,22 +108,37 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             	}
             	//监听【保存】按钮事件
             	$("#btn_res_save").on("click", function() {
-            		var data = getFormData("#form_res");
-            		$.ajax({
-            			url : getServer() + "/sword/authSaveRes",
-            			data : data,
-            			type : "post",
-            			success : function(data) {
-            				util.alert("操作成功");
-							//Grid.getGrid("gridRes").refresh();
-							createResGrid();
+            		$("#form_res").validate({
+            			rules : {
+            				resName : "required",
+            				resType : "required",
+            			},
+            			messages : {
+            				resName : "请填写资源名称",
+            				resType : "请选择资源类型"
             			}
-            		});
+            		})
+            		if ($("#form_res").valid()) {
+            			var data = getFormData("#form_res");
+            			$.ajax({
+            				url : getServer() + "/sword/authSaveRes",
+            				data : data,
+            				type : "post",
+            				success : function(data) {
+            					util.alert("操作成功");
+            					//Grid.getGrid("gridRes").refresh();
+            					createResGrid();
+            				}
+            			});
+            		}
+            		/*
+            		*/
             	})
             }
         });
     }
 
+    //设置表单信息
     function setFormData(formSelector, data) {
     	var aEle = $(formSelector + " input," + formSelector + " select");
     	for (var name in data) {
@@ -134,6 +151,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     	}
     }
     
+    //获取表单信息
     function getFormData(formSelector) {
     	var aEle = $(formSelector + " input," + formSelector + " select");
     	var data = {};
@@ -146,6 +164,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     	return data;
     }
 
+    //删除资源
 	function deleteRes() {
 		var rows = grid.getGrid("gridRes").getSelectedRow();
 		if (rows && rows.length > 0) {

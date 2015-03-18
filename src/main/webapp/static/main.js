@@ -166,6 +166,7 @@ require(["Ace","UtilDir/util","Bootstrap","JQuery.validate","JQuery.validate.mes
     /*
      * 表单验证公共设置
      */
+    
     $.validator.setDefaults({
         errorElement : 'span',
         errorClass : 'cs-help-block',

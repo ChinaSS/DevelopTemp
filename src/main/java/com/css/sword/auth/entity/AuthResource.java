@@ -42,7 +42,8 @@ public class AuthResource extends AbsPersistObject{
 	 * 判断该资源是否为资源实体 即叶子
  	 */
 	public boolean isLeaf() {
-		return this.resType.equals("2");
+		
+		return (this.resType != null && this.resType.equals("2"));
 	}
 	
 	public String getResId() {
