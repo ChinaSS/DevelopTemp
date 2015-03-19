@@ -95,7 +95,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 							resId : data.resId
 						},
             			success:function(data) {
-            				setFormData("#form_res", data.model);
+            				setFormData("#form_res", data);
             			}
             		});
             	} else { // add
