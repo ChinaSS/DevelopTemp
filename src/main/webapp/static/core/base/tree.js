@@ -38,6 +38,7 @@ define(["jquery","BaseDir/data","css!BaseDir/css/tree.css"],function($,Data){
 	Tree.prototype.renderNode = function($elem,data,tag){
 		if (arguments.length<2||!data.length) {
 			console.log("arguments are illegal or data does not exist");
+			return false;
 		}
 		var $list = $elem.children("ul"),
 			$frag = $(document.createDocumentFragment()),
