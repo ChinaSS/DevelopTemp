@@ -5,9 +5,9 @@
 <div id="selectPsn" class="tree"><ul></ul></div>
 <!-- requireJS Load -->
 <script type="text/javascript">
-require(["jquery","OrgDir/selectPsn","Bootstrap"],function($,selectPsn){
+require(["jquery","OrgDir/psnSelect","Bootstrap"],function($,psnSelect){
     var $selectPsn = $("#selectPsn")
-    var psnSelect = selectPsn({
+    var psnSelect = psnSelect({
             id : "psnSelect",
             type : "multi",
             org : {
