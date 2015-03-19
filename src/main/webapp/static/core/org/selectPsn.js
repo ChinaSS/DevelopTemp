@@ -2,15 +2,15 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 
 	var cache = {};
 
-	function PsnTree(config){
-		PsnTree.superClass.constructor.call(this,config);
+	function OrgTree(config){
+		OrgTree.superClass.constructor.call(this,config);
 	}
 	//继承Tree基类
-	PsnTree.extend(Tree);
+	OrgTree.extend(Tree);
 	//绑定额外事件
-	PsnTree.prototype.bindEvent = function(){
+	OrgTree.prototype.bindEvent = function(){
 		var _this = this;
-		PsnTree.superClass.bindEvent.call(this);
+		OrgTree.superClass.bindEvent.call(this);
 		this.$wrap.on("click",".leaf>a",function(){
 			var $leaf = $(this).parent(".leaf");
 			$leaf.toggleClass("open");
@@ -45,7 +45,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 		});
 	};
 
-	PsnTree.prototype.getPsnData = function(q,callback){
+	OrgTree.prototype.getPsnData = function(q,callback){
 		var _this = this;
 		this.query({
 			url : this._param.psnUrl,
@@ -60,7 +60,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 		})
 	};
 
-	PsnTree.prototype.search = function(psnText){
+	OrgTree.prototype.search = function(psnText){
 		if (!!psnText) {
 			this.getPsnData({
 				psnText : psnText
@@ -116,15 +116,15 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
         		   '<input type="text" class="search form-control">'+
         		   '<span class="input-group-btn"><button class="submit btn btn-default" type="button">Go</button></span>'+
         		   '</div>'+
-        		   '<div class="psnTree">'+
-        		   '<div id="'+this._param.id+'_psnTree" class="tree"></div>'+
+        		   '<div class="orgTree">'+
+        		   '<div id="'+this._param.id+'_orgTree" class="tree"></div>'+
         		   '</div>';
         if (this._param.type == "multi") {
         	html += '<div class="psnResult"><div class="tree"></div></div>';
         }         
         this.dialog.setBody(html);
 
-        //init psnTree
+        //init orgTree
 		this.initOrg(this._param.org.data);
 		this.loadSelectData(this._param.psn.code);
 		this.bindEvent();
@@ -172,9 +172,9 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 		});
 	};
 
-	PsnSelect.prototype.initPsnTree = function(code){
-		this.tree = new PsnTree({
-			id : this._param.id+"_psnTree",
+	PsnSelect.prototype.initOrgTree = function(code){
+		this.tree = new OrgTree({
+			id : this._param.id+"_orgTree",
 			data : this._param.orgData,
 			url : this._param.org.url,
 			code : code,
@@ -184,14 +184,14 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 
 	PsnSelect.prototype.initOrg = function(tagData){
 		if (!tagData||tagData.length==0) {
-			this.initPsnTree();
+			this.initOrgTree();
 			return false;
 		}
-		var $psnTree = this.dialog.$getDialog().find(".psnTree"),
+		var $orgTree = this.dialog.$getDialog().find(".orgTree"),
 			$orgTag = $('<div class="orgTag"><ul class="nav"></ul></div>'),
 			$frag = $(document.createDocumentFragment()),
 			$li,code;
-		$psnTree.append($orgTag);
+		$orgTree.append($orgTag);
 		for (var i = 0,curTag; i < tagData.length; i++) {
 			curTag = tagData[i];
 			$li = $('<li><a>'+curTag.text+'</a></li>');
@@ -200,7 +200,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 		}
 		$orgTag.children("ul").append($frag);
 		code = $orgTag.find("li:first").addClass("active").data("code");
-		this.initPsnTree(code);
+		this.initOrgTree(code);
 	};
 
 	PsnSelect.prototype.getResultData = function(){

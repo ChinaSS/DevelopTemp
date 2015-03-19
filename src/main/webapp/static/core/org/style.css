@@ -6,47 +6,47 @@
 	height: 28px;
 	padding: 3px 6px;
 }
-.psnTree,.psnResult{
+.orgTree,.psnResult{
 	float: left;
 	position: relative;
 	padding: 0 10px;
 	box-sizing:border-box;
 }
-.psnTree{
+.orgTree{
 	width: 55%;
 	padding-left: 20px;
 }
 .psnResult{
 	width: 45%;
 }
-.psnTree .orgTag{
+.orgTree .orgTag{
 	position: absolute;
 	left: -5px;
 	top: 0px;
 	width: 25px;
 	height: 100%;
 }
-.psnTree .orgTag .nav>li>a{
+.orgTree .orgTag .nav>li>a{
 	line-height: 16px;
   	font-size: 12px;
   	padding: 4px 6px;
 }
-.psnTree .orgTag .nav>li.active>a{
+.orgTree .orgTag .nav>li.active>a{
 	border-radius: 3px;
 	background-color: #337ab7;
 	color: #fff;
 }
-.psnTree .tree,.psnResult .tree{
+.orgTree .tree,.psnResult .tree{
 	border: 1px solid #eee;
 	height: 280px;
 	overflow: auto;
 }
-.psnTree .tree .leaf > .pic{
+.orgTree .tree .leaf > .pic{
     background: url("../base/image/icons.png") no-repeat 0 0;
 }
-.psnTree .tree .leaf.open > .pic{
+.orgTree .tree .leaf.open > .pic{
     background: url("../base/image/icons.png") no-repeat -19px 0;
 }
-.psnTree .tree .data > .pic,.psnResult .tree .data > .pic{
+.orgTree .tree .data > .pic,.psnResult .tree .data > .pic{
 	background: url("../base/image/icons.png") no-repeat -39px 0;
 }
