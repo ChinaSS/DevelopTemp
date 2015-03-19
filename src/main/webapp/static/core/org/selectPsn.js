@@ -222,24 +222,32 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 		});
 	};
 
-	PsnSelect.prototype._loadSelectData = function(selectCode){
+	PsnSelect.prototype._loadSelectData = function(selectData){
 		var $selectTree = this.dialog.$getDialog().find(".psnSelect .tree");
-		if (!selectCode||selectCode.length==0) {return false;}
-		if (typeof selectCode == "string") {
-			selectCode = selectCode.split(",");
-		} else if (selectCode.constructor == Array&&typeof selectCode[0] == "object") {
-			//当所传值为数据对象的数组时
-			console.log("所选人员初始化,使用直接数据对象,而非使用人员代码从后台查询");
-			this.tree.renderNode($selectTree,selectCode,"data");
-			return false;
-		}else {
-			this.tree.getPsnData({
-				psnCode : selectCode
-			},function(data){
-				this.renderNode($selectTree,data,"data");
-			});
+		//数据格式化处理,形成数组
+		if (!selectData) {
+			selectData = [];
+		} else if (typeof selectData == "string") {
+			selectData = selectData.split(",");
+		} else if (selectData.constructor==Object) {
+			selectData = [selectData];
 		}
-		
+
+		if(selectData.constructor != Array||selectData.length==0){
+			console.log("数据结构错误,且无法处理");
+		}else{
+			if (typeof selectData[0] == "object") {
+				//当所传值为数据对象的数组时
+				console.log("所选人员初始化,使用直接数据对象,而非使用人员代码从后台查询");
+				this.tree.renderNode($selectTree,selectData,"data");
+			} else {
+				this.tree.getPsnData({
+					psnCode : selectData
+				},function(data){
+					this.renderNode($selectTree,data,"data");
+				});
+			}
+		}
 	};
 
 	PsnSelect.prototype._getSelectData = function(){
@@ -254,12 +262,12 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 		return data;
 	};
 
-	PsnSelect.prototype.reload = function(data,selectCode){
+	PsnSelect.prototype.reload = function(data,selectData){
 		if (argument.length==1) {
-			typeof data[0] == "object"?this.tree.renderTree(data):this._loadSelectData(selectCode);
+			typeof data[0] == "object"?this.tree.renderTree(data):this._loadSelectData(selectData);
 		} else if(argument.length==2) {
 			this.tree.renderTree(data);
-			this._loadSelectData(selectCode);
+			this._loadSelectData(selectData);
 		} else {
 			console.log("no argument or arguments are illegal!");
 		}
