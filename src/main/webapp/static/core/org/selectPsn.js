@@ -2,6 +2,8 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 
 	var cache = {};
 
+	//组织机构树类
+
 	function OrgTree(config){
 		OrgTree.superClass.constructor.call(this,config);
 	}
@@ -72,6 +74,9 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 		}
 	};
 
+
+	//人员选择入口类
+
 	function PsnInit(config){
 		var psn = cache[config.id];
 		if (!psn) {
@@ -94,11 +99,23 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 		cache = {};
 	};
 
+	//人员选择类
+
 	function PsnSelect(config){
-		var _this = this;
 		this._param = $.extend({},config);
 		//init Dialog
-        this.dialog = Dialog({
+        this._initDialog();
+        //init orgTree
+		this._initOrg(this._param.org.data);
+		//init selectTree
+		this._loadSelectData(this._param.psn.code);
+		//bind Event
+		this._bindEvent();
+	}
+
+	PsnSelect.prototype._initDialog = function(){
+		var _this = this;
+		this.dialog = Dialog({
             id:this._param.id+"_SelectPsnDialog",
             cache:true,
             title:"人员选择",
@@ -108,11 +125,15 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
             	name : "确定",
             	close : true,
             	callback : function(){
-            		_this._param.callback(_this.getResultData());
+            		_this._param.callback(_this._getSelectData());
             	}
             }]:null
         });
-        var html = '<div class="psnSearch input-group">'+
+        this._initDialogBody(this.dialog);
+	};
+
+	PsnSelect.prototype._initDialogBody = function(dialog){
+		var html = '<div class="psnSearch input-group">'+
         		   '<input type="text" class="search form-control">'+
         		   '<span class="input-group-btn"><button class="submit btn btn-default" type="button">Go</button></span>'+
         		   '</div>'+
@@ -120,37 +141,30 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
         		   '<div id="'+this._param.id+'_orgTree" class="tree"></div>'+
         		   '</div>';
         if (this._param.type == "multi") {
-        	html += '<div class="psnResult"><div class="tree"></div></div>';
+        	html += '<div class="psnSelect"><div class="tree"></div></div>';
         }         
-        this.dialog.setBody(html);
+        dialog.setBody(html);
+	};
 
-        //init orgTree
-		this.initOrg(this._param.org.data);
-		this.loadSelectData(this._param.psn.code);
-		this.bindEvent();
-	}
-
-	PsnSelect.prototype.bindEvent = function(){
+	PsnSelect.prototype._bindEvent = function(){
 		var _this = this;
 		var $dialog = this.dialog.$getDialog();
 		if (this._param.type == "multi") {
-			var $resultTree = $dialog.find(".psnResult .tree"),
-				$resultUL = $resultTree.children("ul");
-			if ($resultUL.length==0) {
-				$resultUL = $("<ul></ul>");
-				$resultTree.append($resultUL);
+			var $selectTree = $dialog.find(".psnSelect .tree"),
+				$selectUL = $selectTree.children("ul");
+			if ($selectUL.length==0) {
+				$selectUL = $("<ul></ul>");
+				$selectTree.append($selectUL);
 			}
 			this.tree.$getWrap().on("dblclick",".data",function(event){
-				$resultUL.append($(this).clone(true));
+				$selectUL.append($(this).clone(true));
 			});
-			$resultTree.on("dblclick",".data",function(event){
+			$selectTree.on("dblclick",".data",function(event){
 				$(this).remove();
 			});
-			/*
-			$dialog.find(".save").on("click",function(){
-				
+			$dialog.on("hidden.bs.modal",function(){
+				_this.clear();
 			});
-			*/
 		} else {
 			this.tree.$getWrap().on("dblclick",".data",function(event){
 				_this._param.callback([
@@ -172,19 +186,13 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 		});
 	};
 
-	PsnSelect.prototype.initOrgTree = function(code){
-		this.tree = new OrgTree({
-			id : this._param.id+"_orgTree",
-			data : this._param.orgData,
-			url : this._param.org.url,
-			code : code,
-			psnUrl : this._param.psn.url
-		});
-	};
-
-	PsnSelect.prototype.initOrg = function(tagData){
+	PsnSelect.prototype._initOrg = function(tagData){
 		if (!tagData||tagData.length==0) {
-			this.initOrgTree();
+			this._initOrgTree();
+			return false;
+		}
+		if (tagData.constructor != Array) {
+			console.log("组织机构标签数据类型错误,接收JSON数据");
 			return false;
 		}
 		var $orgTree = this.dialog.$getDialog().find(".orgTree"),
@@ -200,30 +208,28 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 		}
 		$orgTag.children("ul").append($frag);
 		code = $orgTag.find("li:first").addClass("active").data("code");
-		this.initOrgTree(code);
+		this._initOrgTree(code);
 	};
 
-	PsnSelect.prototype.getResultData = function(){
-		var $results = this.dialog.$getDialog().find(".psnResult .tree li"),
-			data = [];
-		$results.each(function(){
-			data.push({
-				code : $(this).data("code"),
-				text : $(this).text()
-			});
+	PsnSelect.prototype._initOrgTree = function(code){
+		this.tree = new OrgTree({
+			id : this._param.id+"_orgTree",
+			data : this._param.orgData,
+			url : this._param.org.url,
+			code : code,
+			psnUrl : this._param.psn.url
 		});
-		return data;
 	};
 
-	PsnSelect.prototype.loadSelectData = function(selectCode){
-		var $resultTree = this.dialog.$getDialog().find(".psnResult .tree");
+	PsnSelect.prototype._loadSelectData = function(selectCode){
+		var $selectTree = this.dialog.$getDialog().find(".psnSelect .tree");
 		if (!selectCode||selectCode.length==0) {return false;}
 		if (typeof selectCode == "string") {
 			selectCode = selectCode.split(",");
 		} else if (selectCode.constructor == Array&&typeof selectCode[0] == "object") {
 			//当所传值为数据对象的数组时
 			console.log("所选人员初始化,使用直接数据对象,而非使用人员代码从后台查询");
-			this.tree.renderNode($resultTree,selectCode,"data");
+			this.tree.renderNode($selectTree,selectCode,"data");
 			return false;
 		}else {
 			this.tree.getPsnData({
@@ -235,22 +241,36 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 		
 	};
 
+	PsnSelect.prototype._getSelectData = function(){
+		var $select = this.dialog.$getDialog().find(".psnSelect .tree li"),
+			data = [];
+		$select.each(function(){
+			data.push({
+				code : $(this).data("code"),
+				text : $(this).text()
+			});
+		});
+		return data;
+	};
+
 	PsnSelect.prototype.reload = function(data,selectCode){
 		if (argument.length==1) {
-			typeof data[0] == "object"?this.tree.renderTree(data):this.loadSelectData(selectCode);
+			typeof data[0] == "object"?this.tree.renderTree(data):this._loadSelectData(selectCode);
 		} else if(argument.length==2) {
 			this.tree.renderTree(data);
-			this.loadSelectData(selectCode);
+			this._loadSelectData(selectCode);
 		} else {
 			console.log("no argument or arguments are illegal!");
 		}
 		this.show();
 	};
 
-	PsnSelect.prototype.refresh = function(){
-		var $wrap = this.tree.$getWrap();
-		$wrap.find("li.open").removeClass("open");
-		$wrap.find(".leaf>ul").remove();
+	PsnSelect.prototype.clear = function(){
+		var $orgTree = this.tree.$getWrap(),
+			$selectTree = this.dialog.$getDialog().find(".psnSelect .tree");
+		$orgTree.find("li.open").removeClass("open");
+		$orgTree.find(".leaf>ul").remove();
+		$selectTree.empty();
 	};
 
 	PsnSelect.prototype.show = function(){
