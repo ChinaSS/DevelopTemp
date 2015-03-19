@@ -151,12 +151,13 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 		var $dialog = this.dialog.$getDialog();
 		if (this._param.type == "multi") {
 			var $selectTree = $dialog.find(".psnSelect .tree"),
-				$selectUL = $selectTree.children("ul");
-			if ($selectUL.length==0) {
-				$selectUL = $("<ul></ul>");
-				$selectTree.append($selectUL);
-			}
+				$selectUL;
 			this.tree.$getWrap().on("dblclick",".data",function(event){
+				$selectUL = $selectTree.children("ul");
+				if ($selectUL.length==0) {
+					$selectUL = $("<ul></ul>");
+					$selectTree.append($selectUL);
+				}
 				$selectUL.append($(this).clone(true));
 			});
 			$selectTree.on("dblclick",".data",function(event){
@@ -235,7 +236,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],functio
 			this.tree.getPsnData({
 				psnCode : selectCode
 			},function(data){
-				this.renderNode($resultTree,data,"data");
+				this.renderNode($selectTree,data,"data");
 			});
 		}
 		
