@@ -53,7 +53,7 @@ label{
 	background: #fff;
 	overflow: hidden;
 	border: 1px solid #ccc;
-	z-index: 10000;
+	z-index: 1040;
 	box-shadow : 0 10px 10px 0 rgba(0, 0, 0, .3);
     -webkit-box-shadow : 0 10px 10px 0 rgba(0, 0, 0, .3);
     -moz-box-shadow : 0 10px 10px 0 rgba(0, 0, 0, .3);

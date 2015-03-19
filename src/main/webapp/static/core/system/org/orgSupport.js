@@ -678,6 +678,12 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                     afterLoad:function(){
                         $("#org_RoleDirName").html(data.Org.RoleDir.dirName);
                         setNgModel("tab_RoleDir",data);
+                        //保存事件绑定
+                        saveOrgRoleDirBtnBind("update");
+                        //编辑时，角色编号字段不可编辑
+                        $("#dirCode").attr("readonly",true);
+                        //表单验证
+                        validateRoleDir();
                     }
                 });
             }
@@ -685,8 +691,80 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     };
     //新增角色目录
     var addRoleDir = function(){
-        showRoleDirSidebar();
+        showRoleDirSidebar({
+            afterLoad:function(){
+                var curNode = $.fn.zTree.getZTreeObj("roletree").getSelectedNodes()[0];//.getParentNode();
+                $("#PDirName").val(curNode.name);
+                $("#PDirCode").val(curNode.id);
+                //保存事件绑定
+                saveOrgRoleDirBtnBind("insert");
+                //表单验证
+                validateRoleDir({
+                    rules:{
+                        dirCode:{
+                            required:true,
+                            remote:{
+                                type:"POST",                                        //请求方式
+                                url: getServer()+"/sword/orgValidateRoleDirCode",   //请求的服务
+                                data:{                                              //要传递的参数
+                                    dir_code:function(){return $("#dirCode").val();}
+                                }
+                            }
+                        }
+                    },
+                    messages: {
+                        dirCode:{
+                            remote:"角色目录编号已存在,请重新输入"
+                        }
+                    }
+                });
+            }
+        });
     };
+
+    /**
+     * 角色目录保存
+     */
+    var saveOrgRoleDirBtnBind = function(saveType){
+        $("#saveOrgRoleDirBtn").bind("click",function(){
+            if($("#RoleDirForm").valid()){
+                var entity = getNgModel("tab_RoleDir");
+                //console.log(entity);
+                $.ajax({
+                    url:getServer()+"/sword/orgSaveRoleDir",
+                    dataType:"json",
+                    data:entity,
+                    success:function(data){
+                        //console.log(data);
+                        if(data.status){
+                            //刷新树
+                            //$.fn.zTree.getZTreeObj("roletree").reAsyncChildNodes(null, "refresh");
+                            var curNode = $.fn.zTree.getZTreeObj("roletree").getSelectedNodes()[0];
+                            if(saveType=="insert"){
+                                $.fn.zTree.getZTreeObj("roletree").addNodes(curNode,{name:entity.dirName,id:entity.dirCode});
+                            }else{
+                                curNode.name = entity.dirName;
+                            }
+                        }
+                        util.alert(data.message);
+                    }
+                })
+            }
+        })
+    };
+
+    var validateRoleDir = function(extend){
+        //数据验证
+        $("#RoleDirForm").validate($.extend(true,{
+            rules:{
+                dirName:{required:true}
+            },
+            messages: {}
+        },extend));
+    };
+
+
+    /*****************************角色相关********************************/
     //新增角色
     var addRole = function(){
         showRoleSidebar({
@@ -697,7 +775,25 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                 $("#dirName").val(dir_name);
                 $("#dirCode").val(dir_code);
                 //表单验证
-                validateRole();
+                validateRole({
+                    rules:{
+                        roleCode:{
+                            required:true,
+                            remote:{
+                                type:"POST",  //请求方式
+                                url: getServer()+"/sword/orgValidateRoleCode", //请求的服务
+                                data:{  //要传递的参数
+                                    role_code:function(){return $("#roleCode").val();}
+                                }
+                            }
+                        }
+                    },
+                    messages: {
+                        roleCode:{
+                            remote:"角色编号已存在,请重新输入"
+                        }
+                    }
+                });
             }
         });
     };
@@ -717,34 +813,22 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                         saveOrgRoleBtnBind("update");
                         //编辑时，角色编号字段不可编辑
                         $("#roleCode").attr("readonly",true);
+                        //表单验证
+                        validateRole();
                     }
                 });
             }
         });
     };
 
-    var validateRole = function(){
+    var validateRole = function(extend){
         //数据验证
-        $("#RoleForm").validate({
+        $("#RoleForm").validate($.extend(true,{
             rules:{
-                roleName:{required:true},
-                roleCode:{
-                    required:true,
-                    remote:{
-                        type:"POST",  //请求方式
-                        url: getServer()+"/sword/orgValidateRoleCode", //请求的服务
-                        data:{  //要传递的参数
-                            role_code:function(){return $("#roleCode").val();}
-                        }
-                    }
-                }
+                roleName:{required:true}
             },
-            messages: {
-                roleCode:{
-                    remote:"角色编号已存在,请重新输入"
-                }
-            }
-        });
+            messages: {}
+        },extend));
     };
 
     /**
@@ -752,32 +836,23 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
      */
     var saveOrgRoleBtnBind = function(type){
         $("#saveOrgRoleBtn").bind("click",function(){
-            if(!$("#RoleForm").valid()){
-                return;
-            }
-            var entity = getNgModel("tab_Role");
-            //console.log(entity);
-            $.ajax({
-                url:getServer()+"/sword/orgSaveRole?saveType="+type,
-                dataType:"json",
-                data:entity,
-                success:function(data){
-                    //console.log(data);
-                    if(data.status){
-                        //刷新表格
-                        grid.getGrid("OrgRoleList").refresh();
+            if($("#RoleForm").valid()){
+                var entity = getNgModel("tab_Role");
+                //console.log(entity);
+                $.ajax({
+                    url:getServer()+"/sword/orgSaveRole?saveType="+type,
+                    dataType:"json",
+                    data:entity,
+                    success:function(data){
+                        //console.log(data);
+                        if(data.status){
+                            //刷新表格
+                            grid.getGrid("OrgRoleList").refresh();
+                        }
+                        util.alert(data.message);
                     }
-                    util.alert(data.message);
-                }
-            })
-        })
-    };
-    /**
-     * 角色目录保存
-     */
-    var saveOrgRoleDirBtnBind = function(){
-        $("#saveOrgRoleDirBtn").bind("click",function(){
-
+                })
+            }
         })
     };
 

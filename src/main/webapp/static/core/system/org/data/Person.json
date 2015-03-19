@@ -1,4 +1,4 @@
-{
+{"model":{
     "Org":{
         "Person":{
             "PersonInfo":{
@@ -59,4 +59,5 @@
             }
         }
     }
+}
 }

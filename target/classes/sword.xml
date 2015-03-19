@@ -65,10 +65,10 @@
 				系统管理组件(最后加载)">
 				<component name="SwordPersistenceManager" component="com.css.sword.core.components.persistence.component.SwordPersistenceComponentManager" 
 			memo="Sword持久化组件"/> 
-			<component name="SwordMultiLevelCacheComponent"
+			<!-- <component name="SwordMultiLevelCacheComponent"
 			component="com.css.sword.core.cache.SwordCacheComponentManager" 
 			memo="多级数据缓存组件：用于提供多级数所缓存功能，支持透明同类型缓存产品切换"/>
-			
+			 -->
 		<!--
 		<component name="SwordIoCManager" component="com.css.sword.core.ioc.spring.SwordIoCManager" 
 			memo="Spring IoC组件"/> 
