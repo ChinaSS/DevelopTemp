@@ -12,7 +12,8 @@
                  {"name":"表格","href":"#grid"},
                  {"name":"单附件上传","href":"#singleFileUpload"},
                  {"name":"多附件上传","href":"#fileUpload"},
-                 {"name":"图片裁剪","href":"#crop"}
+                 {"name":"图片裁剪","href":"#crop"},
+                 {"name":"人员选择","href":"#psnSelect"}
              ]
             },
             {"name":"第三方组件",

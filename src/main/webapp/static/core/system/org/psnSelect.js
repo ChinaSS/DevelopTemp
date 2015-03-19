@@ -1,4 +1,4 @@
-define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/style.css"],function($,Tree,Dialog){
+define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/css/style.css"],function($,Tree,Dialog){
 
 	var cache = {};
 

@@ -157,6 +157,15 @@ define(function() {
                 ctrlUrl : "ExamplesDir/thirdParty/divFold/divFoldCtrl",
                 routerPath : '/divfold',
                 templateUrl : 'app/examples/common.html'
+            },
+            /*
+             * psnSelect
+             */
+            {
+                ctrlName : "ep_psnSelect",
+                ctrlUrl : "ExamplesDir/util/org/psnSelectCtrl",
+                routerPath : '/psnSelect',
+                templateUrl : 'app/examples/common.html'
             }
         ]
     };
