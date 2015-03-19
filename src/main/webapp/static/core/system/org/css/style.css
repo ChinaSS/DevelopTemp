@@ -1,15 +1,23 @@
-.psnSearch{
-	width: 55%;
-	padding:0 10px 5px 20px;
+.orgTree .psnSearch,.psnSelect .tools{
+	position: absolute;
+	top: -33px;
+	left: 0px;
+	padding: 0 10px;
+	width: 100%;
 }
-.psnSearch .search,.psnSearch .submit{
+.psnSearch .search,.psnSearch .submit,.psnSelect .tools .btn{
 	height: 28px;
 	padding: 3px 6px;
 }
+.psnSelect .tools a{
+	margin-right: 5px;
+}
+
 .orgTree,.psnSelect{
 	float: left;
 	position: relative;
 	padding: 0 10px;
+	margin-top: 30px;
 	box-sizing:border-box;
 }
 .orgTree{
@@ -49,4 +57,7 @@
 }
 .orgTree .tree .data > .pic,.psnSelect .tree .data > .pic{
 	background: url("../base/image/icons.png") no-repeat -39px 0;
+}
+.psnSelect .tree .data.cur{
+	background-color: #eee;
 }

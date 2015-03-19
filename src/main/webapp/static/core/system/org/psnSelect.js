@@ -133,15 +133,18 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/css/style.css"],fun
 	};
 
 	PsnSelect.prototype._initDialogBody = function(dialog){
-		var html = '<div class="psnSearch input-group">'+
-        		   '<input type="text" class="search form-control">'+
+		var html = '<div class="orgTree">'+
+				   '<div class="psnSearch">'+
+        		   '<div class="input-group"><input type="text" class="search form-control">'+
         		   '<span class="input-group-btn"><button class="submit btn btn-default" type="button">Go</button></span>'+
-        		   '</div>'+
-        		   '<div class="orgTree">'+
+        		   '</div></div>'+
         		   '<div id="'+this._param.id+'_orgTree" class="tree"></div>'+
         		   '</div>';
         if (this._param.type == "multi") {
-        	html += '<div class="psnSelect"><div class="tree"></div></div>';
+        	html += '<div class="psnSelect">'+
+        			'<div class="tools"><a class="up btn btn-default">up</a><a class="down btn btn-default">down</a></div>'+
+        		    '<div class="tree"></div>'+
+        		    '</div>';
         }         
         dialog.setBody(html);
 	};
@@ -162,6 +165,19 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/css/style.css"],fun
 			});
 			$selectTree.on("dblclick",".data",function(event){
 				$(this).remove();
+			}).on("click",".data",function(){
+				$(this).siblings().removeClass("cur").end().toggleClass("cur");
+			})
+			$dialog.find(".psnSelect .tools").on("click","a",function(){
+				var $cur = $selectTree.find(".data.cur"),
+					$aim;
+				if ($(this).is(".up")) {
+					$aim = $cur.prev();
+					$aim.length?$aim.before($cur.remove()):false;
+				} else if ($(this).is(".down")) {
+					$aim = $cur.next();
+					$aim.length?$aim.after($cur.remove()):false;
+				}
 			});
 			$dialog.on("hidden.bs.modal",function(){
 				_this.clear();
