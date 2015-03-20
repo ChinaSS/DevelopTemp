@@ -31,6 +31,7 @@ public class AuthResource extends AbsPersistObject{
 	private String resDesc;
 	
 	public AuthResource(){
+		 
 	}
 	
 	@Override

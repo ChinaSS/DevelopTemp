@@ -1,5 +1,6 @@
 package com.css.sword.auth.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -17,8 +18,10 @@ public class AuthRoleRes extends AbsPersistObject {
 	
 	@Id
 	private String uuid;
-	private String roleCode;
-	private String resCode;
+	@Column(name="role_id")
+	private String roleId;
+	@Column(name="res_id")
+	private String resId;
 	
 	public AuthRoleRes() {
 		
@@ -30,17 +33,21 @@ public class AuthRoleRes extends AbsPersistObject {
 	public void setUuid(String uuid) {
 		this.uuid = uuid;
 	}
-	public String getRoleCode() {
-		return roleCode;
+
+	public String getRoleId() {
+		return roleId;
 	}
-	public void setRoleCode(String roleCode) {
-		this.roleCode = roleCode;
+
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
 	}
-	public String getResCode() {
-		return resCode;
+
+	public String getResId() {
+		return resId;
 	}
-	public void setResCode(String resCode) {
-		this.resCode = resCode;
+
+	public void setResId(String resId) {
+		this.resId = resId;
 	}
 	
 }

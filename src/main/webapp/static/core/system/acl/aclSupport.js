@@ -5,61 +5,89 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
      * 主页初始化
      */
     var init = function(){
-        createResTree();
+        //初始化资源模块
+    	initAuthRes();
+    	//初始化资源授权模块
+    	initAuthSet();
+    	//初始化资源变更模块
+    	initAuthUpdate();
     };
 
-    //当前选中树节点
-    var curretNode;
+    /*--------------------------------------资源模块---------------------------------------------*/
+    //初始化入口
+    function initAuthRes() {
+    	createResTree();
+    	(function(){
+    		$("#btn_authRes_addSort").on("click", on_BtnAuthResAddSort_click);
+    		$("#btn_authRes_editSort").on("click", on_BtnAuthResEditSort_click)
+    		$("#btn_authRes_deleteSort").on("click", on_BtnAuthResDeleteSort_click);
+    	})();
+    }
     
-    //创建资源树
+    //创建资源目录树
     var createResTree = function() {
         $.ajax({
-            url : getServer() + "/sword/authGetResAll",
+            url : getServer() + "/sword/authGetResSort",
             success : function(data) {
-            	//配置ztree的属性
-                var setting = {
-                    data: {
-                    	key : {
-                    		name:"resName"
-                    	},
-                        simpleData: {
-                            enable: true,
-                            idKey:"resId",
-                            pIdKey:"resPid",
-                            rootPId:null
-                        }
-                    },
-                    callback : {
-                        onClick : function(event, treeId, treeNode, clickFlag) {
-                            currentNode = treeNode;
-                        	createResGrid();
+            	//没有数据
+            	if (!data || data.length == 0) {
+            		showResTreeTip();
+            	} else {
+            		//配置ztree的属性
+                    var setting = {
+                        data: {
+                        	key : {
+                        		name:"resName"
+                        	},
+                            simpleData: {
+                                enable: true,
+                                idKey:"resId",
+                                pIdKey:"resPid",
+                                rootPId:null
+                            }
+                        },
+                        callback : {
+                            onClick : function(event, treeId, treeNode, clickFlag) {
+                            	createResGrid();
+                            }
                         }
                     }
-                }
-                //初始化
-                $.fn.zTree.init($("#tree_res"), setting, data);
+                    //初始化
+                    $.fn.zTree.init($("#tree_res"), setting, data);
+            	}
             }
         });
     }
-
+    
+    function showResTreeTip() {
+    	$("#authRes_tree_tip").fadeIn();
+		$("#btn_authRes_addRoot").on("click", function(){
+			editResSort();
+		});
+    }
+    
+    function hideResTreeTip() {
+    	$("#authRes_tree_tip").fadeOut();
+		$("#btn_authRes_addRoot").off("click");
+    }
+    
     //创建资源表格
     var createResGrid = function() {
-    	if (!currentNode) util.alert("请选择树节点");
+    	var treeNode = $.fn.zTree.getZTreeObj("tree_res").getSelectedNodes()[0];
     	$.ajax({
     		url : getServer() + "/sword/authGetResSub",
     		data : {
-    			resPid : currentNode.resId
+    			resPid : treeNode.resId
     		},
     		success : function(data) {
     			grid({
     	            id : "gridRes",
     	            placeAt : "grid_res",
-    	            title : "资源列表",
     	            index:"checkbox",
     	            hidden:false,
     	            pagination:true,
     	            formData : {
-    	            	resPid : currentNode.resId
+    	            	resPid : treeNode.resId
     	            },
     	            layout : [{
     	                name:"资源名称",field:"resName",click:function(e){
@@ -68,12 +96,12 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
     	            },{
     	                name:"资源地址",field:"resUrl"
     	            },{
-    	                name:"资源类型",field:"resType"
+    	                name:"资源描述",field:"resDesc"
     	            }],
     	            toolbar:[
     	                {name:"添加",class:"fa fa-plus-circle",callback:function(event){ editRes(); }},
     	                {name:"删除",class:"fa fa-trash-o",callback:function(event){ deleteRes(); }},
-    	                {name:"刷新",class:"fa fa-refresh",callback:function(event){ }}
+    	                {name:"刷新",class:"fa fa-refresh",callback:function(event){ createResGrid(treeNode); }}
     	            ],
     	            data:data
     	        })
@@ -81,8 +109,85 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
     	});
     }
 
+    function validate_opr_resSort() {
+    	var nodes = $.fn.zTree.getZTreeObj("tree_res").getSelectedNodes();
+    	if (!nodes || nodes.length == 0) {
+    		showResTreeOprTip();
+    		return false;
+    	} else {
+    		hideResTreeOprTip();
+    		return nodes;
+    	}
+    }
+
+    function showResTreeOprTip() {
+    	$("#authRes_tree_opr_tip").fadeIn();
+    }
+    
+    function hideResTreeOprTip() {
+    	$("#authRes_tree_opr_tip").fadeOut();
+    }
+    
+    function on_BtnAuthResAddSort_click() {
+    	if (validate_opr_resSort()) {
+    		alert("yes");
+    		editResSort();
+    	}
+    }
+    
+    function on_BtnAuthResEditSort_click() {
+    	
+    }
+    
+    function on_BtnAuthResDeleteSort_click() {
+    	
+    }
+    
+    function editResSort() {
+    	 util.slidebar({
+	         url:sysPath + "/acl/views/res_sort.html",
+	         width:"500px",
+	         cache:false,
+	         afterLoad : function() {
+	        	//初始化表单校验
+	    	 	$("#form_resSort").validate({
+	     			rules : {
+	     				resName : "required"
+	     			},
+	     			messages : {
+	     				resName : "请填写目录名称"
+	     			}
+	     		});
+	    	 	//注册保存按钮事件
+	    	 	$("#btn_resSort_save").on("click", function(){
+	    	 		if ($("#form_resSort").valid()) {
+	    	 			var data = getFormData("#form_resSort");
+	    	 			$.ajax({
+	    	 				url : getServer() + "/sword/authSaveRes",
+	    	 				data : data,
+	    	 				type : "post",
+	    	 				success : function(data) {
+	    	 					util.alert("操作成功");
+	    	 					hideResTreeTip();
+	    	 					createResTree();
+	    	 				}
+	    	 			});
+	    	 		}
+	    	 	})
+	         }
+	     });
+    }
+    
+    function addResSort() {
+    	
+    }
+    
+    function editResSort() {
+    	
+    }
+    
     //编辑资源
-    function editRes(edit, data) {
+    function editRes(edit, row) {
         util.slidebar({
             url:sysPath + "/acl/views/res.html",
             width:"500px",
@@ -92,15 +197,16 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
             		$.ajax({
             			url:getServer() + "/sword/authGetRes",
 						data : {
-							resId : data.resId
+							resId : row.resId
 						},
             			success:function(data) {
             				setFormData("#form_res", data);
             			}
             		});
             	} else { // add
-            		var resPid = currentNode ? currentNode.resId : "";
-            		var resParent = currentNode ? currentNode.resName : "";
+            		var treeNode =  $.fn.zTree.getZTreeObj("tree_res").getSelectedNodes()[0];
+            		var resPid = treeNode ? treeNode.resId : "";
+            		var resParent = treeNode ? treeNode.resName : "";
             		setFormData("#form_res", {
             			resPid : resPid,
             			resParent : resParent
@@ -189,6 +295,140 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 		}
 	}
 
+	/*--------------------------------------授权模块---------------------------------------------*/
+	function initAuthSet() {
+		createRoleTree();
+		createResCheckTree();
+	}
+	
+	function createRoleTree() {
+		$.ajax({
+            url : getServer() + "/sword/orgGetRoleTree",
+            success : function(data) {
+            	//配置ztree的属性
+                var setting = {
+                    data: {
+                    	key : {
+                    		name:"name"
+                    	},
+                        simpleData: {
+                            enable: true,
+                            idKey:"id",
+                            pIdKey:"pid",
+                            rootPId:null
+                        }
+                    },
+                    callback : {
+                        onClick : function(event, treeId, treeNode, clickFlag) {
+                        	
+                        }
+                    }
+                }
+                if (!data || data.length == 0) {
+                	data = [{
+                		id : "root",
+                		name : "暂未有角色信息",
+                		pid : ""
+                	}];
+                }
+                //初始化
+                $.fn.zTree.init($("#tree_role"), setting, data);
+            }
+        });
+	}
+	
+	function createResCheckTree() {
+		$.ajax({
+            url : getStaticPath() + "/core/system/acl/data/treeRes.json",
+            success : function(data) {
+            	//配置ztree的属性
+                var setting = {
+                    data: {
+                    	key : {
+                    		name:"name"
+                    	},
+                        simpleData: {
+                            enable: true
+//                            idKey:"id",
+//                            pIdKey:"pId",
+//                            rootPId:null
+                        }
+                    },
+                    check : {
+                    	enable : true
+                    },
+                    callback : {
+                        onClick : function(event, treeId, treeNode, clickFlag) {
+                        	
+                        },
+                        onCheck : function() {
+                        	var nodes = $.fn.zTree.getZTreeObj("tree_check_res").getChangeCheckedNodes()
+                        	if (nodes && nodes.length > 0) {
+                        		$("#btn_authSet_save").removeClass("disabled");
+                        	} else {
+                        		$("#btn_authSet_save").addClass("disabled");
+                        	}
+                        }
+                    }
+                }
+                //初始化
+                $.fn.zTree.init($("#tree_check_res"), setting, data);
+                setResTreeCheck();
+            }
+        });
+	}
+	
+	function setResTreeCheck() {
+		var treeObj = $.fn.zTree.getZTreeObj("tree_check_res");
+		var nodes = treeObj.getNodes();
+		var arr = ["0101", "0201"];
+		$.each(arr, function(i, n){
+			var node = treeObj.getNodeByParam("id", n);
+			treeObj.checkNode(node, true);
+		})
+	}
+	
+	/*--------------------------------------变更模块---------------------------------------------*/
+	function initAuthUpdate() {
+		createResCheckTree2();
+	}
+	
+	function createResCheckTree2() {
+		$.ajax({
+            url : getStaticPath() + "/core/system/acl/data/treeRes.json",
+            success : function(data) {
+            	//配置ztree的属性
+                var setting = {
+                    data: {
+                    	key : {
+                    		name:"name"
+                    	},
+                        simpleData: {
+                            enable: true,
+                            pIdKey:"pId"
+//                            idKey:"id",
+//                            pIdKey:"pId",
+//                            rootPId:null
+                        }
+                    },
+                    check : {
+                    	enable : true
+                    },
+                    callback : {
+                        onClick : function(event, treeId, treeNode, clickFlag) {
+                        	
+                        },
+                        onCheck : function() {
+                        }
+                    }
+                }
+                //初始化
+                console.log(data);
+                $.fn.zTree.init($("#tree_check_res2"), setting, data);
+            }
+        });
+	}
+	
     return {
         init:init
     }

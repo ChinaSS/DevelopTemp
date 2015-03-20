@@ -33,8 +33,10 @@ public class AuthResourceService {
 			//资源信息适配前端ztree[目前用jsonObject解决，之后添加view层]
 			for (AuthResource resource : list) {
 				JSONObject jsonObject = (JSONObject)JSONObject.toJSON(resource);
-				if (!resource.isLeaf()) {
+				if (!"2".equals(resource.getResType())) {
 					jsonObject.put("isParent", true);
+				}
+				if (resource.getResPid() == null || resource.getResPid().equals("")) {
 					jsonObject.put("open", true);
 				}
 				result.add(jsonObject);
@@ -45,6 +47,39 @@ public class AuthResourceService {
 		}
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		res.setModel(result);
+		return res;
+	}
+	
+	@Service(serviceName="authGetResSort")
+	public ISwordResponse getResSort(ISwordRequest req) {
+		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
+		try{
+			IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
+			String res_type = req.getData("res_type");
+			if (res_type == null || res_type.equals("")) {
+				res_type = "1";
+			}
+			List<Object> params = new ArrayList<Object>();
+			params.add(res_type);
+			List<AuthResource> list = dao.findAllBySql("select * from acl_res_url a where a.res_type=?", params, AuthResource.class);
+			
+			//资源信息适配前端ztree[目前用jsonObject解决，之后添加view层]
+			/*
+			for (AuthResource resource : list) {
+				JSONObject jsonObject = (JSONObject)JSONObject.toJSON(resource);
+				if (!"2".equals(resource.getResType())) {
+					jsonObject.put("isParent", true);
+				}
+				if (resource.getResPid() == null || resource.getResPid().equals("")) {
+					jsonObject.put("open", true);
+				}
+				result.add(jsonObject);
+			}
+			*/
+			res.setModel(list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return res;
 	}
 	

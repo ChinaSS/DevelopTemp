@@ -3,6 +3,7 @@ package com.css.sword.org.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.css.sword.core.kernel.base.annotation.Service;
 import com.css.sword.core.kernel.base.annotation.ServiceContainer;
@@ -10,8 +11,11 @@ import com.css.sword.core.kernel.base.dataElement.IValueObject;
 import com.css.sword.core.kernel.base.exception.SwordBaseCheckedException;
 import com.css.sword.core.kernel.base.persistence.IPersistenceService;
 import com.css.sword.core.kernel.utils.SwordPersistenceUtils;
+import com.css.sword.core.kernel.utils.SwordServiceUtils;
 import com.css.sword.org.entity.OrgDept;
 import com.css.sword.org.entity.OrgRole;
+import com.css.sword.org.entity.OrgRoleDir;
+import com.css.sword.web.SwordServiceUtil;
 import com.css.sword.web.request.ISwordRequest;
 import com.css.sword.web.response.ISwordResponse;
 import com.css.sword.web.response.SwordResponseFactory;
@@ -125,6 +129,52 @@ public class RoleService {
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dRes;
+	}
+	
+	@Service(serviceName="orgGetRoleByPidPage")
+	public List<String> getStringList() {
+		return new ArrayList<String>();
+	}
+	
+	/**
+	 * 获取角色树
+	 */
+	@Service(serviceName="orgGetRoleTree")
+	public ISwordResponse getRoleTree(ISwordRequest iReq) throws SwordBaseCheckedException{
+		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
+		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
+//		SwordServiceUtils.callLocalService(serviceName, args)
+		try {
+			JSONArray jsonArray = new JSONArray();
+			//查询角色分类
+			String sql_dir = "select * from org_role_dir";
+			List<OrgRoleDir> list_dir = dao.findAllBySql(sql_dir, null ,OrgRoleDir.class);
+			for (OrgRoleDir dir : list_dir) {
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("id", dir.getDirCode());
+				jsonObject.put("name", dir.getDirName());
+				jsonObject.put("pid", dir.getPDirCode());
+				jsonObject.put("isParent", true);
+				jsonObject.put("type", "dir");
+				jsonArray.add(jsonObject);
+			}
+			//查询角色
+			String sql_role = "select * from org_role";
+			List<OrgRole> list_role = dao.findAllBySql(sql_role, null ,OrgRole.class);
+			for (OrgRole role : list_role) {
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("id", role.getRoleCode());
+				jsonObject.put("name", role.getRoleName());
+				jsonObject.put("pid", role.getDirCode());
+				jsonObject.put("type", "role");
+				jsonArray.add(jsonObject);
+			}
+			dRes.setModel(jsonArray);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
