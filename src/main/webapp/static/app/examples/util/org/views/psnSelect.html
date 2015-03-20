@@ -1,0 +1,73 @@
+<h2>psnSelect样例</h2>
+<button class="btn" id="psnSelectBtn">人员选择</button>
+<button class="btn" id="psnClearBtn">Clear</button>
+
+<div id="selectPsn" class="tree"><ul></ul></div>
+<!-- requireJS Load -->
+<script type="text/javascript">
+require(["jquery","OrgDir/psnSelect","Bootstrap"],function($,PsnSelect){
+    var $selectPsn = $("#selectPsn")
+    var psnSelect = PsnSelect({
+            id : "psnSelect",
+            type : "multi",
+            org : {
+                url:null,
+                data:[
+                    {text:"标签"},
+                    {text:"标签"},
+                    {text:"标签"}
+                ]
+            },
+            psn : {
+                url:"./data/psnData.json",
+                data: null
+            },
+            orgData : [
+                {code:"100",text:"测试100",data:[
+                    {code:"101",text:"测试101"},
+                    {code:"102",text:"测试102"},
+                    {code:"103",text:"测试103"}
+                ]},
+                {code:"200",text:"测试200"},
+                {code:"300",text:"测试300"}
+            ],
+            callback : function(data){
+                console.log(data);
+                setSelectPsn(data);
+            }
+        });
+    $("#psnSelectBtn").on("click",function(){
+        psnSelect.load([],getSelectPsn());
+    });
+    $("#psnClearBtn").on("click",function(){
+        clearSelectPsn();
+    });
+
+    function setSelectPsn(data){
+        var $frag = $(document.createDocumentFragment()),
+            html;
+        $selectPsn.children("ul").empty();
+        for (var i = 0; i < data.length; i++) {
+            html = '<li><a>code: <span class="code">'+data[i].code+'</span>'+
+                   'text: <span class="text">'+data[i].text+'</span></a></li>';
+            $frag.append(html);
+        }
+        $selectPsn.children("ul").append($frag);
+    }
+
+    function getSelectPsn(){
+        var data  = [];
+        $selectPsn.find("li").each(function(){
+            data.push({
+                code : $(this).find(".code").text(),
+                text : $(this).find(".text").text()
+            });
+        });
+        return data;
+    }
+
+    function clearSelectPsn(){
+        $selectPsn.children("ul").empty();
+    }
+ });
+</script>

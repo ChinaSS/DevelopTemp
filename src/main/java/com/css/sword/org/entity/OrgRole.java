@@ -1,7 +1,10 @@
 package com.css.sword.org.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+
 
 
 /**
@@ -15,8 +18,7 @@ public class OrgRole extends com.css.sword.core.kernel.base.dataElement.AbsPersi
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="role_code")
-	private String roleCode;
+	private String uuid;
 
 	@Column(name="dir_code")
 	private String dirCode;
@@ -24,11 +26,16 @@ public class OrgRole extends com.css.sword.core.kernel.base.dataElement.AbsPersi
 	@Column(name="dir_name")
 	private String dirName;
 
+	private String hierarchy;
+
 	@Column(name="manager_code")
 	private String managerCode;
 
 	@Column(name="manager_name")
 	private String managerName;
+
+	@Column(name="role_code")
+	private String roleCode;
 
 	@Column(name="role_name")
 	private String roleName;
@@ -38,12 +45,12 @@ public class OrgRole extends com.css.sword.core.kernel.base.dataElement.AbsPersi
 	public OrgRole() {
 	}
 
-	public String getRoleCode() {
-		return this.roleCode;
+	public String getUuid() {
+		return this.uuid;
 	}
 
-	public void setRoleCode(String roleCode) {
-		this.roleCode = roleCode;
+	public void setUuid(String uuid) {
+		this.uuid = java.util.UUID.randomUUID().toString();
 	}
 
 	public String getDirCode() {
@@ -62,6 +69,14 @@ public class OrgRole extends com.css.sword.core.kernel.base.dataElement.AbsPersi
 		this.dirName = dirName;
 	}
 
+	public String getHierarchy() {
+		return this.hierarchy;
+	}
+
+	public void setHierarchy(String hierarchy) {
+		this.hierarchy = hierarchy;
+	}
+
 	public String getManagerCode() {
 		return this.managerCode;
 	}
@@ -76,6 +91,14 @@ public class OrgRole extends com.css.sword.core.kernel.base.dataElement.AbsPersi
 
 	public void setManagerName(String managerName) {
 		this.managerName = managerName;
+	}
+
+	public String getRoleCode() {
+		return this.roleCode;
+	}
+
+	public void setRoleCode(String roleCode) {
+		this.roleCode = roleCode;
 	}
 
 	public String getRoleName() {
