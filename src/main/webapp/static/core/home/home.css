@@ -45,13 +45,13 @@ a{
 }
 
 .tab-header{
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: 5px;
     overflow: hidden;
 }
 .tab-header .title{
     float: left;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
 }
 .tab-header .title .fa{
