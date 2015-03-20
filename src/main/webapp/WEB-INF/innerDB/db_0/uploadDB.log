@@ -1,0 +1,2 @@
+/*C2*/SET SCHEMA PUBLIC
+CREATE TABLE uploadhistory(\u000d\u000afid varchar(40) not null primary key,\u000d\u000afilePath varchar(400),\u000d\u000amd5 varchar(32),\u000d\u000asha1 varchar(60),\u000d\u000acrc32 varchar(10),\u000d\u000aoriginalName varchar(100)\u000d\u000a)

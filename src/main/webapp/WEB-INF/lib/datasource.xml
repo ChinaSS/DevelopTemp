@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataSource>
+<!--  <noSQL-Source did="mongodbTest" type="noSQL">
+		<serverName>1</serverName>
+		<port>123</port>
+		<dbName>tes</dbName>
+		<dbType>44</dbType>
+		<userName>sdf</userName>
+		<password>ass</password>
+	</noSQL-Source>-->	
+	<SQL-Source did="uploadDB" type="SQL">
+		<url>jdbc:hsqldb:hsql://localhost:9001/uploadDB</url>
+		<driverName>org.hsqldb.jdbcDriver</driverName>
+		<userName>sa</userName>
+		<password>uploadDB</password>
+		<usePool>false</usePool>
+	</SQL-Source>
+</DataSource>

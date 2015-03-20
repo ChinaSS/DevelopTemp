@@ -5,28 +5,15 @@ define(['WebUploader','jquery','css!UtilDir/css/util.css','css!WebUploaderCss'],
      * @param options
      */
     var init = function(options){
-    	//  因有些配置信息固定不可改，所以options需要预处理后再合并到settings中
-    	if(options==null){ 
-    		options={};
-    	}
-    	options.auto=false;													//  是否自动上传
-    	options.swf=getStaticPath() + 'modules/webuploader/Uploader.swf';	//  flash地址
-    	options.server=getServer() +"/sword/fileUpload/";
-    	options.runtimeOrder='html5,flash';
-    	options.formData={};												//  向服务器额外发送的数据
-    	options.prepareNextFile=true;
-    	options.chunked=true;
-    	options.chunkSize=5242880;											//  5M
-    	options.threads=3;													//  每个文件提供3个请求
-    	options.resize=false;
-    	options.duplicate=true;
-    	options.sendAsBinary=false;
-       
         var settings = {
-            placeAt:"",                                                     //  附件上传组件所放位置
-            pick: '',                                                       //  上传按钮所在位置
-	    	chunkRetry :0,													//  分片上传失败后重试
-            uploadSuccessExt:function(file, response){}                     //  上传成功扩展
+            type:"simple",
+            placeAt:"",                                                     //附件上传组件所放位置
+            auto: false,                                                    //是否自动上传
+            swf: getStaticPath() + 'modules/webuploader/Uploader.swf',      //flash地址
+            server: getServer() +"/file/upload",
+            formData:{},                                                    //向服务器额外发送的数据
+            pick: '',                                                       //上传按钮所在位置
+            uploadSuccessExt:function(file, response){}                     //上传成功扩展
         };
 
         return new Upload($.extend(settings,options)).render();
@@ -258,9 +245,7 @@ define(['WebUploader','jquery','css!UtilDir/css/util.css','css!WebUploaderCss'],
 
     /********************************WebUploader相关**********************************/
     var InitUploader = function(Upload,settings) {
-    	//  注册hook事件
-    	registerForWebUploader(WebUploader,settings.server);
-        var uploader = new WebUploader.Uploader(settings);
+        var uploader = WebUploader.create(settings);
 
         /**
          * 当一批文件添加进队列以后触发。
@@ -274,43 +259,7 @@ define(['WebUploader','jquery','css!UtilDir/css/util.css','css!WebUploaderCss'],
                     Upload.setStatus(file.name+'已在待上传列表中.');
                     return;
                 }*/
-            	var _file=file;
-   			 	queuedFiles.push(new File(Upload,uploader,_file));
-            	uploader.md5File( file )
-    	        // 及时显示进度
-    	        .progress(function(percentage) {
-    	        	var process=Math.round(percentage*10000)/100;
-    	        	var queuedFile = getFileFromList(_file.name, Upload.queuedFiles);
-    	            queuedFile.$status.empty().append('MD5 校验中('+process +"%)");
-//    	            console.log('Percentage:'+ process+"%");
-    	        })
-    	        // 完成
-    	        .then(function(val) {
-    	        	_file.statusText=val;
-    	        	$.ajax({
-    	        		 url:uploader.options.server+"?check=true&md5="+val,
-    	        		 async:false,
-    	        		 type:"get",
-    	        		 beforeSend:function (XMLHttpRequest) {
-    	 					console.log(XMLHttpRequest.readyState);
-    	 					XMLHttpRequest.setRequestHeader("SwordControllerName", "FileUploadController");
-    	 				 },
-    	        		 success:function(data){
-    	        			 console.log("Data: " + data + "\n");
-    	        			 if(data.fid){
-    	        				 uploader.skipFile(_file);
-    	        				 uploader.trigger('uploadSuccess',_file,{data:data});
-    	        			 }else{
-    	        				 console.log("start upload!");
-    	        				 uploader.upload();
-    	        			 }
-    	        		 },
-    	        		 error:function(xrh,data){
-    	        			 console.log(data);
-    	        		 }
-    	        	});
-    	        });
-                
+                queuedFiles.push(new File(Upload,uploader,file));
             }
         });
         /**
@@ -326,22 +275,6 @@ define(['WebUploader','jquery','css!UtilDir/css/util.css','css!WebUploaderCss'],
                             '</div>';
             queuedFile.$status.empty().append(progress);
         });
-        /**
-         * 每个请求前需要携带的参数
-         */
-        uploader.on("uploadBeforeSend",function(object,data,headers){
-	    	var me=this;
-	    	if(!object){
-	    		headers={};
-	    	}
-	    	if(object.file){
-	    		data["md5"]=object.file.statusText;
-	    		data["chunkMd5"]=object.chunkMd5;
-	    		data["chunkSize"]=object.chunkSize;
-	    	}
-	    	headers["SwordControllerName"]="FileUploadController";	//  new sword 特定上传请求头
-	    });
-        
         /**
          * 上传过程中触发，携带上传进度。
          */
@@ -360,152 +293,36 @@ define(['WebUploader','jquery','css!UtilDir/css/util.css','css!WebUploaderCss'],
          * 当文件上传成功时触发。
          */
         uploader.on( 'uploadSuccess', function( file, response ) {
-        	var responseProcess=function(data){
-		   		 		console.log("Data: " + data + "\n");
-		   		 		if(data.fid&&data.filePath){
-		   		 			console.log("FID:"+data.fid+"\nFilePath:"+data.filePath);
-		       		 		var queuedFile = getFileFromList(file.name, Upload.queuedFiles);
-		                    //保存后端返回的数据
-		                    queuedFile.responseData = data;
-		                    //添加到已上传列表中
-		                    Upload.savedFiles.push(queuedFile);
-		                    //从待上传中删除
-		                    delFileFormList(file.name, Upload.queuedFiles);
-		
-		                    //设置成功状态
-		                    queuedFile.$status.empty().append('已上传');
-		                    queuedFile.saved = true;
-		
-		                    //显示下载按钮
-		                    queuedFile.$download.show();
-		                    //全部上传完成回调
-		                    //if(uploader.getStats().progressNum==0){
-		                        Upload.settings.uploadSuccessExt.apply(Upload,[file]);
-		                    //}
-		   		 		}else{
-		   		 			console.log("upload error!");
-		   		 			uploader.trigger('uploadError',file);
-		   		 		}
-        	};
-        	if(response&&response.data){
-        		responseProcess(response.data);
-        	}else{
-        	//  获取文件上传的保存路径和fid
-    	    	$.ajax({
-    	    		url:uploader.options.server+"?check=true&queryResult=true&md5="+file.statusText,
-           		 	async:false,
-           		 	type:"get",
-           		 	beforeSend:function (XMLHttpRequest) {
-    					console.log(XMLHttpRequest.readyState);
-    					XMLHttpRequest.setRequestHeader("SwordControllerName", "FileUploadController");
-    				 },
-           		 	success:function(data){
-           		 		responseProcess(data);
-           		 	},
-           		 	error:function(xrh,data){
-           		 		console.log(data);
-           		 	}
-    	    	});
-        	}
-	    	
+            if(response.status=="200"){
+                var queuedFile = getFileFromList(file.name, Upload.queuedFiles);
+                //保存后端返回的数据
+                queuedFile.responseData = response;
+                //添加到已上传列表中
+                Upload.savedFiles.push(queuedFile);
+                //从待上传中删除
+                delFileFormList(file.name, Upload.queuedFiles);
+
+                //设置成功状态
+                queuedFile.$status.empty().append('已上传');
+                queuedFile.saved = true;
+
+                //显示下载按钮
+                queuedFile.$download.show();
+                //全部上传完成回调
+                //if(uploader.getStats().progressNum==0){
+                    Upload.settings.uploadSuccessExt.apply(Upload,[file, response]);
+                //}
+            }
         });
         /**
          * 不管成功或者失败，文件上传完成时触发。
          */
         uploader.on('uploadComplete',function(file){
-        	var queuedFile = getFileFromList(file.name, Upload.queuedFiles);
-            queuedFile.$status.find('.progress').fadeOut();
+
         });
 
         return uploader;
     };
-    
-/**
- * 注册before-send方法
- * @param webUpload
- */
-function registerForWebUploader(webUpload,checkUrl){
-	webUpload.Uploader.register({  
-        'before-send' : 'checkchunk',
-        'after-send-file':'checkFile'
-    }, {
-    	/**
-         * method:before-send
-         * 在分片发送之前request，可以用来做分片验证，如果此分片已经上传成功了，可返回一个rejected promise来跳过此分片上传
-         * para:block: 分片对象
-         */
-        checkchunk : function(block) {
-            var me = this; 
-            var owner = this.owner;
-            var deferred = $.Deferred();
-            var chunkFile = block.blob;
-            var file = block.file;
-            var chunk = block.chunk;
-            var chunks = block.chunks;
-            var start = block.start;
-            var end = block.end;
-            var total = block.total;
-
-            file.chunks = chunks;           
-
-            if(chunks>1){ //文件大于chunksize 分片上传
-                owner.md5File(chunkFile)            
-                .progress(function(percentage) {
-                    //分片MD5计算可以不知道计算进度
-                })  
-                .then(function(chunkMd5) {  
-                    //owner.options.formData.chunkMd5 = chunkMd5;
-                    block.chunkMd5 = chunkMd5;
-                    var exist = false;
-                    var chunkSize=block.end-block.start;
-                    block.chunkSize=chunkSize;
-                    var isLast=false;
-                    if(block.total==block.end){
-                    	isLast=true;
-                    }
-                    $.ajax({
-	   	        		 url:checkUrl+"?check=true&md5="+file.statusText+"&chunkMd5="+chunkMd5+"&chunkSize="+chunkSize,
-	   	        		 async:false,
-	   	        		 type:"get",
-	   	        		 beforeSend:function (XMLHttpRequest) {
-    	 					console.log(XMLHttpRequest.readyState);
-    	 					XMLHttpRequest.setRequestHeader("SwordControllerName", "FileUploadController");
-    	 				 },
-	   	        		 success:function(data){
-	   	        			 if (data&&data.chunkMd5==chunkMd5) {
-	   	        				 exist=data.exist;
-	   	        				 if (exist&&!isLast) {
-	   	   	                        deferred.reject();
-	   	   	                     } else {                        
-	   	   	                        deferred.resolve();
-	   	   	                     }
-	   	                     }  else{
-	   	                    	 console.log("分片验证失败！");
-	   	                    	 deferred.resolve();
-	   	                     }
-	
-	   	                             
-	   	        		 },
-	   	        		 error:function(xrh,data){
-	   	        			 console.log(data);
-	   	        		 }
-   	        	 	});
-                           
-                });
-
-            }else{//未分片文件上传
-                block.chunkMd5 = file.statusText;
-                var chunkSize=block.end-block.start;
-                block.chunkSize=chunkSize;
-                deferred.resolve();
-            }           
-            return deferred.promise();
-        },
-        checkFile:function(object){
-        	console.log("chunks uploadTask over!");
-        }
-    }); 
-}
 
     /********************************内部私有工具方法**********************************/
     /**
