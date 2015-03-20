@@ -125,6 +125,8 @@
 	</dependencies>
 	<build>
 		<finalName>sword-demo</finalName>
+		<sourceDirectory>src/main</sourceDirectory>  
+        <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>  
 		<!-- 确定项目的开发编译版本都1.7 -->
 		<plugins>
 			<plugin>
