@@ -11,14 +11,8 @@ import com.css.sword.core.kernel.base.dataElement.IValueObject;
 import com.css.sword.core.kernel.base.exception.SwordBaseCheckedException;
 import com.css.sword.core.kernel.base.persistence.IPersistenceService;
 import com.css.sword.core.kernel.utils.SwordPersistenceUtils;
-<<<<<<< HEAD
-import com.css.sword.core.kernel.utils.SwordServiceUtils;
-import com.css.sword.org.entity.OrgDept;
-=======
->>>>>>> 81ca68896fe036a73c5ebc4fafe3f6a15286a9f9
 import com.css.sword.org.entity.OrgRole;
 import com.css.sword.org.entity.OrgRoleDir;
-import com.css.sword.web.SwordServiceUtil;
 import com.css.sword.web.request.ISwordRequest;
 import com.css.sword.web.response.ISwordResponse;
 import com.css.sword.web.response.SwordResponseFactory;
