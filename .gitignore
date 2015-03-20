@@ -15,3 +15,5 @@ pom.xml
 .settings/org.eclipse.wst.common.component
 
 pom.xml
+target/classes/Persistence.xml
+target/classes/Persistence.xml
