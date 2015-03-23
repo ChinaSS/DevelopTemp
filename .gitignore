@@ -24,3 +24,4 @@ target/classes/Persistence.xml
 .settings/org.eclipse.wst.validation.prefs
 
 .settings/org.eclipse.wst.common.component
+src/main/webapp/WEB-INF/classes
