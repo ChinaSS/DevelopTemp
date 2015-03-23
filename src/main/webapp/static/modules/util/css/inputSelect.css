@@ -28,6 +28,7 @@ ul,li{
     background-color: #eee;
     color : #333;
     cursor: default;
+    border-radius: 3px;
 }
 .inputContent a:hover span{
     cursor: pointer;
@@ -38,7 +39,7 @@ ul,li{
 .inputPanel{
     display : none;
     position : absolute;
-    z-index : 1;
+    z-index : 5;
     overflow-x : hidden;
     background-color : #ffffff;
     border : 1px solid #ccc;
