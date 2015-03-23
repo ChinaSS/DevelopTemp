@@ -190,7 +190,7 @@ define(["jquery","./treeSearch","css!UtilDir/css/inputSelect.css"],function($,se
             search.treeInit(this.$panel.children(".panelData"));
             if (this.config.searchAble) {
                 var $panelSearch = $("<input class='panelSearch form-control'>");
-                this.$panel.prepend($panelSearch);
+                this.$panel.before($panelSearch);
                 search.listen($panelSearch);
             }
             this.getData();
@@ -316,6 +316,7 @@ define(["jquery","./treeSearch","css!UtilDir/css/inputSelect.css"],function($,se
             this.$panel.children(".panelSearch").val("");
             search.reset(this.$panel.children(".panelData"));
             this.$panel.show();
+            this.$panel.siblings(".panelSearch").show();
         },
         hidePanel : function(){
             if(!!this.config.callback){
@@ -328,6 +329,7 @@ define(["jquery","./treeSearch","css!UtilDir/css/inputSelect.css"],function($,se
             }
             $(document).unbind(selectEvent);//隐藏panel时,解除document事件绑定
             this.$panel.hide();
+            this.$panel.siblings(".panelSearch").hide();
         },
         togglePanel : function(){
             this.$panel.is(":visible")?this.hidePanel():this.showPanel();

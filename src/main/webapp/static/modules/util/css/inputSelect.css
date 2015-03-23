@@ -44,12 +44,13 @@ ul,li{
     background-color : #ffffff;
     border : 1px solid #ccc;
     font-size: 13px;
-    padding-top: 2px;
+    padding-top: 32px;
     margin-top: -2px;
 }
 .panelSearch{
     display : block;
     position: absolute;
+    z-index: 6;
     height: 22px;
     margin : 2px auto;
     border : 1px solid #ccc;
