@@ -529,7 +529,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 				$.ajax({
 					url : getServer() + "/sword/authSaveRoleRes",
 					data : {
-						roleId : row.roleCode,
+						roleId : row.uuid,
 						resIds : resIds.join(",") 
 					},
 					success : function(data) {

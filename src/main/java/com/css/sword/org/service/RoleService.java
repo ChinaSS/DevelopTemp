@@ -13,7 +13,6 @@ import com.css.sword.core.kernel.base.persistence.IPersistenceService;
 import com.css.sword.core.kernel.utils.SwordPersistenceUtils;
 import com.css.sword.org.entity.OrgRole;
 import com.css.sword.org.entity.OrgRoleDir;
-import com.css.sword.web.SwordServiceUtil;
 import com.css.sword.web.request.ISwordRequest;
 import com.css.sword.web.response.ISwordResponse;
 import com.css.sword.web.response.SwordResponseFactory;
@@ -131,11 +130,6 @@ public class RoleService {
 		}
 		
 		return dRes;
-	}
-	
-	@Service(serviceName="orgGetRoleByPidPage")
-	public List<String> getStringList() {
-		return new ArrayList<String>();
 	}
 	
 	/**

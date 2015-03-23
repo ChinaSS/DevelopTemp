@@ -43,6 +43,7 @@ public class OrgRole extends com.css.sword.core.kernel.base.dataElement.AbsPersi
 	private int sort;
 
 	public OrgRole() {
+		this.uuid = java.util.UUID.randomUUID().toString();
 	}
 
 	public String getUuid() {
@@ -50,7 +51,8 @@ public class OrgRole extends com.css.sword.core.kernel.base.dataElement.AbsPersi
 	}
 
 	public void setUuid(String uuid) {
-		this.uuid = java.util.UUID.randomUUID().toString();
+//		this.uuid = java.util.UUID.randomUUID().toString();
+		this.uuid = uuid;
 	}
 
 	public String getDirCode() {
