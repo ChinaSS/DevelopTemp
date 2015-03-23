@@ -11,11 +11,6 @@ import com.css.sword.core.kernel.base.dataElement.IValueObject;
 import com.css.sword.core.kernel.base.exception.SwordBaseCheckedException;
 import com.css.sword.core.kernel.base.persistence.IPersistenceService;
 import com.css.sword.core.kernel.utils.SwordPersistenceUtils;
-<<<<<<< HEAD
-import com.css.sword.core.kernel.utils.SwordServiceUtils;
-import com.css.sword.org.entity.OrgDept;
-=======
->>>>>>> 81ca68896fe036a73c5ebc4fafe3f6a15286a9f9
 import com.css.sword.org.entity.OrgRole;
 import com.css.sword.org.entity.OrgRoleDir;
 import com.css.sword.web.SwordServiceUtil;
@@ -150,7 +145,6 @@ public class RoleService {
 	public ISwordResponse getRoleTree(ISwordRequest iReq) throws SwordBaseCheckedException{
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
-//		SwordServiceUtils.callLocalService(serviceName, args)
 		try {
 			JSONArray jsonArray = new JSONArray();
 			//查询角色分类
@@ -160,7 +154,7 @@ public class RoleService {
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("id", dir.getDirCode());
 				jsonObject.put("name", dir.getDirName());
-				jsonObject.put("pid", dir.getPDirCode());
+				jsonObject.put("pId", dir.getPDirCode());
 				jsonObject.put("isParent", true);
 				jsonObject.put("type", "dir");
 				jsonArray.add(jsonObject);
@@ -172,7 +166,7 @@ public class RoleService {
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("id", role.getRoleCode());
 				jsonObject.put("name", role.getRoleName());
-				jsonObject.put("pid", role.getDirCode());
+				jsonObject.put("pId", role.getDirCode());
 				jsonObject.put("type", "role");
 				jsonArray.add(jsonObject);
 			}

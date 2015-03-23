@@ -6,7 +6,7 @@
     	height: 34px;
     }
     .toolbar{
-    	padding: 5px 0 15px 0;
+    	padding: 0 0 10px 0;
     	margin-bottom: 10px;
     	border-bottom: 1px solid #ccc;
     }
@@ -29,23 +29,31 @@
 	#authRes_tree_opr_tip{
 		display: none;
 	}
+	.alert{
+		margin-bottom: 10px;
+	}
+	#tab_authSet .tab-pane{
+		padding: 0;
+	}
 </style>
 <div class="auth_nav">
     <ul class="nav nav-tabs nav-justified" role="tablist">
-        <li role="presentation" class="active"><a href="#authRes" role="tab" data-toggle="tab"><i class="fa fa-tasks"></i>&nbsp;资源管理</a></li>
-        <li role="presentation"><a href="#authSet" role="tab" data-toggle="tab"><i class="fa fa-pagelines"></i>&nbsp;授权管理</a></li>
-        <li role="presentation"><a href="#authUpdate" role="tab" data-toggle="tab"><i class="fa fa-yelp"></i>&nbsp;变更管理</a></li>
+        <li role="presentation" class="active"><a href="#tab_authRes" role="tab" data-toggle="tab"><i class="fa fa-tasks"></i>&nbsp;资源管理</a></li>
+        <li role="presentation"><a href="#tab_authSet" role="tab" data-toggle="tab"><i class="fa fa-pagelines"></i>&nbsp;授权管理</a></li>
+        <li role="presentation"><a href="#tab_authUpdate" role="tab" data-toggle="tab"><i class="fa fa-yelp"></i>&nbsp;变更管理</a></li>
     </ul>
 </div>
 <div class="auth_tab">
     <!-- Tab panes -->
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="authRes">
+    	<!-- 资源管理 -->
+        <div role="tabpanel" class="tab-pane active" id="tab_authRes">
+        	<div class="alert alert-success" role="alert">资源管理，维护资源目录和资源实体</div>
         	<div class="toolbar">
 	        	<button id="btn_authRes_refresh" class="btn btn-default"><i class="fa fa-refresh"></i>&nbsp;刷新</button>
-	        	<button id="btn_authRes_addSort" class="btn btn-default">添加分类</button>
-	        	<button id="btn_authRes_editSort" class="btn btn-default">编辑分类</button>
-	        	<button id="btn_authRes_deleteSort" class="btn btn-default">删除分类</button>
+	        	<button id="btn_authRes_addSort" class="btn btn-default"><i class="fa fa-plus"></i>&nbsp;添加目录</button>
+	        	<button id="btn_authRes_editSort" class="btn btn-default"><i class="fa fa-pencil"></i>&nbsp;编辑目录</button>
+	        	<button id="btn_authRes_deleteSort" class="btn btn-default"><i class="fa fa-minus"></i>&nbsp;删除目录</button>
 	        	<span id="authRes_tree_opr_tip" class="text-danger">请选中树节点</span>
         	</div>
             <div class="row">
@@ -54,7 +62,7 @@
                     <div id="authRes_tree_tip" class="alert alert-warning">
                 		<span>暂未有数据,<a id="btn_authRes_addRoot" class="alert-link" href="javascript:;">&nbsp;点此&nbsp;</a>创建根目录</span>
                 	</div>
-                    <div id="tree_res" class="ztree"></div>
+                    <div id="tree_resDir" class="ztree"></div>
                 </div>
                 <div class="col-md-9">
                 	<div class="authTitle bg-info"><span>资源信息列表</span></div>
@@ -64,21 +72,60 @@
                 </div>
             </div>
         </div>
-        <div role="tabpanel" class="tab-pane" id="authSet">
+        <!-- 授权管理 -->
+        <div role="tabpanel" class="tab-pane" id="tab_authSet">
+        	<div class="alert alert-success" role="alert">授权管理，维护角色与资源之间的相互关系</div>
         	<div class="toolbar">
 				<button id="btn_authSet_refresh" class="btn btn-default"><i class="fa fa-refresh"></i>&nbsp;刷新</button>
-				<button id="btn_authSet_save" class="btn btn-default disabled"><i class="fa fa-save"></i>&nbsp;保存</button>
+				<button id="btn_authSet_save" class="btn btn-default"><i class="fa fa-save"></i>&nbsp;保存</button>
         	</div>
 			<div class="row">
-				<div class="col-md-4">
-					<div id="tree_role" class="ztree"></div>
+				<div class="col-md-2">
+					 <ul class="nav nav-pills nav-stacked" role="tablist">
+				        <li role="presentation" class="active"><a href="#tab_roleRes" role="tab" data-toggle="tab" title="角色选择资源">角色&nbsp;<i class="fa fa-long-arrow-right"></i>&nbsp;资源</a></li>
+				        <li role="presentation"><a href="#tab_resRole" role="tab" data-toggle="tab" title="资源选择角色">资源&nbsp;<i class="fa fa-long-arrow-right"></i>&nbsp;角色</a></li>
+				    </ul>
 				</div>
-				<div class="col-md-4">
-					<div id="tree_check_res" class="ztree"></div>
+				<div class="col-md-10">
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="tab_roleRes">
+							<div class="row">
+								<div class="col-md-3">
+									<div class="authTitle bg-info"><span>角色目录</span></div>
+									<div id="tree_roleDir" class="ztree"></div>
+								</div>
+								<div class="col-md-4">
+									<div class="authTitle bg-info"><span>角色列表</span></div>
+									<div id="grid_role"></div>
+								</div>
+								<div class="col-md-3">
+									<div class="authTitle bg-info"><span>资源信息</span></div>
+									<div id="treeCheck_res" class="ztree"></div>
+								</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="tab_resRole">
+							<div class="row">
+								<div class="col-md-3">
+									<div class="authTitle bg-info"><span>资源目录</span></div>
+									<div id="tree_roleDir_set" class="ztree"></div>
+								</div>
+								<div class="col-md-4">
+									<div class="authTitle bg-info"><span>资源列表</span></div>
+									<div id="grid_res_set"></div>
+								</div>
+								<div class="col-md-3">
+									<div class="authTitle bg-info"><span>角色信息</span></div>
+									<div id="treeCheck_role" class="ztree"></div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
         </div>
-        <div role="tabpanel" class="tab-pane" id="authUpdate">
+        <!-- 变更管理 -->
+        <div role="tabpanel" class="tab-pane" id="tab_authUpdate">
         	<div class="toolbar">
 				<button id="btn_authUpdate_refresh" class="btn btn-default"><i class="fa fa-refresh"></i>&nbsp;刷新</button>
 				<button id="btn_authUpdate_save" class="btn btn-default disabled"><i class="fa fa-save"></i>&nbsp;保存</button>
