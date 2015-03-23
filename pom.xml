@@ -18,14 +18,14 @@
 			</snapshots>
 			<id>public</id>
 			<name>Public Repositories</name>
-			<url>http://10.12.9.146:8080/nexus/content/groups/public/</url>
+			<url>http://10.12.10.146:8080/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>public</id>
 			<name>Public Repositories</name>
-			<url>http://10.12.9.146:8080/nexus/content/groups/public/</url>
+			<url>http://10.12.10.146:8080/nexus/content/groups/public/</url>
 		</pluginRepository>
 	</pluginRepositories>
 	<dependencies>
@@ -125,7 +125,7 @@
 	</dependencies>
 	<build>
 		<finalName>sword-demo</finalName>
-		<sourceDirectory>src/main</sourceDirectory>  
+		<sourceDirectory>src/main/java</sourceDirectory>  
         <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>  
 		<!-- 确定项目的开发编译版本都1.7 -->
 		<plugins>

@@ -20,3 +20,7 @@ target/classes/Persistence.xml
 .settings/org.eclipse.jpt.entitygen.new-mysql.developtemp
 
 .classpath
+
+.settings/org.eclipse.wst.validation.prefs
+
+.settings/org.eclipse.wst.common.component
