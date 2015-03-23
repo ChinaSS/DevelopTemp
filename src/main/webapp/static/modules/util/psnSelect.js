@@ -1,4 +1,4 @@
-define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/css/style.css"],function($,Tree,Dialog){
+define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/psnSelect.css"],function($,Tree,Dialog){
 
 	var cache = {};
 
@@ -105,7 +105,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/css/style.css"],fun
 		//init Dialog
         this._initDialog();
         //init orgTree
-		this._initOrg(this._param.org.data);
+		this._initOrg(this._param.org.tag);
 		//init selectTree
 		this._loadSelectData(this._param.psn.data);
 		//bind Event
@@ -173,10 +173,10 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/css/style.css"],fun
 					$aim;
 				if ($(this).is(".up")) {
 					$aim = $cur.prev();
-					$aim.length?$aim.before($cur.remove()):false;
+					$aim.length?$aim.before($cur):false;
 				} else if ($(this).is(".down")) {
 					$aim = $cur.next();
-					$aim.length?$aim.after($cur.remove()):false;
+					$aim.length?$aim.after($cur):false;
 				}
 			});
 			$dialog.on("hidden.bs.modal",function(){
@@ -225,17 +225,23 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!OrgDir/css/style.css"],fun
 			$frag.append($li);
 		}
 		$orgTag.children("ul").append($frag);
+		//以第一个tag组织的code初始化orgTree
 		code = $orgTag.find("li:first").addClass("active").data("code");
 		this._initOrgTree(code);
 	};
 
 	PsnSelect.prototype._initOrgTree = function(code){
+		if (!(code&&this._param.org.url)&&!(this._param.org.data&&this._param.org.data.length)) {
+			console.log("OrgTree init param illegal!");
+			return false;
+		}
 		this.tree = new OrgTree({
 			id : this._param.id+"_orgTree",
-			data : this._param.orgData,
+			data : this._param.org.data,
 			url : this._param.org.url,
 			code : code,
-			psnUrl : this._param.psn.url
+			psnUrl : this._param.psn.url,
+			key : this._param.key
 		});
 	};
 

@@ -1,0 +1,63 @@
+.orgTree .psnSearch,.psnSelect .tools{
+	position: absolute;
+	top: -33px;
+	left: 0px;
+	padding: 0 10px;
+	width: 100%;
+}
+.psnSearch .search,.psnSearch .submit,.psnSelect .tools .btn{
+	height: 28px;
+	padding: 3px 6px;
+}
+.psnSelect .tools a{
+	margin-right: 5px;
+}
+
+.orgTree,.psnSelect{
+	float: left;
+	position: relative;
+	padding: 0 10px;
+	margin-top: 30px;
+	box-sizing:border-box;
+}
+.orgTree{
+	width: 55%;
+	padding-left: 20px;
+}
+.psnSelect{
+	width: 45%;
+}
+.orgTree .orgTag{
+	position: absolute;
+	left: -5px;
+	top: 0px;
+	width: 25px;
+	height: 100%;
+}
+.orgTree .orgTag .nav>li>a{
+	line-height: 16px;
+  	font-size: 12px;
+  	padding: 4px 6px;
+}
+.orgTree .orgTag .nav>li.active>a{
+	border-radius: 3px;
+	background-color: #337ab7;
+	color: #fff;
+}
+.orgTree .tree,.psnSelect .tree{
+	border: 1px solid #eee;
+	height: 280px;
+	overflow: auto;
+}
+.orgTree .tree .leaf > .pic{
+    background: url("../images/icons.png") no-repeat 0 0;
+}
+.orgTree .tree .leaf.open > .pic{
+    background: url("../images/icons.png") no-repeat -19px 0;
+}
+.orgTree .tree .data > .pic,.psnSelect .tree .data > .pic{
+	background: url("../images/icons.png") no-repeat -39px 0;
+}
+.psnSelect .tree .data.cur{
+	background-color: #eee;
+}
