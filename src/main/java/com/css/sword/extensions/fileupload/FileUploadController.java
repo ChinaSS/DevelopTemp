@@ -21,7 +21,7 @@ public class FileUploadController extends AbsSwordController {
 	public void doAction(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		int majorVersion=request.getServletContext().getEffectiveMajorVersion();
-		//UploadServletHandler.requestHandler(request, response,majorVersion);
+		UploadServletHandler.requestHandler(request, response,majorVersion);
 	}
 
 }

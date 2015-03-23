@@ -62,11 +62,11 @@
 			<version>2.4.3</version>
 			<type>maven-plugin</type>
 		</dependency>
-	<!-- 	<dependency>
+		<dependency>
 			<groupId>com.css.sword.extensions</groupId>
 			<artifactId>fileupload</artifactId>
-			<version>0.5.0-RC</version>
-		</dependency> -->
+			<version>0.6.0</version>
+		</dependency> 
 		<dependency>
 			<groupId>com.gs</groupId>
 			<artifactId>quicktools-core</artifactId>
