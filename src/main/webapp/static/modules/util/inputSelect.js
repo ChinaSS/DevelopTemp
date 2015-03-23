@@ -15,6 +15,7 @@
         name : "name",
         data : "data"
     },
+    selectNode : false,
     initData:[]
  }
 **/
@@ -118,7 +119,7 @@ define(["jquery","./treeSearch","css!UtilDir/css/inputSelect.css"],function($,se
                 input.config.onSelect?input.config.onSelect(obj):"";
             });
         } else if (input.config.type=="select") {
-            input.$panel.on("dblclick",".item,.node",function(event){
+            input.$panel.on("dblclick",".item"+(input.config.selectNode?",.node":""),function(event){
                 var id = $(this).children(".text").data("id"),
                     value = $(this).children(".text").text(),
                     obj={};
@@ -191,7 +192,7 @@ define(["jquery","./treeSearch","css!UtilDir/css/inputSelect.css"],function($,se
             if (this.config.searchAble) {
                 var $panelSearch = $("<input class='panelSearch form-control'>");
                 this.$panel.before($panelSearch);
-                search.listen($panelSearch);
+                search.listen($panelSearch,this.$panel.children(".panelData"));
             }
             this.getData();
         },
@@ -309,11 +310,11 @@ define(["jquery","./treeSearch","css!UtilDir/css/inputSelect.css"],function($,se
                     "width" : width+"px",
                     "max-height" : this.$input.height()*10
                 });
-                this.$panel.children(".panelSearch").css({
+                this.$panel.siblings(".panelSearch").css({
                     "width" : this.$input.width()
                 });
             }
-            this.$panel.children(".panelSearch").val("");
+            this.$panel.siblings(".panelSearch").val("");
             search.reset(this.$panel.children(".panelData"));
             this.$panel.show();
             this.$panel.siblings(".panelSearch").show();
