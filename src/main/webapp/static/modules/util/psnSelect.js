@@ -65,7 +65,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/psnSelect.css"
 	OrgTree.prototype.getOrgData = function(q,callback){
 		var _this = this;
 		this.query({
-			url : this._param.orgUrl,
+			url : this._param.url,
 			data : {
 				orgCode : q["orgCode"]?q["orgCode"]:null
 			},
