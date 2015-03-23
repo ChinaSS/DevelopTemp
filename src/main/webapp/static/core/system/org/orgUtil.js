@@ -15,14 +15,18 @@ define(["UtilDir/psnSelect"], function(PsnSelect){
     }
 
     function getData($elem){
-        var code = $elem.data("code").split(","),
-            text = $elem.val().split(","),
+        var code = $elem.data("code"),
+            text = $elem.val(),
             dataArray=[];
-        for (var i = 0; i < code.length; i++) {
-            dataArray.push({
-                code : code[i],
-                text : text[i]
-            });
+        if (code&&text) {
+            code = code.split(",");
+            text = text.split(",");
+            for (var i = 0; i < code.length; i++) {
+                dataArray.push({
+                    code : code[i],
+                    text : text[i]
+                });
+            }
         }
         return dataArray;
     }

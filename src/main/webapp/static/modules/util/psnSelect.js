@@ -62,6 +62,19 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/psnSelect.css"
 		})
 	};
 
+	OrgTree.prototype.getOrgData = function(q,callback){
+		var _this = this;
+		this.query({
+			url : this._param.orgUrl,
+			data : {
+				orgCode : q["orgCode"]?q["orgCode"]:null
+			},
+			callback : function(data){
+				callback.call(_this,data);
+			}
+		})
+	};
+
 	OrgTree.prototype.search = function(psnText){
 		if (!!psnText) {
 			this.getPsnData({
@@ -133,7 +146,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/psnSelect.css"
 	};
 
 	PsnSelect.prototype._initDialogBody = function(dialog){
-		var html = '<div class="orgTree">'+
+		var html = '<div class="orgTree'+(this._param.type!='multi'?' style="width:100%;"':'')+'">'+
 				   '<div class="psnSearch">'+
         		   '<div class="input-group"><input type="text" class="search form-control">'+
         		   '<span class="input-group-btn"><button class="submit btn btn-default" type="button">Go</button></span>'+
@@ -193,6 +206,13 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/psnSelect.css"
 				_this.hide();
 			});
 		}
+		$dialog.find(".orgTree .orgTag").on("click","li",function(){
+			if ($(this).is(".active")) {return false;}
+			$(this).siblings(".active").removeClass("active").end().addClass("active");
+			_this.tree.getOrgData({
+				orgCode : $(this).data("code")
+			},_this.tree.renderTree);
+		});
 		//var lazySearch = null; //延迟搜索,减少数据请求压力
 		var $psnSearch = $dialog.find(".psnSearch");
 		$psnSearch.find(".submit").on("click",function(){
