@@ -14,6 +14,7 @@ import com.css.sword.org.entity.OrgRoleDir;
 import com.css.sword.web.request.ISwordRequest;
 import com.css.sword.web.response.ISwordResponse;
 import com.css.sword.web.response.SwordResponseFactory;
+import com.css.util.Page;
 
 @ServiceContainer
 public class RoleDirService {
@@ -29,7 +30,7 @@ public class RoleDirService {
 			String sql = "select * from org_role_dir where dir_code=?";
 			List<Object> param = new ArrayList<Object>();
 			param.add(iReq.getData("dir_code"));
-			OrgRoleDir roleDir = dao.findOneBySql(sql, param, (Class<? extends IValueObject>) OrgRoleDir.class);
+			OrgRoleDir roleDir = dao.findOneBySql(sql, param, OrgRoleDir.class);
 			dRes.setModel(roleDir);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -66,6 +67,22 @@ public class RoleDirService {
 			String sql = "select * from org_role_dir";
 			List<OrgRoleDir> result = dao.findAllBySql(sql, null ,OrgRoleDir.class);
 			dRes.setModel(result);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dRes;
+	}
+	//获取角色目录列表，带分页
+	@Service(serviceName="orgGetAllRoleDirPage")
+	public ISwordResponse orgGetAllRoleDirPage(ISwordRequest iReq) throws SwordBaseCheckedException{
+		
+		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
+
+		try {
+			String sql = "select * from org_role_dir";
+			dRes.setModel(new Page(iReq).getData(sql, null, OrgRoleDir.class));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

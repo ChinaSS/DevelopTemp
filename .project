@@ -3,7 +3,6 @@
 	<name>DevelopTemp</name>
 	<comment></comment>
 	<projects>
-		<project>fileupload</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -38,6 +38,23 @@ public class ZWService {
 	@Service(serviceName="orgGetAllZw")
 	public ISwordResponse orgGetAllZw(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
+		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
+		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
+
+		try {
+			dRes.setModel(dao.findAllBySql("select * from org_zw", null, OrgZw.class));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dRes;
+	}
+	
+	//查询职务列表,带分页
+	@Service(serviceName="orgGetAllZwPage")
+	public ISwordResponse orgGetAllZwPage(ISwordRequest iReq) throws SwordBaseCheckedException{
+		
 		//IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
 
@@ -50,6 +67,7 @@ public class ZWService {
 		
 		return dRes;
 	}
+	
 	
 	//通过职务id查询出职务
 	@Service(serviceName="orgGetZwById")

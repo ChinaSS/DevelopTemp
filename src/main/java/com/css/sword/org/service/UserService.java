@@ -8,7 +8,6 @@ import com.css.sword.core.kernel.base.annotation.ServiceContainer;
 import com.css.sword.core.kernel.base.exception.SwordBaseCheckedException;
 import com.css.sword.core.kernel.base.persistence.IPersistenceService;
 import com.css.sword.core.kernel.utils.SwordPersistenceUtils;
-import com.css.sword.org.entity.OrgRole;
 import com.css.sword.org.entity.OrgUser;
 import com.css.sword.web.request.ISwordRequest;
 import com.css.sword.web.response.ISwordResponse;
@@ -44,8 +43,8 @@ public class UserService {
 		try {
 			String sql = "select * from org_user where dept_id=?";
 			List<Object> param = new ArrayList<Object>();
-			param.add(iReq.getDataMap().get("dept_id"));
-			List<OrgRole> result = dao.findAllBySql(sql, null ,OrgRole.class);
+			param.add(iReq.getData("dept_id"));
+			List<OrgUser> result = dao.findAllBySql(sql, param ,OrgUser.class);
 			dRes.setModel(result);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -72,4 +71,42 @@ public class UserService {
 		
 		return dRes;
 	}
+	
+	//获取人员列表，带分页
+	@Service(serviceName="orgGetAllUserPage")
+	public ISwordResponse orgGetAllUserPage(ISwordRequest iReq) throws SwordBaseCheckedException{
+		
+		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
+
+		try {
+			String sql = "select * from org_user";
+			dRes.setModel(new Page(iReq).getData(sql, null, OrgUser.class));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dRes;
+	}
+	//根据所属人员id查询出人员
+	@Service(serviceName="orgGetUserById")
+	public ISwordResponse orgGetUserById(ISwordRequest iReq) throws SwordBaseCheckedException{
+		
+		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
+		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
+
+		try {
+			String sql = "select * from org_user where user_code=?";
+			List<Object> param = new ArrayList<Object>();
+			param.add(iReq.getData("user_code"));
+			OrgUser user = dao.findOneBySql(sql, param, OrgUser.class);
+			dRes.setModel(user);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dRes;
+	}
+	
 }

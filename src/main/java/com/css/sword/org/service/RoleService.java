@@ -28,6 +28,9 @@ public class RoleService {
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
 
 		try {
+			for(OrgRole role:list){
+				role.setUuid(java.util.UUID.randomUUID().toString().replace("-", ""));
+			}
 			dao.insertBatch(list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -89,6 +92,7 @@ public class RoleService {
 		json.put("status", false);
 		String saveType = iReq.getData("saveType");
 		try {
+			if(saveType.equals("insert")){role.setUuid(java.util.UUID.randomUUID().toString().replace("-", ""));}
 			if(saveType.equals("insert")? dao.insert(role) :dao.update(role)){
 				json.put("status", true);
 				json.put("message", "保存成功.");
@@ -124,6 +128,23 @@ public class RoleService {
 			//Page page = new Page(iReq);
 			dRes.setModel(new Page(iReq).getData(sql, dir_code.equals("root")? null :param, OrgRole.class));
 			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dRes;
+	}
+	
+	//获取角色列表，带分页
+	@Service(serviceName="orgGetAllRolePage")
+	public ISwordResponse orgGetAllRolePage(ISwordRequest iReq) throws SwordBaseCheckedException{
+		
+		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
+
+		try {
+			String sql = "select * from org_role";
+			dRes.setModel(new Page(iReq).getData(sql, null, OrgRole.class));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

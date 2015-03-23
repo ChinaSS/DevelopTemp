@@ -13,6 +13,7 @@ import com.css.sword.org.entity.OrgDept;
 import com.css.sword.web.request.ISwordRequest;
 import com.css.sword.web.response.ISwordResponse;
 import com.css.sword.web.response.SwordResponseFactory;
+import com.css.util.Page;
 
 @ServiceContainer
 public class DeptService {
@@ -72,6 +73,23 @@ public class DeptService {
 			String sql = "select * from org_dept";
 			List<OrgDept> result = dao.findAllBySql(sql, null ,OrgDept.class);
 			dRes.setModel(result);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dRes;
+	}
+	
+	//获取部门列表，带分页
+	@Service(serviceName="orgGetAllDeptPage")
+	public ISwordResponse orgGetAllDeptPage(ISwordRequest iReq) throws SwordBaseCheckedException{
+		
+		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
+
+		try {
+			String sql = "select * from org_dept";
+			dRes.setModel(new Page(iReq).getData(sql, null, OrgDept.class));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
