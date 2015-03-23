@@ -302,10 +302,9 @@ define(["jquery","./treeSearch","css!UtilDir/css/inputSelect.css"],function($,se
         showPanel : function(){
             if(!this.$panel[0].style.width){
                 var left = parseFloat(this.$input.parent().css("padding-left")),
-                    width = this.$input.outerWidth()*parseFloat(this.config.panelCss.width);
-                left = this.config.panelCss.align=="left"?left:left+this.$input.outerWidth()*(1-parseFloat(this.config.panelCss.width));
+                    width = parseFloat(this.$input.outerWidth())*parseFloat(this.config.panelCss.width);
+                left = this.config.panelCss.align=="left"?left:left+parseFloat(this.$input.outerWidth())*(1-parseFloat(this.config.panelCss.width));
                 this.$panel.css({
-                    "top" : this.$input.outerHeight()*1+this.$input.parent().css("padding-top")*1,
                     "left" : left+"px",
                     "width" : width+"px",
                     "max-height" : this.$input.height()*10
