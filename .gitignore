@@ -18,3 +18,5 @@ pom.xml
 target/classes/Persistence.xml
 target/classes/Persistence.xml
 .settings/org.eclipse.jpt.entitygen.new-mysql.developtemp
+
+.classpath
