@@ -63,7 +63,7 @@ define(["jquery","./treeSearch","css!UtilDir/css/inputSelect.css"],function($,se
     }
     function bindDocumentEvent(input){
         $(document).bind(selectEvent,function(event){
-            if ($(event.target).is("."+input.config.inputClass)||$(event.target).is("."+input.config.panelClass)||$(event.target).parents("."+input.config.panelClass).length>0) {return false};
+            if ($(event.target).is("."+input.config.inputClass+",."+input.config.panelClass+",.panelSearch")||$(event.target).parents("."+input.config.panelClass).length>0) {return false};
             input.hidePanel();
         });
     }
