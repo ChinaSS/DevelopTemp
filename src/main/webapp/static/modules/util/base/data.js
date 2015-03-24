@@ -51,6 +51,9 @@ define(["jquery"],function($){
 				return false;
 			}
 		},
+		listToTree : function(data){
+
+		},
 		format : function(data){
 			console.log("abstract function, format function should be overwritten");
 		},

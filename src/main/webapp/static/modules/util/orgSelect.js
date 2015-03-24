@@ -35,65 +35,14 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/dataSelect.css
 	}
 	//继承Tree基类
 	OrgTree.extend(Tree);
-	//绑定额外事件
-	OrgTree.prototype.bindEvent = function(){
-		var _this = this;
-		OrgTree.superClass.bindEvent.call(this);
-		this.$wrap.on("click",".leaf>a",function(){
-			var $leaf = $(this).parent(".leaf");
-			$leaf.toggleClass("open");
-			if ($leaf.find(".data").length>0) {return false};
-			/*
-			_this.getPsnData({
-				orgCode : [$leaf.data("code")]
-			},function(data){
-				this.renderNode($leaf,data,"data");
-			});
-			*/
-			_this.renderNode($leaf,
-				[
-					{
-						code : "10001",
-						text : "测试人员10001"
-					},
-					{
-						code : "10002",
-						text : "测试人员10002"
-					},
-					{
-						code : "10003",
-						text : "测试人员10003"
-					},
-					{
-						code : "10004",
-						text : "测试人员10004"
-					}
-				]
-			,"data");
-		});
-	};
-
-	OrgTree.prototype.getPsnData = function(q,callback){
-		var _this = this;
-		this.query({
-			url : this._param.psnUrl,
-			data : {
-				orgCode : q["orgCode"]?q["orgCode"]:null,
-				psnCode : q["psnCode"]?q["psnCode"]:null,
-				psnText : q["orgCode"]?q["psnText"]:null
-			},
-			callback : function(data){
-				callback.call(_this,data);
-			}
-		})
-	};
 
 	OrgTree.prototype.getOrgData = function(q,callback){
 		var _this = this;
 		this.query({
 			url : this._param.url,
 			data : {
-				orgCode : q["orgCode"]?q["orgCode"]:null
+				orgCode : q["orgCode"]?q["orgCode"]:null,
+				orgText : q["orgText"]?q["orgText"]:null
 			},
 			callback : function(data){
 				callback.call(_this,data);
@@ -101,10 +50,10 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/dataSelect.css
 		})
 	};
 
-	OrgTree.prototype.search = function(psnText){
-		if (!!psnText) {
-			this.getPsnData({
-				psnText : psnText
+	OrgTree.prototype.search = function(text){
+		if (!!text) {
+			this.getOrgData({
+				orgText : text
 			},function(data){
 				this.renderTree(data);
 			});
@@ -348,7 +297,6 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/dataSelect.css
 		$orgTree.find("li.open").removeClass("open");
 		$orgTree.find(".leaf>ul").remove();
 		$selectTree.empty();
-		selectDataObj = {};
 	};
 
 	PsnSelect.prototype.show = function(){
