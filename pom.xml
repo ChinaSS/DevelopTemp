@@ -65,7 +65,7 @@
 		<dependency>
 			<groupId>com.css.sword.extensions</groupId>
 			<artifactId>fileupload</artifactId>
-			<version>0.6.0</version>
+			<version>0.7.0</version>
 		</dependency> 
 		<dependency>
 			<groupId>com.gs</groupId>
