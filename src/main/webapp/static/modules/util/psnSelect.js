@@ -1,9 +1,35 @@
 define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/psnSelect.css"],function($,Tree,Dialog){
 
-	var cache = {};
+	var cache = {},
+		selectDataObj = {};
+
+	function isSelected(code){
+		return selectDataObj[code]?true:false;
+	}
+
+	function addSelectData(code){
+		if (isSelected(code)) {
+			console.log("data has already existed!");
+			return false;
+		}else{
+			selectDataObj[code] = true;
+			return true;
+		}
+	}
+
+	function delSelectData(code){
+		try{
+			if (isSelected(code)) {
+				delete selectDataObj[code];
+			}
+		}catch(e){
+			console.log(e);
+			return false;
+		}
+		return true;
+	}
 
 	//组织机构树类
-
 	function OrgTree(config){
 		OrgTree.superClass.constructor.call(this,config);
 	}
@@ -146,7 +172,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/psnSelect.css"
 	};
 
 	PsnSelect.prototype._initDialogBody = function(dialog){
-		var html = '<div class="orgTree'+(this._param.type!='multi'?' style="width:100%;"':'')+'">'+
+		var html = '<div class="orgTree"'+(this._param.type!='multi'?' style="width:100%;"':'')+'>'+
 				   '<div class="psnSearch">'+
         		   '<div class="input-group"><input type="text" class="search form-control">'+
         		   '<span class="input-group-btn"><button class="submit btn btn-default" type="button">Go</button></span>'+
@@ -174,9 +200,11 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/psnSelect.css"
 					$selectUL = $("<ul></ul>");
 					$selectTree.append($selectUL);
 				}
+				if(!addSelectData($(this).data("code"))){return false;}
 				$selectUL.append($(this).clone(true));
 			});
 			$selectTree.on("dblclick",".data",function(event){
+				if(!delSelectData($(this).data("code"))){return false;}
 				$(this).remove();
 			}).on("click",".data",function(){
 				$(this).siblings().removeClass("cur").end().toggleClass("cur");
