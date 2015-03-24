@@ -27,7 +27,7 @@ define(["jquery"],function($){
 					url:config.url+"?q="+cofnig.data,
 					dataType:config.dataType?config.dataType:"",
 					success:function(data){
-						config.callback(data);
+						config.callback(data.model);
 					},
 					error:function(xhr){
 						console.log("ajax request to url("+config.url+") has failed");
@@ -40,7 +40,7 @@ define(["jquery"],function($){
 					data:config.data,
 					dataType:config.dataType?config.dataType:"",
 					success:function(data){
-						config.callback(data);
+						config.callback(data.model);
 					},
 					error:function(xhr){
 						console.log("ajax request to url("+config.url+") has failed");

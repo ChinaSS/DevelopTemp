@@ -45,7 +45,7 @@ define(["UtilDir/psnSelect"], function(PsnSelect){
             callback = param.callback;
         $psnInput.data("code","");
         var _param = {
-            id : "psnSelect",
+            id : "psnSelect_"+param.id,
             type : param.type,
             org : {
                 url: orgUrl,
@@ -62,12 +62,13 @@ define(["UtilDir/psnSelect"], function(PsnSelect){
                 callback?callback(data):null;
             }
         };
-        var psnSelect = null;
+        PsnSelect(_param);
         $psnInput.on("click",function(){
+            var psnSelect = PsnSelect.get("psnSelect_"+this.id);
             if (!psnSelect) {
-                psnSelect = PsnSelect(_param);
+                return false;
             }else{
-                psnSelect.load([],getData($psnInput));
+                psnSelect.load([],getData($(this)));
             }
             psnSelect.show();
         });
