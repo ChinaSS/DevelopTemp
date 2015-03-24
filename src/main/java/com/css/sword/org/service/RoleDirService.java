@@ -6,7 +6,6 @@ import java.util.List;
 import com.alibaba.fastjson.JSONObject;
 import com.css.sword.core.kernel.base.annotation.Service;
 import com.css.sword.core.kernel.base.annotation.ServiceContainer;
-import com.css.sword.core.kernel.base.dataElement.IValueObject;
 import com.css.sword.core.kernel.base.exception.SwordBaseCheckedException;
 import com.css.sword.core.kernel.base.persistence.IPersistenceService;
 import com.css.sword.core.kernel.utils.SwordPersistenceUtils;
