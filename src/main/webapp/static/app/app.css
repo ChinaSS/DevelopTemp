@@ -21,6 +21,7 @@
 /*table add按钮样式*/
 .table-add{
 	margin-left: 5px;
+	float:right;
 	font-size: 14px;
 	font-weight: normal;
 	padding: 3px 5px;
