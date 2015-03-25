@@ -40,7 +40,7 @@ public class RoleDirService {
 	}
 		
 	//角色目录导入
-	@Service("ImportRoleDir")
+	@Service("importRoleDir")
 	public ISwordResponse importRoleDir(ISwordRequest iReq,List<OrgRoleDir> list) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
@@ -56,7 +56,7 @@ public class RoleDirService {
 		return dRes;
 	}
 	//获取角色目录列表
-	@Service("GetAllRoleDir")
+	@Service("getAllRoleDir")
 	public ISwordResponse getAllRoleDir(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
@@ -74,8 +74,8 @@ public class RoleDirService {
 		return dRes;
 	}
 	//获取角色目录列表，带分页
-	@Service("GetAllRoleDirPage")
-	public ISwordResponse orgGetAllRoleDirPage(ISwordRequest iReq) throws SwordBaseCheckedException{
+	@Service("getAllRoleDirPage")
+	public ISwordResponse getAllRoleDirPage(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
 
@@ -91,8 +91,8 @@ public class RoleDirService {
 	}
 	
 	//保存角色目录
-	@Service("SaveRoleDir")
-	public ISwordResponse orgSaveRoleDir(ISwordRequest iReq,OrgRoleDir roleDir) throws SwordBaseCheckedException{
+	@Service("saveRoleDir")
+	public ISwordResponse saveRoleDir(ISwordRequest iReq,OrgRoleDir roleDir) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
@@ -118,8 +118,8 @@ public class RoleDirService {
 		return dRes;
 	}
 	//角色目录id验证
-	@Service("ValidateRoleDirCode")
-	public ISwordResponse orgValidateRoleDirCode(ISwordRequest iReq) throws SwordBaseCheckedException{
+	@Service("validateRoleDirCode")
+	public ISwordResponse validateRoleDirCode(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);

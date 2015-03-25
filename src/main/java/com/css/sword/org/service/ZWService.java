@@ -70,8 +70,8 @@ public class ZWService {
 	
 	
 	//通过职务id查询出职务
-	@Service("gtZwById")
-	public ISwordResponse gtZwById(ISwordRequest iReq) throws SwordBaseCheckedException{
+	@Service("getZwById")
+	public ISwordResponse getZwById(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);

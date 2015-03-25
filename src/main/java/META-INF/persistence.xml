@@ -11,5 +11,7 @@
 		<class>com.css.sword.org.entity.OrgRoleUser</class>
 		<class>com.css.sword.org.entity.OrgUser</class>
 		<class>com.css.sword.org.entity.OrgZw</class>
+		<class>com.css.sword.auth.entity.AuthResource</class>
+		<class>com.css.sword.auth.entity.AuthRoleRes</class>
 	</persistence-unit>
 </persistence>
