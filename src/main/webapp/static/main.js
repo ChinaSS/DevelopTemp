@@ -22,7 +22,7 @@ require.config({
         "UtilDir":"modules/util",
         "OrgDir":"core/system/org",
         "AclDir":"core/system/acl",
-        "BaseDir":"core/base",
+        "BaseDir":"modules/util/base",
         /*CSS文件路径映射*/
         "ZTreeCss":"modules/zTree/css/zTreeStyle/zTreeStyle",
         "WebUploaderCss":"modules/webuploader/css/webuploader",

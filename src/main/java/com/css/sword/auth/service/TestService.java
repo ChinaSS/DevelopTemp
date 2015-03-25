@@ -13,10 +13,10 @@ import com.css.sword.web.request.ISwordRequest;
 import com.css.sword.web.response.ISwordResponse;
 import com.css.sword.web.response.SwordResponseFactory;
 
-@ServiceContainer
+@ServiceContainer("/test")
 public class TestService {
 	
-	@Service(serviceName="getall")
+	@Service("getall")
 	public ISwordResponse getAll(ISwordRequest req) {
 		List<AuthResource> result = null;
 		try {
@@ -31,7 +31,7 @@ public class TestService {
 		return res;
 	}
 	
-	@Service(serviceName="getone")
+	@Service("getone")
 	public ISwordResponse getOne(ISwordRequest req) {
 		AuthResource result = null;
 		try{
@@ -48,7 +48,7 @@ public class TestService {
 		return res;
 	}
 	
-	@Service(serviceName="save")
+	@Service("save")
 	public ISwordResponse save(ISwordRequest req) {
 		AuthResource result = null;
 		try{
@@ -67,7 +67,7 @@ public class TestService {
 		return res;
 	}
 	
-	@Service(serviceName="update")
+	@Service("update")
 	public ISwordResponse update(ISwordRequest req) {
 		AuthResource resource = null;
 		try{
@@ -87,7 +87,7 @@ public class TestService {
 		return res;
 	}
 	
-	@Service(serviceName="delete")
+	@Service("delete")
 	public ISwordResponse delete(ISwordRequest req) {
 		AuthResource resource = null;
 		try{

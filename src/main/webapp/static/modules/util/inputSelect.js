@@ -15,6 +15,7 @@
         name : "name",
         data : "data"
     },
+    selectNode : false,
     initData:[]
  }
 **/
@@ -63,7 +64,7 @@ define(["jquery","./treeSearch","css!UtilDir/css/inputSelect.css"],function($,se
     }
     function bindDocumentEvent(input){
         $(document).bind(selectEvent,function(event){
-            if ($(event.target).is("."+input.config.inputClass)||$(event.target).is("."+input.config.panelClass)||$(event.target).parents("."+input.config.panelClass).length>0) {return false};
+            if ($(event.target).is("."+input.config.inputClass+",."+input.config.panelClass+",.panelSearch")||$(event.target).parents("."+input.config.panelClass).length>0) {return false};
             input.hidePanel();
         });
     }
@@ -118,7 +119,7 @@ define(["jquery","./treeSearch","css!UtilDir/css/inputSelect.css"],function($,se
                 input.config.onSelect?input.config.onSelect(obj):"";
             });
         } else if (input.config.type=="select") {
-            input.$panel.on("dblclick",".item,.node",function(event){
+            input.$panel.on("dblclick",".item"+(input.config.selectNode?",.node":""),function(event){
                 var id = $(this).children(".text").data("id"),
                     value = $(this).children(".text").text(),
                     obj={};
@@ -190,8 +191,8 @@ define(["jquery","./treeSearch","css!UtilDir/css/inputSelect.css"],function($,se
             search.treeInit(this.$panel.children(".panelData"));
             if (this.config.searchAble) {
                 var $panelSearch = $("<input class='panelSearch form-control'>");
-                this.$panel.prepend($panelSearch);
-                search.listen($panelSearch);
+                this.$panel.before($panelSearch);
+                search.listen($panelSearch,this.$panel.children(".panelData"));
             }
             this.getData();
         },
@@ -301,21 +302,21 @@ define(["jquery","./treeSearch","css!UtilDir/css/inputSelect.css"],function($,se
         showPanel : function(){
             if(!this.$panel[0].style.width){
                 var left = parseFloat(this.$input.parent().css("padding-left")),
-                    width = this.$input.outerWidth()*parseFloat(this.config.panelCss.width);
-                left = this.config.panelCss.align=="left"?left:left+this.$input.outerWidth()*(1-parseFloat(this.config.panelCss.width));
+                    width = parseFloat(this.$input.outerWidth())*parseFloat(this.config.panelCss.width);
+                left = this.config.panelCss.align=="left"?left:left+parseFloat(this.$input.outerWidth())*(1-parseFloat(this.config.panelCss.width));
                 this.$panel.css({
-                    "top" : this.$input.outerHeight()*1+this.$input.parent().css("padding-top")*1,
                     "left" : left+"px",
                     "width" : width+"px",
                     "max-height" : this.$input.height()*10
                 });
-                this.$panel.children(".panelSearch").css({
+                this.$panel.siblings(".panelSearch").css({
                     "width" : this.$input.width()
                 });
             }
-            this.$panel.children(".panelSearch").val("");
+            this.$panel.siblings(".panelSearch").val("");
             search.reset(this.$panel.children(".panelData"));
             this.$panel.show();
+            this.$panel.siblings(".panelSearch").show();
         },
         hidePanel : function(){
             if(!!this.config.callback){
@@ -328,6 +329,7 @@ define(["jquery","./treeSearch","css!UtilDir/css/inputSelect.css"],function($,se
             }
             $(document).unbind(selectEvent);//隐藏panel时,解除document事件绑定
             this.$panel.hide();
+            this.$panel.siblings(".panelSearch").hide();
         },
         togglePanel : function(){
             this.$panel.is(":visible")?this.hidePanel():this.showPanel();

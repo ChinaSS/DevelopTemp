@@ -18,13 +18,13 @@ import com.css.util.SQLUtil;
 import com.css.util.ServiceResult;
 import com.css.util.ServiceResult.Code;
 
-@ServiceContainer
+@ServiceContainer("/auth")
 public class AuthRoleResourceService {
 	
 	/**
 	 * 根据角色id，获取角色资源
 	 */
-	@Service(serviceName="authGetRoleRes")
+	@Service("authGetRoleRes")
 	public ISwordResponse getRoleRes(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
@@ -45,7 +45,7 @@ public class AuthRoleResourceService {
 	/**
 	 * 保存角色-资源
 	 */
-	@Service(serviceName="authSaveRoleRes")
+	@Service("authSaveRoleRes")
 	public ISwordResponse saveRoleRes(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
@@ -88,7 +88,7 @@ public class AuthRoleResourceService {
 	/**
 	 * 根据角色id，获取角色资源
 	 */
-	@Service(serviceName="authGetResRole")
+	@Service("authGetResRole")
 	public ISwordResponse getResRole(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
@@ -109,7 +109,7 @@ public class AuthRoleResourceService {
 	/**
 	 * 保存角色-资源
 	 */
-	@Service(serviceName="authSaveResRole")
+	@Service("authSaveResRole")
 	public ISwordResponse saveResRole(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
@@ -145,7 +145,7 @@ public class AuthRoleResourceService {
 	/**
 	 * 根据角色ids获取
 	 */
-	@Service(serviceName="authGetResByRoles")
+	@Service("authGetResByRoles")
 	public ISwordResponse getResByRoles(ISwordRequest req, List<String> roleIdList) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{

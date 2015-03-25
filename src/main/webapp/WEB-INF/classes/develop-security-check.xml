@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<develop-security-check>
-	<!-- 此配置文件用于检查在开发模式下是否能够通过SwordServiceUtils.callService调用服务，source为发起调用请求的类正则表达式 
-		，perimit-destination为允许调用的目标类的正则表达式，最小粒度为类级 -->
-
-	<check source=".*" perimit-destination=".*" />
-</develop-security-check>

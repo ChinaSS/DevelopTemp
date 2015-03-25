@@ -15,10 +15,10 @@ import com.css.sword.web.response.ISwordResponse;
 import com.css.sword.web.response.SwordResponseFactory;
 import com.css.util.Page;
 
-@ServiceContainer
+@ServiceContainer("org/zw")
 public class ZWService {
 	//职务导入
-	@Service(serviceName="orgImportZw")
+	@Service("importZw")
 	public ISwordResponse importZw(ISwordRequest iReq,List<OrgZw> list) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
@@ -35,8 +35,25 @@ public class ZWService {
 	}
 	
 	//查询职务列表
-	@Service(serviceName="orgGetAllZw")
-	public ISwordResponse orgGetAllZw(ISwordRequest iReq) throws SwordBaseCheckedException{
+	@Service("getAllZw")
+	public ISwordResponse getAllZw(ISwordRequest iReq) throws SwordBaseCheckedException{
+		
+		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
+		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
+
+		try {
+			dRes.setModel(dao.findAllBySql("select * from org_zw", null, OrgZw.class));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dRes;
+	}
+	
+	//查询职务列表,带分页
+	@Service("getAllZwPage")
+	public ISwordResponse getAllZwPage(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		//IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
@@ -51,9 +68,10 @@ public class ZWService {
 		return dRes;
 	}
 	
+	
 	//通过职务id查询出职务
-	@Service(serviceName="orgGetZwById")
-	public ISwordResponse orgGetZwById(ISwordRequest iReq) throws SwordBaseCheckedException{
+	@Service("gtZwById")
+	public ISwordResponse gtZwById(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
@@ -72,8 +90,8 @@ public class ZWService {
 	}
 	
 	//保存职务
-	@Service(serviceName="orgSaveZW")
-	public ISwordResponse orgSaveZW(ISwordRequest iReq,OrgZw zw) throws SwordBaseCheckedException{
+	@Service("saveZW")
+	public ISwordResponse saveZW(ISwordRequest iReq,OrgZw zw) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
@@ -97,8 +115,8 @@ public class ZWService {
 		return dRes;
 	}
 	//职务id验证
-	@Service(serviceName="orgValidateZwCode")
-	public ISwordResponse orgValidateZwCode(ISwordRequest iReq) throws SwordBaseCheckedException{
+	@Service("validateZwCode")
+	public ISwordResponse validateZwCode(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);

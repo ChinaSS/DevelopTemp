@@ -13,7 +13,6 @@
 				oracle : jdbc:oracle:thin:@10.20.149.85:1521:ocnauto -->
 
 			<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/developtemp" />
-
 			
 			<!-- 连接数据库的用户名 -->
 			<property name="username" value="root" />

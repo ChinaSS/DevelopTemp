@@ -10,6 +10,7 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<sword-framework.version>1.0.RELEASE</sword-framework.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -18,14 +19,14 @@
 			</snapshots>
 			<id>public</id>
 			<name>Public Repositories</name>
-			<url>http://10.12.9.146:8080/nexus/content/groups/public/</url>
+			<url>http://10.12.10.146:8080/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>public</id>
 			<name>Public Repositories</name>
-			<url>http://10.12.9.146:8080/nexus/content/groups/public/</url>
+			<url>http://10.12.10.146:8080/nexus/content/groups/public/</url>
 		</pluginRepository>
 	</pluginRepositories>
 	<dependencies>
@@ -33,7 +34,7 @@
 		<dependency>
 			<groupId>com.css.sword</groupId>
 			<artifactId>sword-framework-all</artifactId>
-			<version>1.0</version>
+			<version>${sword-framework.version}</version>
 		</dependency>
 
 		<!-- MySQL jar包 -->
@@ -62,12 +63,12 @@
 			<version>2.4.3</version>
 			<type>maven-plugin</type>
 		</dependency>
-	<!-- 	<dependency>
+		<dependency>
 			<groupId>com.css.sword.extensions</groupId>
 			<artifactId>fileupload</artifactId>
-			<version>0.5.0-RC</version>
-		</dependency> -->
-		<!-- <dependency>
+			<version>0.7.0</version>
+		</dependency> 
+		<dependency>
 			<groupId>com.gs</groupId>
 			<artifactId>quicktools-core</artifactId>
 			<version>2.3.0</version>
@@ -81,7 +82,7 @@
 			<groupId>com.gs</groupId>
 			<artifactId>quicktools-multiDS</artifactId>
 			<version>2.2.1</version>
-		</dependency> -->
+		</dependency> 
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
@@ -125,8 +126,6 @@
 	</dependencies>
 	<build>
 		<finalName>sword-demo</finalName>
-		<sourceDirectory>src/main</sourceDirectory>  
-        <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>  
 		<!-- 确定项目的开发编译版本都1.7 -->
 		<plugins>
 			<plugin>

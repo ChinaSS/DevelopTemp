@@ -20,11 +20,11 @@ public class OrgUser extends com.css.sword.core.kernel.base.dataElement.AbsPersi
 
 	private String birthday;
 
-	@Column(name="dept_code")
-	private String deptCode;
-
 	@Column(name="dept_id")
 	private String deptId;
+
+	@Column(name="dept_name")
+	private String deptName;
 
 	private String email;
 
@@ -117,20 +117,20 @@ public class OrgUser extends com.css.sword.core.kernel.base.dataElement.AbsPersi
 		this.birthday = birthday;
 	}
 
-	public String getDeptCode() {
-		return this.deptCode;
-	}
-
-	public void setDeptCode(String deptCode) {
-		this.deptCode = deptCode;
-	}
-
 	public String getDeptId() {
 		return this.deptId;
 	}
 
 	public void setDeptId(String deptId) {
 		this.deptId = deptId;
+	}
+
+	public String getDeptName() {
+		return this.deptName;
+	}
+
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
 	}
 
 	public String getEmail() {

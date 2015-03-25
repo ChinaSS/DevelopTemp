@@ -73,7 +73,7 @@ define(["jquery","BaseDir/data","css!BaseDir/css/tree.css"],function($,Data){
 		var _this = this,
 			param = this._param;
 		try{
-			if(!!param.code){
+			if(param.code&&param.url){
 				this.query({
 					url : param.url,
 					data : param.code,

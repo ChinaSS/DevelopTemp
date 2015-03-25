@@ -1,7 +1,6 @@
 package com.css.sword.auth.filter;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,13 +18,11 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.alibaba.fastjson.JSONObject;
 import com.css.sword.auth.entity.AuthResource;
 import com.css.sword.core.kernel.base.exception.SwordBaseCheckedException;
 import com.css.sword.org.entity.OrgRole;
 import com.css.sword.org.entity.OrgUser;
-import com.css.sword.web.SwordServiceUtil;
-import com.css.sword.web.request.SwordDefaultRequest;
+import com.css.sword.web.SwordWebServiceUtil;
 import com.css.sword.web.response.SwordDefaultResponse;
 
 /** 过滤器的执行顺序是按照注解中的filterName的值的字母排序执行的，这个不靠谱，所以生产环境下应该将filter配置改为手动在web.xml配置 */
@@ -77,34 +74,19 @@ public class FilterAuth implements Filter {
 		} else { //已经登录
 			//根据用户去查找角色信息
 			try {
-				SwordDefaultResponse swordResponse = (SwordDefaultResponse)SwordServiceUtil.callService("orgGetAllRole");
+				SwordDefaultResponse swordResponse = (SwordDefaultResponse)SwordWebServiceUtil.callService("orgGetAllRole");
 				List<OrgRole> roleList = (List<OrgRole>)swordResponse.getModel();
 				List<String> roleIdList = new ArrayList<String>();
 				for (OrgRole role : roleList) {
 					roleIdList.add(role.getUuid());
 				}
 				List<String> urlList = new ArrayList<String>();
-				swordResponse = (SwordDefaultResponse)SwordServiceUtil.callService("orgGetAllRole", roleIdList);
+				swordResponse = (SwordDefaultResponse)SwordWebServiceUtil.callService("orgGetAllRole", roleIdList);
 				List<AuthResource> resList = (List<AuthResource>)swordResponse.getModel();
 				System.out.println(resList.size());
 			} catch (SwordBaseCheckedException e) {
 				e.printStackTrace();
 			}
-		}
-		try {
-			SwordDefaultResponse swordResponse = (SwordDefaultResponse)SwordServiceUtil.callService("orgGetAllRole");
-			List<OrgRole> roleList = (List<OrgRole>)swordResponse.getModel();
-			List<String> roleIdList = new ArrayList<String>();
-			for (OrgRole role : roleList) {
-				roleIdList.add(role.getUuid());
-			}
-			List<String> urlList = new ArrayList<String>();
-			swordResponse = (SwordDefaultResponse)SwordServiceUtil.callService("authGetResByRoles", null, roleIdList);
-			List<AuthResource> resList = (List<AuthResource>)swordResponse.getModel();
-//			ISwordRequest req = new SwordDefaultRequest(request)
-			System.out.println(resList.size());
-		} catch (SwordBaseCheckedException e) {
-			e.printStackTrace();
 		}
 		chain.doFilter(request, response);
 	}

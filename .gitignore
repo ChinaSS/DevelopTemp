@@ -1,20 +1,10 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/
 target/classes/
-/target/
+target/
 target/classes/Persistence.xml
 *.class
 *.component
-
-.settings/org.eclipse.wst.common.component
-
-pom.xml
-
-.settings/org.eclipse.wst.common.component
-
-.settings/org.eclipse.wst.common.component
-
-pom.xml
-target/classes/Persistence.xml
-target/classes/Persistence.xml
-.settings/org.eclipse.jpt.entitygen.new-mysql.developtemp
+.settings/
+src/main/webapp/WEB-INF/classes
+.classpath

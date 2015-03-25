@@ -16,14 +16,13 @@ import com.css.sword.web.response.SwordResponseFactory;
 import com.css.util.ServiceResult;
 import com.css.util.ServiceResult.Code;
 
-@ServiceContainer
+@ServiceContainer("/auth/res/")
 public class AuthResourceService {
 	
 	/**
 	 * 获取所有资源（包括资源目录）
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Service(serviceName="authGetResAll")
+	@Service("authGetResAll")
 	public ISwordResponse getResTree(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
@@ -40,7 +39,7 @@ public class AuthResourceService {
 	 * 获取资源（根据资源分类）
 	 * 参数：res_type，默认为1：资源分类，2：资源实体
 	 */
-	@Service(serviceName="authGetResSort")
+	@Service("authGetResSort")
 	public ISwordResponse getResSort(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
@@ -63,7 +62,7 @@ public class AuthResourceService {
 	/**
 	 * 获取某一资源分类下的资源
 	 */
-	@Service(serviceName="authGetResSub")
+	@Service("authGetResSub")
 	public ISwordResponse getResSub(ISwordRequest req) {
 		List<AuthResource> result = new ArrayList<AuthResource>();
 		try{
@@ -87,7 +86,7 @@ public class AuthResourceService {
 	 * 获取某一资源
 	 * 参数：resId
 	 */
-	@Service(serviceName="authGetRes")
+	@Service("authGetRes")
 	public ISwordResponse getRes(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
@@ -115,7 +114,7 @@ public class AuthResourceService {
 	/**
 	 * 保存资源
 	 */
-	@Service(serviceName="authSaveRes")
+	@Service("authSaveRes")
 	public ISwordResponse saveRes(ISwordRequest req, AuthResource resource) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
@@ -135,7 +134,7 @@ public class AuthResourceService {
 		return res;
 	}
 	
-	@Service(serviceName="authDeleteRes")
+	@Service("authDeleteRes")
 	public ISwordResponse deleteRes(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{

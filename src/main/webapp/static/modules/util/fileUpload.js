@@ -414,7 +414,7 @@ define(['WebUploader','jquery','css!UtilDir/css/util.css','css!WebUploaderCss'],
          */
         uploader.on('uploadComplete',function(file){
         	var queuedFile = getFileFromList(file.name, Upload.queuedFiles);
-            queuedFile.$status.find('.progress').fadeOut();
+//            queuedFile.$status.find('.progress').fadeOut();
         });
 
         return uploader;

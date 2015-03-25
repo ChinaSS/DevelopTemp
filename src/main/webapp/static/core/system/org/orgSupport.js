@@ -122,7 +122,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                             showRoleList();
                             break;
                         case "RoleDir":
-
+                            showRoleDirList();
                             break;
                         case "NoDeptPerson":
                             showPersonList();
@@ -189,21 +189,6 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             id:"OrgPersonList",
             layout:[
                 {name:"用户名",field:"userCode",click:function(e){
-                    //console.log(e.data);
-                    /*var id = e.data.row.resourcesId;
-                    $.ajax({
-                        "url":getServer()+"/permission/query?resId="+id,
-                        async:false,
-                        dataType:"json",
-                        "success":function(d){
-                            //设置资源数据
-                            $scope.$apply(function () {
-                                $scope.resource.entity = d.entity;
-                                $scope.resource.type = dict.resourceType();
-                            });
-                            showSlidebar();
-                        }
-                    });*/
                     editPerson(e.data.row.userCode);
                 }},
                 {name:"姓名",field:"userName"},
@@ -215,7 +200,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             data:{
                 "type":"URL",
                 //"value":getServer()+"/org/data/Persons.json"
-                "value": getServer() + "/sword/orgGetUserByDeptIdPage?dept_id="+id
+                "value": getServer() + "/sword/"+ (id?"orgGetUserByDeptIdPage":"orgGetAllUserPage") +"?dept_id="+id
             }
         };
         grid.init($.extend(config,comConfig));
@@ -243,7 +228,32 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             data: {
                 "type": "URL",
                 //"value": sysPath + "/org/data/Roles.json"
-                "value": getServer() + "/sword/orgGetRoleByPidPage?dir_code="+id
+                "value": getServer() + "/sword/"+(id?"orgGetRoleByPidPage":"orgGetAllRolePage")+"?dir_code="+id
+            }
+        };
+        grid.init($.extend(config,comConfig));
+    };
+
+    /**
+     * 显示角色目录列表
+     */
+    var showRoleDirList = function(){
+        var config = {
+            id: "OrgRoleDirList",
+            layout: [
+                {
+                    name: "目录编号", field: "dirCode", click: function (e) {
+                    //console.log(e.data);
+                    editRoleDir(e.data.row.dirCode);
+                }
+                },
+                {name: "目录名称", field: "dirName"},
+                {name: "父节点编号", field: "pDirCode"},
+                {name: "父节点名称", field: "pDirName"}
+            ],
+            data: {
+                "type": "URL",
+                "value": getServer() + "/sword/orgGetAllRoleDirPage"
             }
         };
         grid.init($.extend(config,comConfig));
@@ -292,7 +302,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             data: {
                 "type": "URL",
                 //"value": sysPath + "/org/data/ZWs.json"
-                "value": getServer() + "/sword/orgGetAllZw"
+                "value": getServer() + "/sword/orgGetAllZwPage"
             }
         };
         grid.init($.extend(config,comConfig));
@@ -318,7 +328,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             ],
             data: {
                 "type": "URL",
-                "value": sysPath + "/org/data/AllDept.json"
+                //"value": sysPath + "/org/data/AllDept.json"
+                "value": getServer() +"/sword/orgGetAllDeptPage"
             }
         };
         grid.init($.extend(config,comConfig));
@@ -481,7 +492,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                 "员工编号":"userCode","用户名称":"userName","性别":"sex","生日":"birthday","办公电话":"officePhone",
                 "移动电话":"phone","传真":"fax","邮箱":"email","职务名称":"zwName",
                 "职务编号":"zwCode","显示序号":"sort","是否冻结":"locked",
-                "所属部门":"deptName","部门ID":"deptId","兼职部门":"jzDeptName","兼职部门ID":"jzDeptId",
+                "部门名称":"deptName","部门ID":"deptId","兼职部门名称":"jzDeptName","兼职部门ID":"jzDeptId",
                 "人员信息1":"extend1","人员信息2":"extend2","人员信息3":"extend3","人员信息4":"extend4",
                 "人员信息5":"extend5","人员信息6":"extend6","人员信息7":"extend7","人员信息8":"extend8",
                 "人员信息9":"extend9","人员信息10":"extend10","人员信息11":"extend11","人员信息12":"extend12",
@@ -596,9 +607,12 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
 
         //获取当前需要编辑的人员对象数据
         $.ajax({
-            url:sysPath+"/org/data/Person.json",
+            //url:sysPath+"/org/data/Person.json",
+            url:getServer()+"/sword/orgGetUserById",
             dataType:"json",
+            data:{"user_code":userCode},
             success:function(data){
+                
                 showPersonSidebar({
                     afterLoad:function(){
                         $("#org_PersonName").html(data.Org.Person.PersonInfo.BaseInfo.userName);
@@ -624,16 +638,17 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //职务初始化
     var initZW = function(val){
         $.ajax({
-            url:sysPath+"/org/data/ZWList.json",
+            //url:sysPath+"/org/data/ZWList.json",
+            url:getServer()+"sword/orgGetAllZw",
             dataType:"json",
             success:function(data){
-                var sel = $("#sle_PersonZW");
+                var $sel = $("#sle_PersonZW");
                 //初始化人员操作界面的职务选择下拉
                 for(var i= 0,item;item=data[i++];){
-                    sel.append('<option value="'+item.id+'">'+item.name+'</option>');
+                    $sel.append('<option value="'+item.zwCode+'">'+item.zwName+'</option>');
                 }
                 //设置选中值
-                val && sel.val(val);
+                val && $sel.val(val);
             }
         })
     };
