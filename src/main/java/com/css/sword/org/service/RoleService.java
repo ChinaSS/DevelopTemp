@@ -171,4 +171,23 @@ public class RoleService {
 		
 		return dRes;
 	}
+	
+	//获取角色列表
+	@Service(serviceName="orgGetAllRole")
+	public ISwordResponse orgGetAllRole(ISwordRequest iReq) throws SwordBaseCheckedException{
+		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
+		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
+
+		try {
+			String sql = "select * from org_role";
+			dRes.setModel(dao.findAllBySql(sql, null, OrgRole.class));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dRes;
+	}
+
+	
 }

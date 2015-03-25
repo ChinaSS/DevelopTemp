@@ -1,9 +1,11 @@
 package com.css.sword.auth.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+import com.css.sword.auth.entity.AuthResource;
 import com.css.sword.auth.entity.AuthRoleRes;
 import com.css.sword.core.kernel.base.annotation.Service;
 import com.css.sword.core.kernel.base.annotation.ServiceContainer;
@@ -12,6 +14,7 @@ import com.css.sword.core.kernel.utils.SwordPersistenceUtils;
 import com.css.sword.web.request.ISwordRequest;
 import com.css.sword.web.response.ISwordResponse;
 import com.css.sword.web.response.SwordResponseFactory;
+import com.css.util.SQLUtil;
 import com.css.util.ServiceResult;
 import com.css.util.ServiceResult.Code;
 
@@ -135,6 +138,30 @@ public class AuthRoleResourceService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setModel(new ServiceResult(Code.error.name(), "操作失败"));
+		}
+		return res;
+	}
+	
+	/**
+	 * 根据角色ids获取
+	 */
+	@Service(serviceName="authGetResByRoles")
+	public ISwordResponse getResByRoles(ISwordRequest req, List<String> roleIdList) {
+		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
+		try{
+			IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
+			if (roleIdList == null) {
+				String roleIds = req.getData("roleIds");
+				if (roleIds != null) {
+					String[] roleIdArr = roleIds.split(",");
+					roleIdList = Arrays.asList(roleIdArr);
+				}
+			}
+			String inSql = SQLUtil.in("role_id", roleIdList, 500);
+			String sql = "select * from acl_res_url a where a.res_id in(select b.res_id from acl_role_res_url b where 1=1 " + inSql +")";
+			res.setModel(dao.findAllBySql(sql, null, AuthResource.class));
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return res;
 	}

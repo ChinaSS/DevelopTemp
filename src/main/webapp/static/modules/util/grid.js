@@ -451,7 +451,7 @@ define(["jquery","css!UtilDir/css/grid.css"],function($){
         getSelectedRow : function(){
             var selectedArr = [];
             var _this = this;
-            $tableBody = _this._$gridPanel.find(".s_grid_table tbody");
+            var $tableBody = _this._$gridPanel.find(".s_grid_table tbody");
             $tableBody.find("input:checked").each(function(){
                 var index = $(this).closest("tr").data("index");
                 if (typeof index == "undefined") { return true;}
@@ -466,6 +466,22 @@ define(["jquery","css!UtilDir/css/grid.css"],function($){
                 }
             }
             this.renderTableData(true);
+        },
+        setEvent : function(selector,eType,callback){
+            var _this = this;
+            var $tableBody = _this._$gridPanel.find(".s_grid_table tbody");
+            $tableBody.on(eType,selector,function(event){
+                event.stopPropagation();
+                var data,index=-1;
+                if (this.nodeName=="TR") {index = $(this).data("index");}
+                else{index = $(this).closest("tr").data("index");}
+                if (index==-1) {data=null;}
+                else{data = _this._pageInfo.pageData[index];}
+                event.data = {
+                    "row" : data
+                };
+                callback(event);
+            });
         }
     });
 

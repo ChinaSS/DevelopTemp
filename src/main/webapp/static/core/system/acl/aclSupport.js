@@ -445,7 +445,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
                 {
                     name: "角色编号", field: "roleCode", click: function (e) {
                     	//设置角色-资源
-                    	setResTreeCheck(e.data.row.roleCode);
+                    	//setResTreeCheck(e.data.row.roleCode);
                     }
                 },
                 {name: "角色名称", field: "roleName"}
@@ -455,7 +455,11 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
                 "value": getServer() + "/sword/orgGetRoleByPidPage?dir_code="+node.id
             }
     	};
-        grid.init(config);
+        var gridObj = grid.init(config);
+        //注册行点击事件
+        gridObj.setEvent("tr", "click", function(e){
+        	setResTreeCheck(e.data.row.uuid);
+        })
 	}
 	
 	/* 创建资源树 */
@@ -588,8 +592,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
     			resPid : node.resId
     		},
     		success : function(data) {
-    			grid({
-    	            id : "gridResSet",
+    			var config = {
+					id : "gridResSet",
     	            placeAt : "grid_res_set",
     	            index:"radio",
     	            hidden:false,
@@ -600,6 +604,10 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
     	            	}
     	            }],
     	            data:data
+    			}
+    			var gridObj = grid.init(config);
+    	        gridObj.setEvent("tr", "click", function(e){
+    	        	setRoleTreeCheck(e.data.row.resId);
     	        })
     		}
     	});
@@ -697,15 +705,8 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
             	//配置ztree的属性
                 var setting = {
                     data: {
-                    	key : {
-                    		name:"name"
-                    	},
                         simpleData: {
-                            enable: true,
-                            pIdKey:"pId"
-//                            idKey:"id",
-//                            pIdKey:"pId",
-//                            rootPId:null
+                            enable: true
                         }
                     },
                     check : {
