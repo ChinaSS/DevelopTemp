@@ -27,7 +27,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
     //创建资源目录树
     var createResTree = function() {
         $.ajax({
-            url : getServer() + "/sword/authGetResSort",
+            url : getServer() + "/sword/auth/res/getSort",
             success : function(data) {
             	//没有数据
             	if (!data || data.length == 0) {
@@ -88,7 +88,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
     var createResGrid = function() {
     	var treeNode = $.fn.zTree.getZTreeObj("tree_resDir").getSelectedNodes()[0];
     	$.ajax({
-    		url : getServer() + "/sword/authGetResSub",
+    		url : getServer() + "/sword/auth/res/getBySort",
     		data : {
     			resPid : treeNode.resId
     		},
@@ -173,7 +173,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 	        	//如果是编辑，需要重新从后台获取最新的数据
 	        	if (edit) {
 	        		$.ajax({
-	        			url : getServer() + "/sword/authGetRes",
+	        			url : getServer() + "/sword/auth/res/getById",
 	        			data : {
 	        				resId : row.resId
 	        			},
@@ -199,7 +199,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 	    	 		if ($("#form_resSort").valid()) {
 	    	 			var data = getFormData("#form_resSort");
 	    	 			$.ajax({
-	    	 				url : getServer() + "/sword/authSaveRes",
+	    	 				url : getServer() + "/sword/auth/res/save",
 	    	 				data : data,
 	    	 				type : "post",
 	    	 				success : function(data) {
@@ -238,7 +238,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 					ids = ids.concat(node.resId).concat(",");
 				})
 				$.ajax({
-					url : getServer() + "/sword/authDeleteRes",
+					url : getServer() + "/sword/auth/res/delete",
 					data : {
 						ids : ids
 					},
@@ -284,7 +284,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
             afterLoad : function() {
             	if (edit) {//edit
             		$.ajax({
-            			url:getServer() + "/sword/authGetRes",
+            			url:getServer() + "/sword/auth/res/getById",
 						data : {
 							resId : row.resId
 						},
@@ -310,7 +310,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
             		if ($("#form_res").valid()) {
             			var data = getFormData("#form_res");
             			$.ajax({
-            				url : getServer() + "/sword/authSaveRes",
+            				url : getServer() + "/sword/auth/res/save",
             				data : data,
             				type : "post",
             				success : function(data) {
@@ -364,7 +364,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 					ids = ids.concat(row.resId).concat(",");
 				})
 				$.ajax({
-					url : getServer() + "/sword/authDeleteRes",
+					url : getServer() + "/sword/auth/res/delete",
 					data : {
 						ids : ids
 					},
@@ -404,7 +404,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 	/* 创建角色目录树 */
 	function createRoleTree() {
 		$.ajax({
-            url: getServer()+"/sword/orgGetAllRoleDir",
+            url: getServer()+"/sword/org/roledir/GetAllRoleDir",
             success:function(data) {
                 var arr = [];
                 for (var i = 0, dir; dir = data[i++];) {
@@ -452,7 +452,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
             ],
             data: {
                 "type": "URL",
-                "value": getServer() + "/sword/orgGetRoleByPidPage?dir_code="+node.id
+                "value": getServer() + "/sword/org/role/getRoleByPidPage?dir_code="+node.id
             }
     	};
         var gridObj = grid.init(config);
@@ -465,7 +465,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 	/* 创建资源树 */
 	function createResCheckTree() {
 		$.ajax({
-            url : getServer() + "/sword/authGetResAll",
+            url : getServer() + "/sword/auth/res/getAll",
             success : function(data) {
             	//配置ztree的属性
                 var setting = {
@@ -502,7 +502,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 	/* 根据所选择角色勾选不同角色的资源 */
 	function setResTreeCheck(roleId) {
 		$.ajax({
-			url : getServer() + "/sword/authGetRoleRes",
+			url : getServer() + "/sword/auth/set/getRoleRes",
 			data : {
 				roleId : roleId
 			},
@@ -531,7 +531,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 					resIds.push(n.resId);
 				})
 				$.ajax({
-					url : getServer() + "/sword/authSaveRoleRes",
+					url : getServer() + "/sword/auth/set/saveRoleRes",
 					data : {
 						roleId : row.uuid,
 						resIds : resIds.join(",") 
@@ -554,7 +554,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 	/* 创建资源目录树 */
 	function createSetResDirTree() {
 		$.ajax({
-            url: getServer()+"/sword/authGetResSort",
+            url: getServer()+"/sword/auth/set/getResRole",
             success:function(data) {
                 var setting = {
                     data: {
@@ -587,7 +587,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 		var nodes = $.fn.zTree.getZTreeObj("tree_roleDir_set").getSelectedNodes();
 		var node = nodes.length && nodes[0];
     	$.ajax({
-    		url : getServer() + "/sword/authGetResSub",
+    		url : getServer() + "/sword/auth/res/getBySort",
     		data : {
     			resPid : node.resId
     		},
@@ -616,7 +616,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 	/* 创建角色树 */
 	function createRoleCheckTree() {
 		$.ajax({
-            url : getServer() + "/sword/orgGetRoleTree",
+            url : getServer() + "/sword/auth/role/getRoleTree",
             success : function(data) {
             	//配置ztree的属性
                 var setting = {
@@ -649,7 +649,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 	/* 根据所选择资源勾选不同资源的角色 */
 	function setRoleTreeCheck(resId) {
 		$.ajax({
-			url : getServer() + "/sword/authGetResRole",
+			url : getServer() + "/sword/auth/set/getResRole",
 			data : {
 				resId : resId
 			},
@@ -678,7 +678,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss","JQuery.validate","
 					roleIds.push(n.id);
 				})
 				$.ajax({
-					url : getServer() + "/sword/authSaveResRole",
+					url : getServer() + "/sword/auth/set/saveResRole",
 					data : {
 						resId : row.resId,
 						roleIds : roleIds.join(",") 

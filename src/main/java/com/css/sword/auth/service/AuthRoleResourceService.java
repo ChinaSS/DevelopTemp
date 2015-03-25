@@ -18,13 +18,13 @@ import com.css.util.SQLUtil;
 import com.css.util.ServiceResult;
 import com.css.util.ServiceResult.Code;
 
-@ServiceContainer("/auth")
+@ServiceContainer("/auth/set/")
 public class AuthRoleResourceService {
 	
 	/**
 	 * 根据角色id，获取角色资源
 	 */
-	@Service("authGetRoleRes")
+	@Service("getRoleRes")
 	public ISwordResponse getRoleRes(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
@@ -45,7 +45,7 @@ public class AuthRoleResourceService {
 	/**
 	 * 保存角色-资源
 	 */
-	@Service("authSaveRoleRes")
+	@Service("saveRoleRes")
 	public ISwordResponse saveRoleRes(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
@@ -86,9 +86,9 @@ public class AuthRoleResourceService {
 	}
 	
 	/**
-	 * 根据角色id，获取角色资源
+	 * 根据角色id，获取资源角色
 	 */
-	@Service("authGetResRole")
+	@Service("getResRole")
 	public ISwordResponse getResRole(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
@@ -107,9 +107,9 @@ public class AuthRoleResourceService {
 	}
 	
 	/**
-	 * 保存角色-资源
+	 * 保存资源-角色
 	 */
-	@Service("authSaveResRole")
+	@Service("saveResRole")
 	public ISwordResponse saveResRole(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
@@ -145,25 +145,19 @@ public class AuthRoleResourceService {
 	/**
 	 * 根据角色ids获取
 	 */
-	@Service("authGetResByRoles")
-	public ISwordResponse getResByRoles(ISwordRequest req, List<String> roleIdList) {
-		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
+	@Service("getResByRoles")
+	public List<AuthResource> getResByRoles(List<String> roleIdList) {
 		try{
 			IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
-			if (roleIdList == null) {
-				String roleIds = req.getData("roleIds");
-				if (roleIds != null) {
-					String[] roleIdArr = roleIds.split(",");
-					roleIdList = Arrays.asList(roleIdArr);
-				}
+			if (roleIdList != null && roleIdList.size() > 0) {
+				String inSql = SQLUtil.in("role_id", roleIdList, 500);
+				String sql = "select * from acl_res_url a where a.res_id in(select b.res_id from acl_role_res_url b where 1=1 " + inSql +")";
+				return dao.findAllBySql(sql, null, AuthResource.class);
 			}
-			String inSql = SQLUtil.in("role_id", roleIdList, 500);
-			String sql = "select * from acl_res_url a where a.res_id in(select b.res_id from acl_role_res_url b where 1=1 " + inSql +")";
-			res.setModel(dao.findAllBySql(sql, null, AuthResource.class));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return res;
+		return null;
 	}
 	
 }	

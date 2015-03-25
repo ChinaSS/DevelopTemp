@@ -5,6 +5,7 @@ import java.util.List;
 
  /**
  * @Author weijy
+ * sql工具类
  */
 public class SQLUtil {
 	

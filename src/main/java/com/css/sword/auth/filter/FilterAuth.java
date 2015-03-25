@@ -29,26 +29,17 @@ import com.css.sword.web.response.SwordDefaultResponse;
 @WebFilter(filterName="URLFilter", urlPatterns={"/sword/*"})
 public class FilterAuth implements Filter {
 
-    /**
-     * Default constructor. 
-     */
+	private Logger logger = LoggerFactory.getLogger(FilterAuth.class);
+	
     public FilterAuth() {
     }
 
-	/**
-	 * @see Filter#destroy()
-	 */
 	public void destroy() {
-		System.out.println("权限过滤器销毁");
+		logger.info("权限过滤器销毁");
 	}
 
 	private List<String> ignoreUrl;
 	
-	private Logger logger = LoggerFactory.getLogger(FilterAuth.class);
-	
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpServletRequest = (HttpServletRequest)request;
 		HttpServletResponse httpServletResponse = (HttpServletResponse)response;
@@ -74,14 +65,14 @@ public class FilterAuth implements Filter {
 		} else { //已经登录
 			//根据用户去查找角色信息
 			try {
-				SwordDefaultResponse swordResponse = (SwordDefaultResponse)SwordWebServiceUtil.callService("orgGetAllRole");
+				SwordDefaultResponse swordResponse = (SwordDefaultResponse)SwordWebServiceUtil.callService("getAllRole");
 				List<OrgRole> roleList = (List<OrgRole>)swordResponse.getModel();
 				List<String> roleIdList = new ArrayList<String>();
 				for (OrgRole role : roleList) {
 					roleIdList.add(role.getUuid());
 				}
 				List<String> urlList = new ArrayList<String>();
-				swordResponse = (SwordDefaultResponse)SwordWebServiceUtil.callService("orgGetAllRole", roleIdList);
+				swordResponse = (SwordDefaultResponse)SwordWebServiceUtil.callService("getResByRoles", roleIdList);
 				List<AuthResource> resList = (List<AuthResource>)swordResponse.getModel();
 				System.out.println(resList.size());
 			} catch (SwordBaseCheckedException e) {
@@ -109,11 +100,8 @@ public class FilterAuth implements Filter {
 		return requestType != null ? true : false;
 	}
 	
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		System.out.println("权限过滤器启动");
+		logger.info("权限过滤器启动");
 		this.ignoreUrl = new ArrayList<String>();
 		this.ignoreUrl.add("/sword/login");
 	}
