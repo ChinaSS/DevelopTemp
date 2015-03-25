@@ -15,10 +15,10 @@ import com.css.sword.web.response.ISwordResponse;
 import com.css.sword.web.response.SwordResponseFactory;
 import com.css.util.Page;
 
-@ServiceContainer
+@ServiceContainer("org/gw")
 public class GWService {
 	//岗位导入
-	@Service(serviceName="orgImportGw")
+	@Service("importGw")
 	public ISwordResponse importGw(ISwordRequest iReq,List<OrgGw> list) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
@@ -35,8 +35,8 @@ public class GWService {
 	}
 	
 	//查询岗位列表
-	@Service(serviceName="orgGetAllGw")
-	public ISwordResponse orgGetAllGw(ISwordRequest iReq) throws SwordBaseCheckedException{
+	@Service("getAllGw")
+	public ISwordResponse getAllGw(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		//IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
@@ -52,8 +52,8 @@ public class GWService {
 	}
 	
 	//通过岗位id查询出岗位
-	@Service(serviceName="orgGetGwById")
-	public ISwordResponse orgGetGwById(ISwordRequest iReq) throws SwordBaseCheckedException{
+	@Service("getGwById")
+	public ISwordResponse getGwById(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
@@ -72,8 +72,8 @@ public class GWService {
 	}
 	
 	//保存岗位
-	@Service(serviceName="orgSaveGW")
-	public ISwordResponse orgSaveGW(ISwordRequest iReq,OrgGw gw) throws SwordBaseCheckedException{
+	@Service("saveGw")
+	public ISwordResponse saveGw(ISwordRequest iReq,OrgGw gw) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
@@ -97,8 +97,8 @@ public class GWService {
 		return dRes;
 	}
 	//岗位id验证
-	@Service(serviceName="orgValidateGwCode")
-	public ISwordResponse orgValidateGwCode(ISwordRequest iReq) throws SwordBaseCheckedException{
+	@Service("validateGwCode")
+	public ISwordResponse validateGwCode(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);

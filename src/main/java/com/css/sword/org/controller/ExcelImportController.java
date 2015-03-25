@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
-import com.css.sword.web.SwordServiceUtil;
+import com.css.sword.web.SwordWebServiceUtil;
 import com.css.sword.web.controller.AbsSwordController;
 import com.css.sword.web.controller.SwordController;
 import com.css.sword.web.request.SwordDefaultRequest;
@@ -31,7 +31,7 @@ public class ExcelImportController extends AbsSwordController {
 			excel = new ExcelToEntityList();
 			list = excel.transform(param, request.getPart("file").getInputStream());
 			SwordDefaultRequest iReq = new SwordDefaultRequest(request);
-			SwordDefaultResponse swordRes = SwordServiceUtil.callService(iReq.getServiceName(),iReq,list);
+			SwordDefaultResponse swordRes = SwordWebServiceUtil.callService(iReq.getServiceName(),iReq,list);
 			importInfo = swordRes.getModel()==null?"":swordRes.getModel();
 		}catch (Exception e) {
 			// TODO Auto-generated catch block

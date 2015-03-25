@@ -10,6 +10,7 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<sword-framework.version>1.0.RELEASE</sword-framework.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -33,7 +34,7 @@
 		<dependency>
 			<groupId>com.css.sword</groupId>
 			<artifactId>sword-framework-all</artifactId>
-			<version>1.0</version>
+			<version>${sword-framework.version}</version>
 		</dependency>
 
 		<!-- MySQL jar包 -->

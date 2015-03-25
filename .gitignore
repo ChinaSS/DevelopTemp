@@ -5,7 +5,6 @@ target/
 target/classes/Persistence.xml
 *.class
 *.component
-pom.xml
 .settings/
 src/main/webapp/WEB-INF/classes
 .classpath

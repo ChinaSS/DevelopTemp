@@ -9,18 +9,18 @@ import com.css.sword.core.kernel.base.exception.SwordBaseCheckedException;
 import com.css.sword.core.kernel.base.persistence.IPersistenceService;
 import com.css.sword.core.kernel.utils.SwordPersistenceUtils;
 import com.css.sword.org.entity.OrgUser;
-import com.css.sword.web.SwordServiceUtil;
+import com.css.sword.web.SwordWebServiceUtil;
 import com.css.sword.web.request.ISwordRequest;
 import com.css.sword.web.response.ISwordResponse;
 import com.css.sword.web.response.SwordDefaultResponse;
 import com.css.sword.web.response.SwordResponseFactory;
 import com.css.util.Page;
 
-@ServiceContainer
+@ServiceContainer("org/user")
 public class UserService {
 	
 	//人员导入
-	@Service(serviceName="orgImportUser")
+	@Service("importUser")
 	public ISwordResponse importUser(ISwordRequest iReq,List<OrgUser> list) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
@@ -36,7 +36,7 @@ public class UserService {
 		return dRes;
 	}
 	//根据所属部门id查询出人员列表
-	@Service(serviceName="orgGetUserByDeptId")
+	@Service("getUserByDeptId")
 	public ISwordResponse getUserByDeptId(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
@@ -58,7 +58,7 @@ public class UserService {
 	
 	
 	//分页查询，根据部门id，查询出人员列表
-	@Service(serviceName="orgGetUserByDeptIdPage")
+	@Service("getUserByDeptIdPage")
 	public ISwordResponse getUserByDeptIdPage(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
@@ -76,8 +76,8 @@ public class UserService {
 	}
 	
 	//获取人员列表，带分页
-	@Service(serviceName="orgGetAllUserPage")
-	public ISwordResponse orgGetAllUserPage(ISwordRequest iReq) throws SwordBaseCheckedException{
+	@Service("getAllUserPage")
+	public ISwordResponse getAllUserPage(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
 
@@ -93,8 +93,8 @@ public class UserService {
 	}
 	
 	//根据所属人员id查询出人员
-	@Service(serviceName="orgGetUserById")
-	public ISwordResponse orgGetUserById(ISwordRequest iReq) throws SwordBaseCheckedException{
+	@Service("getUserById")
+	public ISwordResponse getUserById(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
@@ -114,8 +114,8 @@ public class UserService {
 	}
 	
 	//模糊查询人员
-	@Service(serviceName="orgGetUserMh")
-	public ISwordResponse orgGetUserMh(ISwordRequest iReq) throws SwordBaseCheckedException{
+	@Service("getUserMh")
+	public ISwordResponse getUserMh(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
@@ -156,8 +156,8 @@ public class UserService {
 	}
 		
 	//根据人员id,获取到所有人员的组合信息
-	@Service(serviceName="orgGetAllUserInfo")
-	public ISwordResponse orgGetUserALLDemo(ISwordRequest iReq) throws SwordBaseCheckedException{
+	@Service("getUserAllDemo")
+	public ISwordResponse getUserAllDemo(ISwordRequest iReq) throws SwordBaseCheckedException{
 		
 		//IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
 		ISwordResponse dRes = SwordResponseFactory.createSwordResponseInstance(iReq);
@@ -167,7 +167,7 @@ public class UserService {
 			List<Object> param = new ArrayList<Object>();
 			param.add(iReq.getData("user_code"));
 			OrgUser user = dao.findOneBySql(sql, param, OrgUser.class);*/
-			SwordDefaultResponse dResNew = SwordServiceUtil.callService("orgGetUserById",iReq);
+			SwordDefaultResponse dResNew = SwordWebServiceUtil.callService("orgGetUserById",iReq);
 			dRes.setModel(dResNew.getModel());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
