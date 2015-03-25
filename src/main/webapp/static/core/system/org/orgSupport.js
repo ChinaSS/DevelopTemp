@@ -13,7 +13,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             //静态数据
             //"url":sysPath+"/org/data/OrgTree.json",
             //"url": getServer()+"/v1/org/dept",
-            "url": getServer()+"/sword/orgGetAllDept",
+            "url": getServer()+"/sword/org/dept/getAllDept",
             "success":function(data) {
                 //console.log(data)
                 //数据转换zTree支持的格式
@@ -56,7 +56,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
         $.ajax({
             //"url":sysPath+"/org/data/RoleTree.json",
             //"url": util.getServerPath()+"/org/roleDir/v1/",
-            "url": getServer()+"/sword/orgGetAllRoleDir",
+            "url": getServer()+"/sword/org/roledir/getAllRoleDir",
             "success":function(data) {
                 var arr = [];
                 for (var i = 0, dir; dir = data[i++];) {
@@ -200,7 +200,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             data:{
                 "type":"URL",
                 //"value":getServer()+"/org/data/Persons.json"
-                "value": getServer() + "/sword/"+ (id?"orgGetUserByDeptIdPage":"orgGetAllUserPage") +"?dept_id="+id
+                "value": getServer() + "/sword/org/user/"+ (id?"getUserByDeptIdPage":"getAllUserPage") +"?dept_id="+id
             }
         };
         grid.init($.extend(config,comConfig));
@@ -228,7 +228,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             data: {
                 "type": "URL",
                 //"value": sysPath + "/org/data/Roles.json"
-                "value": getServer() + "/sword/"+(id?"orgGetRoleByPidPage":"orgGetAllRolePage")+"?dir_code="+id
+                "value": getServer() + "/sword/org/role/"+(id?"getRoleByPidPage":"getAllRolePage")+"?dir_code="+id
             }
         };
         grid.init($.extend(config,comConfig));
@@ -253,7 +253,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             ],
             data: {
                 "type": "URL",
-                "value": getServer() + "/sword/orgGetAllRoleDirPage"
+                "value": getServer() + "/sword/org/roledir/getAllRoleDirPage"
             }
         };
         grid.init($.extend(config,comConfig));
@@ -277,7 +277,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             data: {
                 "type": "URL",
                 //"value": sysPath + "/org/data/GWs.json"
-                "value": getServer() + "/sword/orgGetAllGw"
+                "value": getServer() + "/sword/org/gw/getAllGw"
             }
         };
         grid.init($.extend(config,comConfig));
@@ -302,7 +302,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             data: {
                 "type": "URL",
                 //"value": sysPath + "/org/data/ZWs.json"
-                "value": getServer() + "/sword/orgGetAllZwPage"
+                "value": getServer() + "/sword/org/zw/getAllZwPage"
             }
         };
         grid.init($.extend(config,comConfig));
@@ -329,7 +329,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             data: {
                 "type": "URL",
                 //"value": sysPath + "/org/data/AllDept.json"
-                "value": getServer() +"/sword/orgGetAllDeptPage"
+                "value": getServer() +"/sword/org/dept/getAllDeptPage"
             }
         };
         grid.init($.extend(config,comConfig));
@@ -467,7 +467,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //组织导入
     var importOrg = function(){
         var mapping = {
-            "ServiceName":"orgImportDept",
+            "ServiceName":"org/dept/importDept",
             "EntityClassName":"com.css.sword.org.entity.OrgDept",
             "部门ID":"deptId","部门编号":"deptCode","部门名称":"deptName","部门领导":"leader","部门领导编号":"leaderCode",
             "管理人员":"manager","管理人员编号":"managerCode","成本中心名称":"costCenterName","成本中心代码":"costCenterCode","部门级别":"level",
@@ -487,7 +487,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //人员导入
     var importPerson = function(){
             var mapping = {
-                "ServiceName":"orgImportUser",
+                "ServiceName":"org/user/importUser",
                 "EntityClassName":"com.css.sword.org.entity.OrgUser",
                 "员工编号":"userCode","用户名称":"userName","性别":"sex","生日":"birthday","办公电话":"officePhone",
                 "移动电话":"phone","传真":"fax","邮箱":"email","职务名称":"zwName",
@@ -608,7 +608,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
         //获取当前需要编辑的人员对象数据
         $.ajax({
             //url:sysPath+"/org/data/Person.json",
-            url:getServer()+"/sword/orgGetUserById",
+            url:getServer()+"/sword/org/user/getUserById",
             dataType:"json",
             data:{"user_code":userCode},
             success:function(data){
@@ -639,7 +639,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     var initZW = function(val){
         $.ajax({
             //url:sysPath+"/org/data/ZWList.json",
-            url:getServer()+"sword/orgGetAllZw",
+            url:getServer()+"sword/org/zw/getAllZw",
             dataType:"json",
             success:function(data){
                 var $sel = $("#sle_PersonZW");
@@ -657,7 +657,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //角色目录导入
     var importRoleDir = function(){
         var mapping = {
-            "ServiceName":"orgImportRoleDir",
+            "ServiceName":"org/roledir/importRoleDir",
             "EntityClassName":"com.css.sword.org.entity.OrgRoleDir",
             "目录名称":"dirName","目录编号":"dirCode","父目录编号":"pDirCode","父目录名称":"pDirName"
         };
@@ -670,7 +670,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //角色导入
     var importRole = function(){
         var mapping = {
-            "ServiceName":"orgImportRole",
+            "ServiceName":"org/role/importRole",
             "EntityClassName":"com.css.sword.org.entity.OrgRole",
             "角色编号":"roleCode","角色名称":"roleName","管理人员编号":"managerCode","管理人员名称":"managerName",
             "所属目录编号":"dirCode","所属目录名称":"dirName","序号":"sort"
@@ -686,7 +686,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
         var dir_code = getSelectTreeNodeId("roletree");
         $.ajax({
             //url:sysPath+"/org/data/RoleDir.json",
-            url:getServer()+"/sword/orgGetRoleDir",
+            url:getServer()+"/sword/org/roledir/getRoleDirById",
             data:{"dir_code":dir_code},
             success:function(data){
                 data = {Org:{RoleDir:data}};
@@ -721,7 +721,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                             required:true,
                             remote:{
                                 type:"POST",                                        //请求方式
-                                url: getServer()+"/sword/orgValidateRoleDirCode",   //请求的服务
+                                url: getServer()+"/sword/org/roledir/validateRoleDirCode",      //请求的服务
                                 data:{                                              //要传递的参数
                                     dir_code:function(){return $("#dirCode").val();}
                                 }
@@ -747,7 +747,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                 var entity = getNgModel("tab_RoleDir");
                 //console.log(entity);
                 $.ajax({
-                    url:getServer()+"/sword/orgSaveRoleDir",
+                    url:getServer()+"/sword/org/roledir/saveRoleDir",
                     dataType:"json",
                     data:entity,
                     success:function(data){
@@ -799,7 +799,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                             required:true,
                             remote:{
                                 type:"POST",  //请求方式
-                                url: getServer()+"/sword/orgValidateRoleCode", //请求的服务
+                                url: getServer()+"/sword/org/role/validateRoleCode", //请求的服务
                                 data:{  //要传递的参数
                                     role_code:function(){return $("#roleCode").val();}
                                 }
@@ -819,7 +819,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     var editRole = function(roleCode){
         $.ajax({
             //url:sysPath+"/org/data/Role.json",
-            url:getServer()+"/sword/orgGetRole",
+            url:getServer()+"/sword/org/role/getRoleById",
             data:{"role_code":roleCode},
             success:function(data){
                 data = {Org:{Role:data}};
@@ -852,13 +852,13 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     /**
      * 角色保存
      */
-    var saveOrgRoleBtnBind = function(type){
+    var saveOrgRoleBtnBind = function(){
         $("#saveOrgRoleBtn").bind("click",function(){
             if($("#RoleForm").valid()){
                 var entity = getNgModel("tab_Role");
                 //console.log(entity);
                 $.ajax({
-                    url:getServer()+"/sword/orgSaveRole?saveType="+type,
+                    url:getServer()+"/sword/org/role/saveRole",
                     dataType:"json",
                     data:entity,
                     success:function(data){
@@ -878,7 +878,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //岗位导入
     var importGW = function(){
         var mapping = {
-            "ServiceName":"orgImportGw",
+            "ServiceName":"org/gw/importGw",
             "EntityClassName":"com.css.sword.org.entity.OrgGw",
             "岗位名称":"gwName","岗位编号":"gwCode","显示序号":"sort"
         };
@@ -901,7 +901,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                             required:true,
                             remote:{
                                 type:"POST",                                        //请求方式
-                                url: getServer()+"/sword/orgValidateGwCode",        //请求的服务
+                                url: getServer()+"/sword/org/gw/validateGwCode",           //请求的服务
                                 data:{                                              //要传递的参数
                                     gw_code:function(){return $("#gwCode").val();}
                                 }
@@ -921,7 +921,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     var editGW = function(GWCode){
         $.ajax({
             //url:sysPath+"/org/data/GW.json",
-            url:getServer()+"/sword/orgGetGwById",
+            url:getServer()+"/sword/org/gw/getGwById",
             dataType:"json",
             data:{"gw_code":GWCode},
             success:function(data){
@@ -960,7 +960,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             if($("#GWForm").valid()){
                 var entity = getNgModel("tab_GW");
                 $.ajax({
-                    url:getServer()+"/sword/orgSaveGW",
+                    url:getServer()+"/sword/org/gw/saveGw",
                     dataType:"json",
                     data:entity,
                     success:function(data){
@@ -979,7 +979,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     //职务导入
     var importZW = function(){
         var mapping = {
-            "ServiceName":"orgImportZw",
+            "ServiceName":"org/zw/importZw",
             "EntityClassName":"com.css.sword.org.entity.OrgZw",
             "职务名称":"zwName","职务编号":"zwCode","显示序号":"sort"
         };
@@ -1002,7 +1002,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
                             required:true,
                             remote:{
                                 type:"POST",                                        //请求方式
-                                url: getServer()+"/sword/orgValidateZwCode",        //请求的服务
+                                url: getServer()+"/sword/org/zw/validateZwCode",           //请求的服务
                                 data:{                                              //要传递的参数
                                     zw_code:function(){return $("#zwCode").val();}
                                 }
@@ -1022,7 +1022,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
     var editZW = function(zwCode){
         $.ajax({
             //url:sysPath+"/org/data/ZW.json",
-            url:getServer()+"/sword/orgGetZwById",
+            url:getServer()+"/sword/org/zw/getZwById",
             dataType:"json",
             data:{"zw_code":zwCode},
             success:function(data){
@@ -1061,7 +1061,7 @@ define(["UtilDir/grid","UtilDir/util","ZTree","css!ZTreeCss"],function(grid,util
             if($("#ZWForm").valid()){
                 var entity = getNgModel("tab_ZW");
                 $.ajax({
-                    url:getServer()+"/sword/orgSaveZW",
+                    url:getServer()+"/sword/org/zw/saveZW",
                     dataType:"json",
                     data:entity,
                     success:function(data){
