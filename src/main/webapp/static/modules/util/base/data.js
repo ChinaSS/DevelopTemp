@@ -51,8 +51,19 @@ define(["jquery"],function($){
 				return false;
 			}
 		},
-		listToTree : function(data){
-
+		listToTree : function(data,key){
+			var pCodeObj = {},
+				rootObj = {},
+				rootObj[key.code] = data[0][key.pcode]||"root";
+			for (var i = 0,pcode; i < data.length; i++) {
+				pcode = data[i][key.pcode]||rootObj[key.code];
+				if(!pCodeObj[pcode]){
+					pCodeObj[pcode] = [];
+				}
+				pCodeObj[pcode].push(data[i]);
+			}
+			rootObj = matchCode(rootObj,key,pCodeObj);
+			return rootObj[key.data];
 		},
 		format : function(data){
 			console.log("abstract function, format function should be overwritten");
@@ -61,5 +72,17 @@ define(["jquery"],function($){
 			console.log("abstract function, sort function should be overwritten");
 		}
 	};
+	function matchCode(dataObj,key,pCodeObj){
+		var dataArr = pCodeObj[dataObj[key.code]];
+		if(!!dataArr&&dataArr.length>0){
+			for (var i = 0; i < dataArr.length; i++) {
+				dataArr[i] = matchCode(dataArr[i],key,pCodeObj);
+			}
+			dataObj[key.data] = dataArr;
+		}else{
+			dataObj[key.data] = null;
+		}
+		return dataObj;
+	}
 	return Data;
 });
