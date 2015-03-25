@@ -22,7 +22,7 @@ public class AuthResourceService {
 	/**
 	 * 获取所有资源（包括资源目录）
 	 */
-	@Service("authGetResAll")
+	@Service("getAll")
 	public ISwordResponse getResTree(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
@@ -36,22 +36,16 @@ public class AuthResourceService {
 	}
 	
 	/**
-	 * 获取资源（根据资源分类）
-	 * 参数：res_type，默认为1：资源分类，2：资源实体
+	 * 获取资源分类
 	 */
-	@Service("authGetResSort")
+	@Service("getSort")
 	public ISwordResponse getResSort(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
 			IPersistenceService dao = SwordPersistenceUtils.getPersistenceService();
-			String res_type = req.getData("resType");
-			if (res_type == null || res_type.trim().equals("")) {
-				res_type = "1";
-			}
 			List<Object> params = new ArrayList<Object>();
-			params.add(res_type);
+			params.add("1");
 			List<AuthResource> list = dao.findAllBySql("select * from acl_res_url a where a.res_type=?", params, AuthResource.class);
-			
 			res.setModel(list);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,7 +56,7 @@ public class AuthResourceService {
 	/**
 	 * 获取某一资源分类下的资源
 	 */
-	@Service("authGetResSub")
+	@Service("getBySort")
 	public ISwordResponse getResSub(ISwordRequest req) {
 		List<AuthResource> result = new ArrayList<AuthResource>();
 		try{
@@ -83,10 +77,10 @@ public class AuthResourceService {
 	}
 	
 	/**
-	 * 获取某一资源
+	 * 获取某一资源或分类
 	 * 参数：resId
 	 */
-	@Service("authGetRes")
+	@Service("getById")
 	public ISwordResponse getRes(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
@@ -110,11 +104,10 @@ public class AuthResourceService {
 		return res;
 	}
 	
-	
 	/**
-	 * 保存资源
+	 * 保存资源或分类
 	 */
-	@Service("authSaveRes")
+	@Service("save")
 	public ISwordResponse saveRes(ISwordRequest req, AuthResource resource) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{
@@ -134,7 +127,10 @@ public class AuthResourceService {
 		return res;
 	}
 	
-	@Service("authDeleteRes")
+	/**
+	 * 删除资源或分类
+	 */
+	@Service("delete")
 	public ISwordResponse deleteRes(ISwordRequest req) {
 		ISwordResponse res = SwordResponseFactory.createSwordResponseInstance(req);
 		try{

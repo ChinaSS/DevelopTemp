@@ -1,6 +1,12 @@
 package com.css.util;
 
 
+/**
+ *	服务器返回前端对象
+ *	code 		编号
+ *	message		信息
+ *	data		数据对象
+ */
 public class ServiceResult {
 	
 	private String code; //代号success: error info
