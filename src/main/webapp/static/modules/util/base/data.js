@@ -53,8 +53,8 @@ define(["jquery"],function($){
 		},
 		listToTree : function(data,key){
 			var pCodeObj = {},
-				rootObj = {},
-				rootObj[key.code] = data[0][key.pcode]||"root";
+				rootObj = {};
+			rootObj[key.code] = data[0][key.pcode]||"root";
 			for (var i = 0,pcode; i < data.length; i++) {
 				pcode = data[i][key.pcode]||rootObj[key.code];
 				if(!pCodeObj[pcode]){

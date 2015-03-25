@@ -62,9 +62,8 @@ define(["UtilDir/psnSelect"], function(PsnSelect){
                 callback?callback(data):null;
             }
         };
-        PsnSelect(_param);
+        var psnSelect = PsnSelect(_param);
         $psnInput.on("click",function(){
-            var psnSelect = PsnSelect.get("psnSelect_"+this.id);
             if (!psnSelect) {
                 return false;
             }else{

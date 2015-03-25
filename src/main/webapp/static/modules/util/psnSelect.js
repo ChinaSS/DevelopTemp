@@ -1,10 +1,11 @@
 define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/dataSelect.css"],function($,Tree,Dialog){
 
 	var cache = {},
-		selectDataObj = {};
+		dataList = {},
+		selectData = {};
 
 	function isSelected(code){
-		return selectDataObj[code]?true:false;
+		return selectData[code]?true:false;
 	}
 
 	function addSelectData(code){
@@ -12,7 +13,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/dataSelect.css
 			console.log("data has already existed!");
 			return false;
 		}else{
-			selectDataObj[code] = true;
+			selectData[code] = {code:code,text:"测试人员"+code};//dataList[code];
 			return true;
 		}
 	}
@@ -20,13 +21,19 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/dataSelect.css
 	function delSelectData(code){
 		try{
 			if (isSelected(code)) {
-				delete selectDataObj[code];
+				delete selectData[code];
 			}
 		}catch(e){
 			console.log(e);
 			return false;
 		}
 		return true;
+	}
+
+	function loadData(dataArr,key){
+		for (var i = 0; i < dataArr.length; i++) {
+			dataList[dataArr[i][key.code]] = dataArr[i];
+		}
 	}
 
 	//组织机构树类
@@ -141,6 +148,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/dataSelect.css
 
 	function PsnSelect(config){
 		this._param = $.extend({},config);
+		this.selected = {}; // code : dataObj 
 		//init Dialog
         this._initDialog();
         //init orgTree
@@ -293,39 +301,55 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/dataSelect.css
 		});
 	};
 
-	PsnSelect.prototype._loadSelectData = function(selectData){
+	PsnSelect.prototype._loadSelectData = function(selectCode){
 		var $selectTree = this.dialog.$getDialog().find(".psnSelect .tree");
+		var dataArr=[],dataList={};
 		//数据格式化处理,形成数组
-		if (typeof selectData == "string") {
-			selectData = selectData.split(",");
+		if (typeof selectCode == "string") {
+			selectCode = selectCode.split(",");
 		}
-
-		if(!selectData||selectData.constructor != Array||selectData.length==0){
+		if(!selectCode||selectCode.constructor != Array||selectCode.length==0){
 			console.log("无数据或数据结构有误");
 		}else{
-			if (typeof selectData[0] == "object") {
+			if (typeof selectCode[0] == "object") {
 				//当所传值为数据对象的数组时
+				for (var i = 0; i < selectCode.length; i++) {
+					dataList[selectCode[i].code]=selectCode[i];
+				}
+				selectData = dataList;
 				console.log("所选人员初始化,使用直接数据对象,而非使用人员代码从后台查询,仅供测试使用");
-				this.tree.renderNode($selectTree,selectData,"data");
+				this.tree.renderNode($selectTree,selectCode,"data");
 			} else {
+				/*
 				this.tree.getPsnData({
 					psnCode : selectData
 				},function(data){
 					this.renderNode($selectTree,data,"data");
 				});
+				*/
+				for (var i = 0,code; i < selectCode.length; i++) {
+					code = selectCode[i];
+					if (!!this.selectData[code]) {
+						dataArr.push(this.selectData[code]);
+						dataList[code]=this.selectData[code];
+					}
+				}
+				this.renderNode($selectTree,dataArr,"data");
+				selectData = dataList;
 			}
 		}
+		
 	};
 
 	PsnSelect.prototype._getSelectData = function(){
 		var $select = this.dialog.$getDialog().find(".psnSelect .tree li"),
 			data = [];
 		$select.each(function(){
-			data.push({
-				code : $(this).data("code"),
-				text : $(this).text()
-			});
+			data.push($(this).data("code"));
 		});
+		for (var i = 0; i < data.length; i++) {
+			data[i] = selectData[data[i]];
+		}
 		return data;
 	};
 
@@ -345,10 +369,10 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/dataSelect.css
 	PsnSelect.prototype.clear = function(){
 		var $orgTree = this.tree.$getWrap(),
 			$selectTree = this.dialog.$getDialog().find(".psnSelect .tree");
-		$orgTree.find("li.open").removeClass("open");
-		$orgTree.find(".leaf>ul").remove();
+		$orgTree.find("li.open").removeClass("open");		
 		$selectTree.empty();
-		selectDataObj = {};
+		selectData={};
+		dataList={};
 	};
 
 	PsnSelect.prototype.show = function(){
@@ -356,6 +380,7 @@ define(["jquery","BaseDir/tree","UtilDir/dialog","css!UtilDir/css/dataSelect.css
 	};
 
 	PsnSelect.prototype.hide = function(){
+		this.selectData = selectData;
 		this.dialog.hide();
 	};
 
