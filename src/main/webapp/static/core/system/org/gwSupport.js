@@ -132,11 +132,12 @@ define(["UtilDir/util","UtilDir/grid","OrgDir/util"],function(Util,Grid,OrgUtil)
                 "value": getServer() + "/sword/org/gw/getAllGw"
             }
         };
-        Grid.init($.extend(config,comConfig));
+        Grid.init($.extend(config,OrgUtil.gridDefaultConfig));
     };
 
     return {
         importGW:importGW,
-        addGW:addGW
+        addGW:addGW,
+        showGWList:showGWList
     }
 });

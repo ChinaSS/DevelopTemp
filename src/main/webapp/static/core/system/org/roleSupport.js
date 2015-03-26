@@ -89,7 +89,7 @@ define(["UtilDir/util","UtilDir/grid","OrgDir/util"],function(Util,Grid,OrgUtil)
     var saveOrgRoleBtnBind = function(){
         $("#saveOrgRoleBtn").bind("click",function(){
             if($("#RoleForm").valid()){
-                var entity = getNgModel("tab_Role");
+                var entity = OrgUtil.getNgModel("tab_Role");
                 //console.log(entity);
                 $.ajax({
                     url:getServer()+"/sword/org/role/saveRole",
@@ -143,11 +143,12 @@ define(["UtilDir/util","UtilDir/grid","OrgDir/util"],function(Util,Grid,OrgUtil)
                 "value": getServer() + "/sword/org/role/"+(id?"getRoleByPidPage":"getAllRolePage")+"?dir_code="+id
             }
         };
-        Grid.init($.extend(config,comConfig));
+        Grid.init($.extend(config,OrgUtil.gridDefaultConfig));
     };
 
     return {
         importRole:importRole,
-        addRole:addRole
+        addRole:addRole,
+        showRoleList:showRoleList
     }
 });

@@ -40,7 +40,7 @@ define([
                         onClick:function (event, treeId, treeNode) {
                             $("#orgShowListTitle").html("组织-"+treeNode.name);
                             showListPanel();
-                            showPersonList(treeNode.id);
+                            User.showPersonList(treeNode.id);
 
                             //单击节点展开
                             $.fn.zTree.getZTreeObj("orgtree").expandNode(treeNode);
@@ -82,7 +82,7 @@ define([
                             $("#orgShowListTitle").html("角色-"+treeNode.name);
                             showListPanel();
                             //查询出该节点下的所有角色信息
-                            showRoleList(treeNode.id);
+                            Role.showRoleList(treeNode.id);
                             //单击节点展开
                             $.fn.zTree.getZTreeObj("roletree").expandNode(treeNode);
                             //显示角色相关操作
@@ -112,31 +112,31 @@ define([
 
                     switch(treeNode.id){
                         case "GWConfig":
-                            showGWList();
+                            GW.showGWList();
                             break;
                         case "ZWConfig":
-                            showZWList();
+                            ZW.showZWList();
                             break;
                         case "AllDept":
-                            showAllDeptList();
+                            Dept.showAllDeptList();
                             break;
                         case "AllPerson":
-                            showPersonList();
+                            User.showPersonList();
                             break;
                         case "AllRole":
-                            showRoleList();
+                            Role.showRoleList();
                             break;
                         case "RoleDir":
-                            showRoleDirList();
+                            RoleDir.showRoleDirList();
                             break;
                         case "NoDeptPerson":
-                            showPersonList();
+                            User.showPersonList();
                             break;
                         case "LockPerson":
-                            showPersonList();
+                            User.showPersonList();
                             break;
                         case "LockDept":
-                            showAllDeptList();
+                            Dept.showAllDeptList();
                             break;
                         case "Log":
 

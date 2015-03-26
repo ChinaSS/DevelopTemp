@@ -56,8 +56,8 @@ define(["UtilDir/util","OrgDir/util","UtilDir/grid"],function(Util,OrgUtil,Grid)
                     afterLoad:function(){
                         $("#org_deptName").html(data.Org.Dept.DeptInfo.BaseInfo.deptName);
                         $("#org_deptId").html(data.Org.Dept.DeptInfo.BaseInfo.deptId);
-                        setNgModel("DeptBaseInfo",data);
-                        setNgModel("DeptExtendInfo",data);
+                        OrgUtil.setNgModel("DeptBaseInfo",data);
+                        OrgUtil.setNgModel("DeptExtendInfo",data);
                         //人员列表
                         document.getElementById("T_DeptMembers").outerHTML = util.template("T_DeptMembers",data);
                         //岗位列表
@@ -77,7 +77,7 @@ define(["UtilDir/util","OrgDir/util","UtilDir/grid"],function(Util,OrgUtil,Grid)
     };
     //部门保存
     var orgDetpSave = function(){
-        console.log(getNgModel("DeptBaseInfo"));
+        console.log(OrgUtil.getNgModel("DeptBaseInfo"));
         //getNgModel("DeptExtendInfo")
 
     };
@@ -137,12 +137,13 @@ define(["UtilDir/util","OrgDir/util","UtilDir/grid"],function(Util,OrgUtil,Grid)
                 "value": getServer() +"/sword/org/dept/getAllDeptPage"
             }
         };
-        Grid.init($.extend(config,comConfig));
+        Grid.init($.extend(config,OrgUtil.gridDefaultConfig));
     };
 
     return {
         importDept:importDept,
         editDept:editDept,
-        addDept:addDept
+        addDept:addDept,
+        showAllDeptList:showAllDeptList
     }
 });

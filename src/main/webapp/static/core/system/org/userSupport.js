@@ -56,13 +56,13 @@ define(["UtilDir/util","OrgDir/util","UtilDir/grid"],function(Util,OrgUtil,Grid)
                     afterLoad:function(){
                         $("#org_PersonName").html(data.Org.Person.PersonInfo.BaseInfo.userName);
                         $("#org_PersonDeptName").html(data.Org.Person.PersonInfo.DeptInfo.deptName);
-                        setNgModel("PersonBaseInfo",data);
+                        OrgUtil.setNgModel("PersonBaseInfo",data);
                         //职务初始化
                         initZW(data.Org.Person.PersonInfo.BaseInfo.ZW);
                         //性别与是否冻结
                         $("input[type='radio'][name='sex'][value='"+data.Org.Person.PersonInfo.BaseInfo.sex+"']").attr("checked", "checked");
                         $("input[type='radio'][name='locked'][value='"+data.Org.Person.PersonInfo.BaseInfo.locked+"']").attr("checked", "checked");
-                        setNgModel("PersonExtendInfo",data);
+                        OrgUtil.setNgModel("PersonExtendInfo",data);
                         //所属角色
                         document.getElementById("T_PersonRoles").outerHTML = util.template("T_PersonRoles",data);
                         //所属岗位
@@ -94,7 +94,7 @@ define(["UtilDir/util","OrgDir/util","UtilDir/grid"],function(Util,OrgUtil,Grid)
 
     //弹出人员侧边栏
     var showPersonSidebar = function(param){
-        util.slidebar($.extend({
+        Util.slidebar($.extend({
             url:getStaticPath()+"/core/system/org/views/orgPerson.html",
             cache:false,
             close:true,
@@ -125,11 +125,12 @@ define(["UtilDir/util","OrgDir/util","UtilDir/grid"],function(Util,OrgUtil,Grid)
                 "value": getServer() + "/sword/org/user/"+ (id?"getUserByDeptIdPage":"getAllUserPage") +"?dept_id="+id
             }
         };
-        Grid.init($.extend(config,comConfig));
+        Grid.init($.extend(config,OrgUtil.gridDefaultConfig));
     };
 
     return {
         importPerson:importPerson,
-        addPerson:addPerson
+        addPerson:addPerson,
+        showPersonList:showPersonList
     }
 });

@@ -19,7 +19,7 @@ define(["UtilDir/util","UtilDir/grid","OrgDir/util"],function(Util,Grid,OrgUtil)
 
     //编辑角色目录
     var editRoleDir = function(){
-        var dir_code = getSelectTreeNodeId("roletree");
+        var dir_code = OrgUtil.getSelectTreeNodeId("roletree");
         $.ajax({
             //url:sysPath+"/org/data/RoleDir.json",
             url:getServer()+"/sword/org/roledir/getRoleDirById",
@@ -80,7 +80,7 @@ define(["UtilDir/util","UtilDir/grid","OrgDir/util"],function(Util,Grid,OrgUtil)
     var saveOrgRoleDirBtnBind = function(saveType){
         $("#saveOrgRoleDirBtn").bind("click",function(){
             if($("#RoleDirForm").valid()){
-                var entity = getNgModel("tab_RoleDir");
+                var entity = OrgUtil.getNgModel("tab_RoleDir");
                 //console.log(entity);
                 $.ajax({
                     url:getServer()+"/sword/org/roledir/saveRoleDir",
@@ -149,13 +149,14 @@ define(["UtilDir/util","UtilDir/grid","OrgDir/util"],function(Util,Grid,OrgUtil)
                 "value": getServer() + "/sword/org/roledir/getAllRoleDirPage"
             }
         };
-        Grid.init($.extend(config,comConfig));
+        Grid.init($.extend(config,OrgUtil.gridDefaultConfig));
     };
 
     return {
         importRoleDir:importRoleDir,
         editRoleDir:editRoleDir,
-        addRoleDir:addRoleDir
+        addRoleDir:addRoleDir,
+        showRoleDirList:showRoleDirList
     }
 
 });

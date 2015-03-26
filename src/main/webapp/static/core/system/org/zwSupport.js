@@ -54,7 +54,7 @@ define(["UtilDir/util","UtilDir/grid","OrgDir/util"],function(Util,Grid,OrgUtil)
                 showZWSidebar({
                     afterLoad:function(){
                         $("#org_ZWName").html(data.Org.ZW.zwName);
-                        setNgModel("tab_ZW",data);
+                        OrgUtil.setNgModel("tab_ZW",data);
                         //保存按钮绑定事件
                         saveOrgZWBtnBind();
                         //编辑时，角色编号字段不可编辑
@@ -133,11 +133,12 @@ define(["UtilDir/util","UtilDir/grid","OrgDir/util"],function(Util,Grid,OrgUtil)
                 "value": getServer() + "/sword/org/zw/getAllZwPage"
             }
         };
-        Grid.init($.extend(config,comConfig));
+        Grid.init($.extend(config,OrgUtil.gridDefaultConfig));
     };
 
     return {
         importZW:importZW,
-        addZW:addZW
+        addZW:addZW,
+        showZWList:showZWList
     }
 });
